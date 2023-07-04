@@ -9,6 +9,14 @@ abstract class AppTextStyle {
     // fontFamily: 'Quicksand',
   );
 
+  static const h2 = TextStyle(
+      color: AppColors.textPrimary,
+      fontWeight: FontWeight.w600,
+      fontSize: 24,
+      letterSpacing: 0.48
+      // fontFamily: 'Quicksand',
+      );
+
   static const titleText1 = TextStyle(
     overflow: TextOverflow.ellipsis,
     color: AppColors.textPrimary,

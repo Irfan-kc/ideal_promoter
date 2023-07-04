@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ideal_promoter/view/screen/login_page/login_page.dart';
 import 'package:ideal_promoter/view/screen/splash_screen/splash_screen.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: const SplashScreen(),
+      home: const LoginPage(),
     );
   }
 }
