@@ -20,9 +20,10 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Image(
-              image: AssetImage('assets/images/stunning_3D_cartoon.png'),
-              height: 300,
+            const Expanded(
+              child: Image(
+                image: AssetImage('assets/images/stunning_3D_cartoon.png'),
+              ),
             ),
             const KHeight(16),
             const Text(
