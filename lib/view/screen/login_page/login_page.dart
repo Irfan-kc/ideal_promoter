@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
-import 'package:ideal_promoter/view/widget/button/login_button.dart';
+import 'package:ideal_promoter/view/widget/button/medium_button.dart';
 import 'package:ideal_promoter/view/widget/custom_textfield.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
@@ -17,8 +17,11 @@ class LoginPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Image(
-                  image: AssetImage('assets/images/stunning_3D_cartoon.png')),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                child: Image(
+                    image: AssetImage('assets/images/stunning_3D_cartoon.png')),
+              ),
               const KHeight(16),
               const Text(
                 'Welcome back \n to ideal e shope',
@@ -27,17 +30,19 @@ class LoginPage extends StatelessWidget {
               ),
               const KHeight(32),
               const CustomTextField(
+                padding: EdgeInsets.only(left: 20, right: 20),
                 hintText: 'Email id',
                 prefixIcon: CupertinoIcons.person,
                 keyboardType: TextInputType.emailAddress,
               ),
               const KHeight(20),
               const CustomTextField(
+                padding: EdgeInsets.only(left: 20, right: 20),
                 hintText: 'Password',
                 prefixIcon: CupertinoIcons.lock,
               ),
               const KHeight(38),
-              LoginButton(
+              MediumButton(
                 onTap: () {},
                 text: 'Login',
                 padding:
@@ -52,7 +57,6 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         color: Color(0xFF828282),
                         fontSize: 13,
-                        letterSpacing: 0.65,
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
@@ -60,7 +64,6 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         color: AppColors.primaryColor,
                         fontSize: 13,
-                        letterSpacing: 0.65,
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.underline),
                   )

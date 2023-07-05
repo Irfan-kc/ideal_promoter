@@ -13,7 +13,7 @@ abstract class AppTextStyle {
       color: AppColors.textPrimary,
       fontWeight: FontWeight.w600,
       fontSize: 24,
-      letterSpacing: 0.48
+      letterSpacing: -0.48
       // fontFamily: 'Quicksand',
       );
 

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 
-class LoginButton extends StatelessWidget {
+class MediumButton extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
   final EdgeInsetsGeometry? padding;
   final Color? color;
-  const LoginButton(
+  const MediumButton(
       {super.key,
       required this.onTap,
       required this.text,
