@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
     Timer(
         const Duration(seconds: 5),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const LoginPage())));
+            context, MaterialPageRoute(builder: (_) => LoginPage())));
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20),

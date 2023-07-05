@@ -8,6 +8,8 @@ class CustomTextField extends StatefulWidget {
   final void Function(String value)? onChanged;
   final TextInputType? keyboardType;
   final EdgeInsetsGeometry? padding;
+  final FocusNode? focusNode;
+  final void Function(String value)? onfieldSubmited;
 
   const CustomTextField(
       {super.key,
@@ -17,7 +19,9 @@ class CustomTextField extends StatefulWidget {
       this.isPasword,
       this.onChanged,
       this.keyboardType,
-      this.padding});
+      this.padding,
+      this.focusNode,
+      this.onfieldSubmited});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -61,6 +65,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         onChanged: widget.onChanged,
         obscureText: widget.isPasword ?? false,
         keyboardType: widget.keyboardType,
+        focusNode: widget.focusNode,
+        onFieldSubmitted: widget.onfieldSubmited,
       ),
     );
   }

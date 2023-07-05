@@ -7,7 +7,10 @@ import 'package:ideal_promoter/view/widget/custom_textfield.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final FocusNode email = FocusNode();
+  final FocusNode password = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: [
               const Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
                 child: Image(
                     image: AssetImage('assets/images/stunning_3D_cartoon.png')),
               ),
@@ -29,17 +32,23 @@ class LoginPage extends StatelessWidget {
                 style: AppTextStyle.h2,
               ),
               const KHeight(32),
-              const CustomTextField(
-                padding: EdgeInsets.only(left: 20, right: 20),
+              CustomTextField(
+                focusNode: email,
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 hintText: 'Email id',
                 prefixIcon: CupertinoIcons.person,
                 keyboardType: TextInputType.emailAddress,
+                onfieldSubmited: (value) {
+                  FocusScope.of(context).requestFocus(password);
+                },
               ),
               const KHeight(20),
-              const CustomTextField(
-                padding: EdgeInsets.only(left: 20, right: 20),
+              CustomTextField(
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 hintText: 'Password',
                 prefixIcon: CupertinoIcons.lock,
+                isPasword: true,
+                focusNode: password,
               ),
               const KHeight(38),
               MediumButton(
