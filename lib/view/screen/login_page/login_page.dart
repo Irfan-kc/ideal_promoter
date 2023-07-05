@@ -40,14 +40,15 @@ class LoginPage extends StatelessWidget {
               LoginButton(
                 onTap: () {},
                 text: 'Login',
-                padding: const EdgeInsets.fromLTRB(60, 20, 60, 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
               ),
               const ConstHeight(16),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Forgot Password? ',
+                    'Forgot password? ',
                     style: TextStyle(
                         color: Color(0xFF828282),
                         fontSize: 13,

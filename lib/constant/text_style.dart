@@ -56,9 +56,8 @@ abstract class AppTextStyle {
 
   static const buttonText = TextStyle(
     color: Colors.white,
-    fontWeight: FontWeight.w700,
-    letterSpacing: 0.3,
-    fontSize: 17,
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
     // fontFamily: 'Quicksand',
   );
 
