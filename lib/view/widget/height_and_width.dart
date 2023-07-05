@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ConstHeight extends StatelessWidget {
+class KHeight extends StatelessWidget {
   final double height;
-  const ConstHeight(
+  const KHeight(
     this.height, {
     Key? key,
   }) : super(key: key);
@@ -15,9 +15,9 @@ class ConstHeight extends StatelessWidget {
   }
 }
 
-class ConstWidth extends StatelessWidget {
+class KWidth extends StatelessWidget {
   final double width;
-  const ConstWidth(
+  const KWidth(
     this.width, {
     Key? key,
   }) : super(key: key);
