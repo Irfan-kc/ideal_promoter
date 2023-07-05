@@ -41,15 +41,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       controller: _textEditingController,
       decoration: InputDecoration(
-        prefixIcon: Icon(widget.prefixIcon),
-        prefixIconColor: const Color(0XFF828282),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide.none),
-        fillColor: const Color(0xFFF2F2F2),
-        filled: true,
-        hintText: widget.hintText,
-      ),
+          prefixIcon: Icon(widget.prefixIcon),
+          prefixIconColor: const Color(0XFF828282),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide.none),
+          fillColor: const Color(0xFFF2F2F2),
+          filled: true,
+          hintText: widget.hintText,
+          hintStyle: const TextStyle(
+              fontSize: 16,
+              color: Color(0xFF828282),
+              letterSpacing: 0.08,
+              fontWeight: FontWeight.w400)),
       onChanged: widget.onChanged,
       obscureText: widget.isPasword ?? false,
       keyboardType: widget.keyboardType,
