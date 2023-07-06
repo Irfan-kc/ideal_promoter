@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/view/screen/home_screen/home.dart';
-import 'package:ideal_promoter/view/screen/login_page/login_page.dart';
 
 void main() {
   runApp(const MyApp());

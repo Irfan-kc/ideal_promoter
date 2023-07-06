@@ -18,12 +18,13 @@ abstract class AppTextStyle {
       );
 
   static const titleText1 = TextStyle(
-    overflow: TextOverflow.ellipsis,
-    color: AppColors.textPrimary,
-    fontWeight: FontWeight.w500,
-    fontSize: 15,
-    // fontFamily: 'Quicksand',
-  );
+      overflow: TextOverflow.ellipsis,
+      color: AppColors.textPrimary,
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      letterSpacing: -0.197
+      // fontFamily: 'Quicksand',
+      );
 
   static const mainTitleText = TextStyle(
     color: AppColors.textPrimary,
@@ -47,10 +48,17 @@ abstract class AppTextStyle {
     // fontFamily: 'Quicksand',
   );
 
-  static const bodyText = TextStyle(
-    color: AppColors.textSecondary,
+  static const body1Text = TextStyle(
+    color: AppColors.black,
     fontWeight: FontWeight.w500,
     fontSize: 16,
+    // fontFamily: 'Quicksand',
+  );
+
+  static const body3Text = TextStyle(
+    color: Color(0xFF9E9E9E),
+    fontWeight: FontWeight.w400,
+    fontSize: 12,
     // fontFamily: 'Quicksand',
   );
 
@@ -62,23 +70,10 @@ abstract class AppTextStyle {
   );
 
   static const smallText = TextStyle(
-    color: AppColors.textSecondary,
-    fontWeight: FontWeight.w500,
-    fontSize: 14,
-    // fontFamily: 'Quicksand',
-  );
-
-  static const paragraphText = TextStyle(
-    color: AppColors.textSecondary,
-    fontWeight: FontWeight.w500,
-    fontSize: 13,
-    // fontFamily: 'Quicksand',
-  );
-
-  static const pricetext = TextStyle(
-    color: AppColors.primaryColor,
-    fontWeight: FontWeight.w600,
-    fontSize: 20,
-    // fontFamily: 'Quicksand',
-  );
+      color: AppColors.textSecondary,
+      fontWeight: FontWeight.w500,
+      fontSize: 10,
+      letterSpacing: -0.158
+      // fontFamily: 'Quicksand',
+      );
 }

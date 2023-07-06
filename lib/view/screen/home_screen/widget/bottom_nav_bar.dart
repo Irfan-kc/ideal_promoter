@@ -16,9 +16,9 @@ class BottomNavBarWidget extends StatelessWidget {
       builder: (context, bottomNavProvider, _) {
         return Container(
           padding: const EdgeInsets.symmetric(
-            vertical: 16,
+            vertical: 30,
           ),
-          height: 80,
+          height: 90,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
