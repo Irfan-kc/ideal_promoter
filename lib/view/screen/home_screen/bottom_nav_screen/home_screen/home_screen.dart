@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
-import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/earning_card.dart';
+import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/home_screen/widget/earning_card.dart';
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/category_tile.dart';
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/graph.dart';
+import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/suggested_grid_view.dart';
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/title_and_view_bar.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
@@ -135,46 +136,8 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height / 2.5,
-                    child: GridView.builder(
-                      itemCount: 10,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 0.79,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage(
-                                  'assets/images/pic.png',
-                                ),
-                                width: 167,
-                                height: 161,
-                                fit: BoxFit.fill,
-                              ),
-                              Text(
-                                '\u0024 150.00',
-                                style: AppTextStyle.body1Text,
-                              ),
-                              Text(
-                                'Wooden bedside table featuring a raised desissdssds',
-                                style: AppTextStyle.body3Text,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                      height: MediaQuery.of(context).size.height / 2.5,
+                      child: const SuggestedGridView()),
                 ),
               ],
             ),

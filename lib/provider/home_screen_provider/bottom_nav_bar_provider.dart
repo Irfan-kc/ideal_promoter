@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/chart_screen.dart';
-import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/home_screen.dart';
-import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/profile_screen.dart';
-import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/wallet_screen.dart';
+import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/chart_screen/chart_screen.dart';
+import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/home_screen/home_screen.dart';
+import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/profile_screen/profile_screen.dart';
+import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/wallet_screen/wallet_screen.dart';
 
 class BottomNavProvider extends ChangeNotifier {
   Widget currentPage = const HomeScreen();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../widget/height_and_width.dart';
+import '../../../../../widget/height_and_width.dart';
 
 class EarningsCard extends StatelessWidget {
   final String heading;
