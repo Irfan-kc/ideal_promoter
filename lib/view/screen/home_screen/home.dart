@@ -12,9 +12,7 @@ class Home extends StatelessWidget {
       create: (context) => BottomNavProvider(),
       child: Consumer<BottomNavProvider>(builder: (context, provider, _) {
         return Scaffold(
-          body: SingleChildScrollView(
-              child:
-                  Container(child: provider.pageBucket[provider.currentIndex])),
+          body: Container(child: provider.pageBucket[provider.currentIndex]),
           bottomNavigationBar: const BottomNavBarWidget(),
         );
       }),
