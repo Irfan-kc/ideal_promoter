@@ -9,12 +9,11 @@ class SuggestedGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       itemCount: 10,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 0,
-        crossAxisSpacing: 20,
-        childAspectRatio: 0.79,
-      ),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          mainAxisSpacing: 0,
+          crossAxisSpacing: 20,
+          mainAxisExtent: 222),
       itemBuilder: (context, index) {
         return const Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -24,7 +23,7 @@ class SuggestedGridView extends StatelessWidget {
               image: AssetImage(
                 'assets/images/pic.png',
               ),
-              width: 167,
+              width: 170,
               height: 161,
               fit: BoxFit.fill,
             ),

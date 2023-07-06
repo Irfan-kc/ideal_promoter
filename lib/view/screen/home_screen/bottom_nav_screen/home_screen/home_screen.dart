@@ -133,6 +133,7 @@ class HomeScreen extends StatelessWidget {
                 const CategoryTile(),
                 const KHeight(12),
                 const TitleAndViewBar(title: 'Suggested for you'),
+                const KHeight(8),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: SizedBox(
