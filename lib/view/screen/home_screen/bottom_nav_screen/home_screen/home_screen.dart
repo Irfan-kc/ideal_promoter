@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                             children: [
                           TextSpan(
-                              text: '34 P age views',
+                              text: '34 Page views',
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
