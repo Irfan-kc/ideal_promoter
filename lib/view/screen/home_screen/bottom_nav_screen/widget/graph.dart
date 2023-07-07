@@ -2,26 +2,64 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 
-class MothlyGrpgh extends StatefulWidget {
-  const MothlyGrpgh({super.key});
+import '../../../../../constant/text_style.dart';
+import '../../../../widget/height_and_width.dart';
+
+class GraphView extends StatefulWidget {
+  const GraphView({super.key});
 
   @override
-  State<MothlyGrpgh> createState() => _MothlyGrpghState();
+  State<GraphView> createState() => _GraphViewState();
 }
 
-class _MothlyGrpghState extends State<MothlyGrpgh> {
+class _GraphViewState extends State<GraphView> {
   List<Color> gradientColors = [Colors.blue, Colors.white];
 
   bool showAvg = false;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AspectRatio(
-          aspectRatio: 3.70,
-          child: LineChart(
-            mainData(),
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 22, right: 22),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Monthly Earnings',
+                style: AppTextStyle.titleText1,
+              ),
+              Row(
+                children: [
+                  Image(
+                    image: AssetImage('assets/images/money-cash.png'),
+                    height: 20,
+                  ),
+                  Text(
+                    '420',
+                    style: TextStyle(
+                        fontSize: 12.6,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+        const KHeight(9),
+        SizedBox(
+          height: 108,
+          child: Stack(
+            children: <Widget>[
+              AspectRatio(
+                aspectRatio: 3.70,
+                child: LineChart(
+                  mainData(),
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -163,17 +201,13 @@ class _MothlyGrpghState extends State<MothlyGrpgh> {
               Colors.white
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
             spotsLine: BarAreaSpotsLine(
+              applyCutOffY: false,
               show: true,
               flLineStyle: const FlLine(
                 color: AppColors.primaryColor,
                 strokeWidth: 25,
               ),
-              checkToShowSpotLine: (spot) {
-                if (spot.x == 4) {
-                  return true;
-                }
-                return false;
-              },
+              checkToShowSpotLine: (spot) => spot.x == 4,
             ),
           ),
         ),
