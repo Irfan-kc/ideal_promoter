@@ -4,14 +4,14 @@ import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
-class MonthlyGraph extends StatefulWidget {
-  const MonthlyGraph({super.key});
+class GraphView extends StatefulWidget {
+  const GraphView({super.key});
 
   @override
-  State<MonthlyGraph> createState() => _MonthlyGraphState();
+  State<GraphView> createState() => _GraphViewState();
 }
 
-class _MonthlyGraphState extends State<MonthlyGraph> {
+class _GraphViewState extends State<GraphView> {
   List<Color> gradientColors = [Colors.blue, Colors.white];
 
   bool showAvg = false;

@@ -7,8 +7,6 @@ import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/suggested_grid_view.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
-import '../../../../../constant/text_style.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -34,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const KHeight(20),
-                  const MonthlyGraph(),
+                  const GraphView(),
                   const KHeight(16),
                   Row(
                     children: [
