@@ -106,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                   const KHeight(9),
                   const SizedBox(
                     height: 108,
-                    child: LineChartSample2(),
+                    child: MothlyGrpgh(),
                   ),
                   const KHeight(16),
                   Row(
