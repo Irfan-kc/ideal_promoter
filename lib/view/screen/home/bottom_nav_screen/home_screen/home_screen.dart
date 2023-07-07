@@ -3,11 +3,10 @@ import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
-import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/graph.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
-import 'widget/graph.dart';
+import '../widget/graph.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -34,8 +33,8 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const KHeight(20),
+                  // const GraphView(),
                   const GraphView(),
-                  const SizedBox(width: 350, child: LineChartSample2()),
                   const KHeight(16),
                   Row(
                     children: [
