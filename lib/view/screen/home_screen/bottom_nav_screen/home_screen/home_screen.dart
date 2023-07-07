@@ -135,11 +135,9 @@ class HomeScreen extends StatelessWidget {
                   const KHeight(12),
                   const TitleAndViewBar(title: 'Suggested for you'),
                   const KHeight(8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                        height: MediaQuery.of(context).size.height / 2.5,
-                        child: const SuggestedGridView()),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: SuggestedGridView(),
                   ),
                 ],
               ),

@@ -150,8 +150,8 @@ class _LineChartSample2State extends State<LineChartSample2> {
           gradient: const LinearGradient(
             colors: [AppColors.primaryColor, Colors.blue],
           ),
-          barWidth: 3,
-          isStrokeCapRound: true,
+          barWidth: 2,
+          isStrokeCapRound: false,
           dotData: const FlDotData(
             show: false,
           ),
@@ -162,6 +162,19 @@ class _LineChartSample2State extends State<LineChartSample2> {
               Color(0xFFD2DEFF),
               Colors.white
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            spotsLine: BarAreaSpotsLine(
+              show: true,
+              flLineStyle: const FlLine(
+                color: AppColors.primaryColor,
+                strokeWidth: 25,
+              ),
+              checkToShowSpotLine: (spot) {
+                if (spot.x == 4) {
+                  return true;
+                }
+                return false;
+              },
+            ),
           ),
         ),
       ],

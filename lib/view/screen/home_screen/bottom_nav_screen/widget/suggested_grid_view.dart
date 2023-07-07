@@ -8,7 +8,9 @@ class SuggestedGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      shrinkWrap: true,
       itemCount: 10,
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           mainAxisSpacing: 0,
