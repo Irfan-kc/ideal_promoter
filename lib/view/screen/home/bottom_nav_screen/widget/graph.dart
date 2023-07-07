@@ -15,7 +15,7 @@ class GraphView extends StatefulWidget {
 }
 
 class _GraphViewState extends State<GraphView> {
-  List<int> showingTooltipOnSpots = [9];
+  List<int> showingTooltipOnSpots = [];
 
   List<FlSpot> get allSpots => const [
         FlSpot(-1, 3),
@@ -33,6 +33,8 @@ class _GraphViewState extends State<GraphView> {
         FlSpot(11, 5),
         FlSpot(12, 4),
       ];
+
+  double selectedYValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -61,24 +63,24 @@ class _GraphViewState extends State<GraphView> {
 
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 22, right: 22),
+        Padding(
+          padding: const EdgeInsets.only(left: 22, right: 22),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Monthly Earnings',
                 style: AppTextStyle.titleText1,
               ),
               Row(
                 children: [
-                  Image(
+                  const Image(
                     image: AssetImage('assets/images/money-cash.png'),
                     height: 20,
                   ),
                   Text(
-                    '420',
-                    style: TextStyle(
+                    selectedYValue.toString(),
+                    style: const TextStyle(
                         fontSize: 12.6,
                         fontWeight: FontWeight.w600,
                         color: AppColors.primaryColor),
@@ -117,9 +119,14 @@ class _GraphViewState extends State<GraphView> {
                       if (event is FlTapUpEvent) {
                         final spotIndex =
                             response.lineBarSpots!.first.spotIndex;
+                        final yValue = response.lineBarSpots!.first.y;
+
                         setState(() {
                           showingTooltipOnSpots.clear();
                           showingTooltipOnSpots.add(spotIndex);
+                          selectedYValue = yValue;
+                          print(spotIndex);
+                          print(yValue);
                         });
                       }
                     },
