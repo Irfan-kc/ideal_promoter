@@ -72,7 +72,7 @@ abstract class AppTextStyle {
   static const smallText = TextStyle(
       color: AppColors.textSecondary,
       fontWeight: FontWeight.w500,
-      fontSize: 10,
+      fontSize: 12,
       letterSpacing: -0.158
       // fontFamily: 'Quicksand',
       );

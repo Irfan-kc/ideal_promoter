@@ -23,7 +23,7 @@ class SuggestedGridView extends StatelessWidget {
                 maxCrossAxisExtent: 220,
                 mainAxisSpacing: 0,
                 crossAxisSpacing: 20,
-                mainAxisExtent: 222),
+                mainAxisExtent: 233),
             itemBuilder: (context, index) {
               return const Column(
                 mainAxisAlignment: MainAxisAlignment.start,
