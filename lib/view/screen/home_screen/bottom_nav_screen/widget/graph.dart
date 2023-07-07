@@ -2,14 +2,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 
-class MothlyGrpgh extends StatefulWidget {
-  const MothlyGrpgh({super.key});
+class MonthlyGraph extends StatefulWidget {
+  const MonthlyGraph({super.key});
 
   @override
-  State<MothlyGrpgh> createState() => _MothlyGrpghState();
+  State<MonthlyGraph> createState() => _MonthlyGraphState();
 }
 
-class _MothlyGrpghState extends State<MothlyGrpgh> {
+class _MonthlyGraphState extends State<MonthlyGraph> {
   List<Color> gradientColors = [Colors.blue, Colors.white];
 
   bool showAvg = false;

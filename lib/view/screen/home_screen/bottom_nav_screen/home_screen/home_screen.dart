@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
@@ -47,23 +46,34 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const KHeight(13),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                EarningsCard(
-                  heading: 'Total Eranings',
-                  todayAmount: '\u20B98600.00',
-                  totalAmount: '\u20B9122.00',
-                  totalColor: Color(0xFF9FFFCB),
-                ),
-                SizedBox(),
-                EarningsCard(
-                  heading: 'Bussiness volume',
-                  todayAmount: '22',
-                  totalAmount: '4255',
-                  totalColor: Color(0xFFFFF59F),
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: EarningsCard(
+                      heading: 'Total Earnings',
+                      todayAmount: '\u20B98600.00',
+                      totalAmount: '\u20B9122.00',
+                      totalColor: Color(0xFF9FFFCB),
+                    ),
+                  ),
+                  KWidth(20),
+                  Expanded(
+                    flex: 1,
+                    child: EarningsCard(
+                      heading: 'Business volume',
+                      todayAmount: '22',
+                      totalAmount: '4255',
+                      totalColor: Color(0xFFFFF59F),
+                    ),
+                  ),
+                ],
+              ),
             ),
             const KHeight(12),
             Container(
@@ -106,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                   const KHeight(9),
                   const SizedBox(
                     height: 108,
-                    child: MothlyGrpgh(),
+                    child: MonthlyGraph(),
                   ),
                   const KHeight(16),
                   Row(
