@@ -51,9 +51,10 @@ class _GraphViewState extends State<GraphView> {
         belowBarData: BarAreaData(
           show: true,
           gradient: const LinearGradient(colors: [
-            Color.fromARGB(255, 236, 245, 252),
             Color(0xFFD2DEFF),
+            // Color.fromARGB(255, 236, 245, 252),
             Colors.white
+            // Colors.white
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
       ),
