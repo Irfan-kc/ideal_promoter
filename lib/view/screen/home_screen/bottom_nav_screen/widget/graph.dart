@@ -1,18 +1,17 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
+import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
-import '../../../../../constant/text_style.dart';
-import '../../../../widget/height_and_width.dart';
-
-class GraphView extends StatefulWidget {
-  const GraphView({super.key});
+class MonthlyGraph extends StatefulWidget {
+  const MonthlyGraph({super.key});
 
   @override
-  State<GraphView> createState() => _GraphViewState();
+  State<MonthlyGraph> createState() => _MonthlyGraphState();
 }
 
-class _GraphViewState extends State<GraphView> {
+class _MonthlyGraphState extends State<MonthlyGraph> {
   List<Color> gradientColors = [Colors.blue, Colors.white];
 
   bool showAvg = false;

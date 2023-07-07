@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
@@ -7,6 +6,8 @@ import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/graph.dart';
 import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/suggested_grid_view.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
+
+import '../../../../../constant/text_style.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const KHeight(20),
-                  const GraphView(),
+                  const MonthlyGraph(),
                   const KHeight(16),
                   Row(
                     children: [

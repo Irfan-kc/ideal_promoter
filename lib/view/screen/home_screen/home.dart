@@ -10,12 +10,14 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => BottomNavProvider(),
-      child: Consumer<BottomNavProvider>(builder: (context, provider, _) {
-        return Scaffold(
-          body: Container(child: provider.pageBucket[provider.currentIndex]),
-          bottomNavigationBar: const BottomNavBarWidget(),
-        );
-      }),
+      child: Consumer<BottomNavProvider>(
+        builder: (context, provider, _) {
+          return Scaffold(
+            body: Container(child: provider.pageBucket[provider.currentIndex]),
+            bottomNavigationBar: const BottomNavBarWidget(),
+          );
+        },
+      ),
     );
   }
 }
