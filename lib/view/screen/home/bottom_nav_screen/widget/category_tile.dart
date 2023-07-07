@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/view/screen/home_screen/bottom_nav_screen/widget/title_and_view_bar.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/title_and_view_bar.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class CategoryTile extends StatelessWidget {
