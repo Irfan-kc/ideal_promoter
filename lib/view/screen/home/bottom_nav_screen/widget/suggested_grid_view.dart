@@ -16,6 +16,7 @@ class SuggestedGridView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: GridView.builder(
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             itemCount: 10,
             physics: const NeverScrollableScrollPhysics(),

@@ -27,7 +27,7 @@ class ChartScreen extends StatelessWidget {
           ),
         ),
         KHeight(24),
-        CategoryTile()
+        CategoryTile(),
       ],
     );
   }
