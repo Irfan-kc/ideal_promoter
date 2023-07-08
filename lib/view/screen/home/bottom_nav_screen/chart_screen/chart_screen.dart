@@ -4,8 +4,6 @@ import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/categor
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
-import '../../../../../constant/text_style.dart';
-
 class ChartScreen extends StatelessWidget {
   const ChartScreen({super.key});
 
@@ -19,7 +17,6 @@ class ChartScreen extends StatelessWidget {
         KHeight(12),
         Expanded(
             child: GridViewData(
-          isScrollable: true,
           isExpanded: true,
           title: 'Product',
           isShowViewAll: false,

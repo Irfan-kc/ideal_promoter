@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constant/text_style.dart';
 import '../../../../widget/height_and_width.dart';
-import 'title_and_view_bar.dart';
 
 class GridViewData extends StatelessWidget {
   final bool isExpanded;
-  final bool isScrollable;
   final String title;
   final bool isShowViewAll;
   const GridViewData({
     Key? key,
     this.isExpanded = false,
-    this.isScrollable = false,
     required this.title,
     this.isShowViewAll = true,
   }) : super(key: key);
@@ -45,9 +42,7 @@ class GridViewData extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   shrinkWrap: true,
                   itemCount: 10,
-                  physics: isScrollable
-                      ? const BouncingScrollPhysics()
-                      : const NeverScrollableScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 220,
                       mainAxisSpacing: 0,
