@@ -126,8 +126,6 @@ class _GraphViewState extends State<GraphView> {
                           showingTooltipOnSpots.clear();
                           showingTooltipOnSpots.add(spotIndex);
                           selectedYValue = yValue;
-                          print(spotIndex);
-                          print(yValue);
                         });
                       }
                     },

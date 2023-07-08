@@ -4,55 +4,120 @@ import '../../../../../constant/text_style.dart';
 import '../../../../widget/height_and_width.dart';
 import 'title_and_view_bar.dart';
 
-class SuggestedGridView extends StatelessWidget {
-  const SuggestedGridView({super.key});
+class GridViewData extends StatelessWidget {
+  final bool isExpanded;
+  final bool isScrollable;
+  final String title;
+  final bool isShowViewAll;
+  const GridViewData({
+    Key? key,
+    this.isExpanded = false,
+    this.isScrollable = false,
+    required this.title,
+    this.isShowViewAll = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const TitleAndViewBar(title: 'Suggested for you'),
-        const KHeight(8),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            itemCount: 10,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 220,
-                mainAxisSpacing: 0,
-                crossAxisSpacing: 20,
-                mainAxisExtent: 233),
-            itemBuilder: (context, index) {
-              return const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image(
-                    image: AssetImage(
-                      'assets/images/pic.png',
-                    ),
-                    width: 170,
-                    height: 161,
-                    fit: BoxFit.fill,
-                  ),
-                  Text(
-                    '\u0024 150.00',
-                    style: AppTextStyle.body1Text,
-                  ),
-                  Text(
-                    'Wooden bedside table featuring a raised desissdssds',
-                    style: AppTextStyle.body3Text,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  )
-                ],
-              );
-            },
-          ),
-        ),
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: AppTextStyle.titleText1,
+                ),
+                isShowViewAll
+                    ? const Text(
+                        'View all',
+                        style: AppTextStyle.smallText,
+                      )
+                    : const SizedBox()
+              ],
+            )),
+        const KHeight(8),
+        isExpanded
+            ? Expanded(
+                child: GridView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  physics: isScrollable
+                      ? const BouncingScrollPhysics()
+                      : const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 220,
+                      mainAxisSpacing: 0,
+                      crossAxisSpacing: 20,
+                      mainAxisExtent: 233),
+                  itemBuilder: (context, index) {
+                    return const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image(
+                          image: AssetImage(
+                            'assets/images/pic.png',
+                          ),
+                          width: 170,
+                          height: 161,
+                          fit: BoxFit.fill,
+                        ),
+                        Text(
+                          '\u0024 150.00',
+                          style: AppTextStyle.body1Text,
+                        ),
+                        Text(
+                          'Wooden bedside table featuring a raised desissdssds',
+                          style: AppTextStyle.body3Text,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      ],
+                    );
+                  },
+                ),
+              )
+            : GridView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                shrinkWrap: true,
+                itemCount: 10,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 220,
+                    mainAxisSpacing: 0,
+                    crossAxisSpacing: 20,
+                    mainAxisExtent: 233),
+                itemBuilder: (context, index) {
+                  return const Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image(
+                        image: AssetImage(
+                          'assets/images/pic.png',
+                        ),
+                        width: 170,
+                        height: 161,
+                        fit: BoxFit.fill,
+                      ),
+                      Text(
+                        '\u0024 150.00',
+                        style: AppTextStyle.body1Text,
+                      ),
+                      Text(
+                        'Wooden bedside table featuring a raised desissdssds',
+                        style: AppTextStyle.body3Text,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    ],
+                  );
+                },
+              ),
       ],
     );
   }

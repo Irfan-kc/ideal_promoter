@@ -17,6 +17,7 @@ class CategoryTile extends StatelessWidget {
               height: 60,
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemCount: 7,
                   itemBuilder: (context, index) {
