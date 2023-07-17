@@ -17,7 +17,6 @@ class CarouselView extends StatelessWidget {
               height: 460.0,
               // enlargeCenterPage: true,
               // enableInfiniteScroll: true,
-              scrollPhysics: const BouncingScrollPhysics(),
               autoPlay: false,
               viewportFraction: 1,
               aspectRatio: 16 / 9,

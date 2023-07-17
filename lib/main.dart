@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/view/screen/home/home.dart';
-import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
 
 void main() {
   runApp(const MyApp());

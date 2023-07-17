@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
-import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class CustTableData extends StatelessWidget {
@@ -38,118 +38,86 @@ class CustTableData extends StatelessWidget {
               ],
             )),
         const KHeight(16),
-
-        Column(
-          children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                final totalWidth = MediaQuery.of(context).size.width;
-                final columnWidth =
-                    totalWidth / 4; // Assuming there are 4 columns
-
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                    columnSpacing: 30,
-                    columns: const [
-                      DataColumn(
-                        label: Text(
-                          'Order Id',
-                          style: AppTextStyle.dataColumnText,
-                        ),
+        const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18.0),
+            child: CustTableRow(
+              textStyle: false,
+            )),
+        const KHeight(4),
+        Expanded(
+          // height: 100,
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
+            itemCount:
+                15, // Replace with the actual number of items in your data
+            itemBuilder: (BuildContext context, int index) {
+              return const Column(
+                children: [
+                  SizedBox(
+                    height: 34,
+                    child: Center(
+                      child: CustTableRow(
+                        orderId: '#001',
+                        orderAmount: '200',
+                        earningsAmount: '800',
+                        orderStatus: 'Delivered',
                       ),
-                      DataColumn(
-                        label: Text('Order Amount',
-                            style: AppTextStyle.dataColumnText),
-                      ),
-                      DataColumn(
-                        label: Text('Earnings Amount',
-                            style: AppTextStyle.dataColumnText),
-                      ),
-                      DataColumn(
-                        label: Text('Order Status',
-                            style: AppTextStyle.dataColumnText),
-                      ),
-                    ],
-                    rows: const [
-                      DataRow(cells: [
-                        DataCell(Text('1')),
-                        DataCell(Text('Item 1')),
-                        DataCell(Text('200')),
-                        DataCell(Text('Completed')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('2')),
-                        DataCell(Text('Item 2')),
-                        DataCell(Text('300')),
-                        DataCell(Text('Pending')),
-                      ]),
-                      // Add more rows as needed
-                    ],
+                    ),
                   ),
-                );
-              },
-            ),
-          ],
+                ],
+              );
+              // SizedBox(
+              //   height: 34,
+              //   child: Row(
+              //     children: [
+              //       Expanded(
+              //           flex: 2,
+              //           child: Text(
+              //             '#00$index',
+              //             style: const TextStyle(
+              //                 fontSize: 11,
+              //                 color: Colors.black,
+              //                 fontWeight: FontWeight.w400,
+              //                 letterSpacing: -0.14),
+              //           )),
+              //       const Expanded(
+              //           flex: 3,
+              //           child: Text(
+              //             '300',
+              //             style: TextStyle(
+              //                 fontSize: 11,
+              //                 color: Colors.black,
+              //                 fontWeight: FontWeight.w400,
+              //                 letterSpacing: -0.14),
+              //           )),
+              //       const Expanded(
+              //           flex: 3,
+              //           child: Text(
+              //             '800',
+              //             style: TextStyle(
+              //                 fontSize: 11,
+              //                 color: Colors.black,
+              //                 fontWeight: FontWeight.w400,
+              //                 letterSpacing: -0.14),
+              //           )),
+              //       const Expanded(
+              //           flex: 2,
+              //           child: Text(
+              //             'Delivered',
+              //             style: TextStyle(
+              //                 fontSize: 11,
+              //                 color: Color(0xFF35C069),
+              //                 fontWeight: FontWeight.w400,
+              //                 letterSpacing: -0.14),
+              //           )),
+              //     ],
+              //   ),
+              // );
+            },
+          ),
         )
-
-        // SizedBox(
-        //   width: MediaQuery.of(context).size.width,
-        //   child: PaginatedDataTable(
-        //     columns: const [
-        //       DataColumn(
-        //           label: Text(
-        //         'Order Id',
-        //         style: AppTextStyle.dataColumnText,
-        //       )),
-        //       DataColumn(
-        //           label: Text(
-        //         'Order Amount',
-        //         style: AppTextStyle.dataColumnText,
-        //       ),),
-        //       DataColumn(
-        //           label: Text(
-        //         'Earnings Amount',
-        //         style: AppTextStyle.dataColumnText,
-        //       )),
-        //       DataColumn(
-        //           label: Text(
-        //         'Order Status',
-        //         style: AppTextStyle.dataColumnText,
-        //       ))
-        //     ],
-        //     source: MyData(),
-        //   ),
-        // )
       ],
     );
-  }
-}
-
-class MyData extends DataTableSource {
-  // Generate some made-up data
-  final List<Map<String, dynamic>> _data = List.generate(
-      10,
-      (index) => {
-            "Order Id": index,
-            "Order Amount": "Item $index",
-            "Earnings Amount": '200',
-            "Order Status": '200',
-          });
-
-  @override
-  bool get isRowCountApproximate => false;
-  @override
-  int get rowCount => _data.length;
-  @override
-  int get selectedRowCount => 0;
-  @override
-  DataRow getRow(int index) {
-    return DataRow(cells: [
-      DataCell(Text(_data[index]['Order Id'].toString())),
-      DataCell(Text(_data[index]["Order Amount"])),
-      DataCell(Text(_data[index]["Earnings Amount"].toString())),
-      DataCell(Text(_data[index]["Order Status"].toString())),
-    ]);
   }
 }

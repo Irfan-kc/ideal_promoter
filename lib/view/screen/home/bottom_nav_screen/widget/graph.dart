@@ -94,107 +94,103 @@ class _GraphViewState extends State<GraphView> {
         const KHeight(9),
         SizedBox(
           height: 108,
-          child: AspectRatio(
-            aspectRatio: 3.7,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: LineChart(
-                LineChartData(
-                  showingTooltipIndicators: showingTooltipOnSpots.map((index) {
-                    return ShowingTooltipIndicators([
-                      LineBarSpot(
-                        tooltipsOnBar,
-                        lineBarsData.indexOf(tooltipsOnBar),
-                        tooltipsOnBar.spots[index],
-                      ),
-                    ]);
-                  }).toList(),
-                  lineTouchData: LineTouchData(
-                    enabled: true,
-                    handleBuiltInTouches: false,
-                    touchCallback:
-                        (FlTouchEvent event, LineTouchResponse? response) {
-                      if (response == null || response.lineBarSpots == null) {
-                        return;
-                      }
-                      if (event is FlTapUpEvent) {
-                        final spotIndex =
-                            response.lineBarSpots!.first.spotIndex;
-                        final yValue = response.lineBarSpots!.first.y;
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: LineChart(
+              LineChartData(
+                showingTooltipIndicators: showingTooltipOnSpots.map((index) {
+                  return ShowingTooltipIndicators([
+                    LineBarSpot(
+                      tooltipsOnBar,
+                      lineBarsData.indexOf(tooltipsOnBar),
+                      tooltipsOnBar.spots[index],
+                    ),
+                  ]);
+                }).toList(),
+                lineTouchData: LineTouchData(
+                  enabled: true,
+                  handleBuiltInTouches: false,
+                  touchCallback:
+                      (FlTouchEvent event, LineTouchResponse? response) {
+                    if (response == null || response.lineBarSpots == null) {
+                      return;
+                    }
+                    if (event is FlTapUpEvent) {
+                      final spotIndex = response.lineBarSpots!.first.spotIndex;
+                      final yValue = response.lineBarSpots!.first.y;
 
-                        setState(() {
-                          showingTooltipOnSpots.clear();
-                          showingTooltipOnSpots.add(spotIndex);
-                          selectedYValue = yValue;
-                        });
-                      }
-                    },
-                    getTouchedSpotIndicator:
-                        (LineChartBarData barData, List<int> spotIndexes) {
-                      return spotIndexes.map((index) {
-                        return const TouchedSpotIndicatorData(
-                          FlLine(
-                            strokeWidth: 10,
-                            color: AppColors.primaryColor,
-                          ),
-                          FlDotData(
-                            show: false,
+                      setState(() {
+                        showingTooltipOnSpots.clear();
+                        showingTooltipOnSpots.add(spotIndex);
+                        selectedYValue = yValue;
+                      });
+                    }
+                  },
+                  getTouchedSpotIndicator:
+                      (LineChartBarData barData, List<int> spotIndexes) {
+                    return spotIndexes.map((index) {
+                      return const TouchedSpotIndicatorData(
+                        FlLine(
+                          strokeWidth: 10,
+                          color: AppColors.primaryColor,
+                        ),
+                        FlDotData(
+                          show: false,
+                        ),
+                      );
+                    }).toList();
+                  },
+                  touchTooltipData: LineTouchTooltipData(
+                    tooltipBgColor: AppColors.primaryColor,
+                    tooltipRoundedRadius: 8,
+                    getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
+                      return lineBarsSpot.map((lineBarSpot) {
+                        return LineTooltipItem(
+                          lineBarSpot.y.toString(),
+                          const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
                         );
                       }).toList();
                     },
-                    touchTooltipData: LineTouchTooltipData(
-                      tooltipBgColor: AppColors.primaryColor,
-                      tooltipRoundedRadius: 8,
-                      getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
-                        return lineBarsSpot.map((lineBarSpot) {
-                          return LineTooltipItem(
-                            lineBarSpot.y.toString(),
-                            const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }).toList();
-                      },
+                  ),
+                ),
+                lineBarsData: lineBarsData,
+                minX: 0,
+                maxX: 11,
+                minY: 0,
+                maxY: 15,
+                titlesData: FlTitlesData(
+                  show: true,
+                  rightTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  topTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      reservedSize: 20,
+                      interval: 1,
+                      getTitlesWidget: bottomTitleWidgets,
                     ),
                   ),
-                  lineBarsData: lineBarsData,
-                  minX: 0,
-                  maxX: 11,
-                  minY: 0,
-                  maxY: 15,
-                  titlesData: FlTitlesData(
-                    show: true,
-                    rightTitles: const AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    topTitles: const AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        reservedSize: 20,
-                        interval: 1,
-                        getTitlesWidget: bottomTitleWidgets,
-                      ),
-                    ),
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: false,
-                        interval: 1,
-                        getTitlesWidget: leftTitleWidgets,
-                        reservedSize: 42,
-                      ),
+                  leftTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: false,
+                      interval: 1,
+                      getTitlesWidget: leftTitleWidgets,
+                      reservedSize: 42,
                     ),
                   ),
-                  gridData: const FlGridData(show: false),
-                  borderData: FlBorderData(
-                    show: false,
-                    border: Border.all(
-                      color: AppColors.primaryColor,
-                    ),
+                ),
+                gridData: const FlGridData(show: false),
+                borderData: FlBorderData(
+                  show: false,
+                  border: Border.all(
+                    color: AppColors.primaryColor,
                   ),
                 ),
               ),
