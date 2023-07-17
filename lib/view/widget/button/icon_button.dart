@@ -4,7 +4,7 @@ import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class CustIconButton extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final Widget icon;
   final Color? color;
   final VoidCallback onTap;
   final int flex;
@@ -31,10 +31,7 @@ class CustIconButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    icon,
-                    color: Colors.white,
-                  ),
+                  icon,
                   const KWidth(8),
                   Text(
                     text,

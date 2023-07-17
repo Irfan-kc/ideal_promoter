@@ -68,20 +68,28 @@ class ProductView extends StatelessWidget {
                         children: [
                           CustIconButton(
                             flex: 3,
-                            icon: Icons.copy,
+                            icon: const Icon(
+                              Icons.copy_rounded,
+                              color: Colors.white,
+                              size: 14,
+                            ),
                             onTap: () {},
                             text: 'Copy Urls',
                           ),
                           const KWidth(10),
                           CustIconButton(
                             flex: 5,
-                            icon: Icons.copy,
+                            icon: Image.asset(
+                              'assets/icons/content_copy.png',
+                              height: 14,
+                              width: 14,
+                            ),
                             onTap: () {},
                             text: 'Get it on Whatsapp',
                             color: AppColors.green,
                           )
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
