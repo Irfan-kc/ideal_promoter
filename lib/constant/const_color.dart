@@ -10,4 +10,5 @@ abstract class AppColors {
   static const warning = Color(0xFFFDC040);
   static const danger = Color(0xFFEF4F4F);
   static const black = Colors.black;
+  static const green = Color(0xFF25D366);
 }

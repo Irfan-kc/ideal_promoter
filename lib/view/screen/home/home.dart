@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/home_screen_provider/bottom_nav_bar_provider.dart';
+import 'package:ideal_promoter/provider/home/home_screen_provider/bottom_nav_bar_provider.dart';
 import 'package:ideal_promoter/view/screen/home/widget/bottom_nav_bar.dart';
 import 'package:provider/provider.dart';
 

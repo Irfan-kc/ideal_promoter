@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../provider/home_screen_provider/bottom_nav_bar_provider.dart';
+import '../../../../provider/home/home_screen_provider/bottom_nav_bar_provider.dart';
 
 class BottomNavBarWidget extends StatelessWidget {
   const BottomNavBarWidget({
