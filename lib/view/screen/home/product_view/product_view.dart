@@ -1,12 +1,9 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/home/product_view/product_view_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/widget/carousel_view.dart';
 import 'package:ideal_promoter/view/widget/button/icon_button.dart';
-import 'package:ideal_promoter/view/widget/button/medium_button.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +17,7 @@ class ProductView extends StatelessWidget {
       child: Consumer<ProductPageProvider>(builder: (context, data, _) {
         return Scaffold(
           body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
 
 import '../../../../../constant/text_style.dart';
 import '../../../../widget/height_and_width.dart';
@@ -49,29 +50,37 @@ class GridViewData extends StatelessWidget {
                       crossAxisSpacing: 20,
                       mainAxisExtent: 233),
                   itemBuilder: (context, index) {
-                    return const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image(
-                          image: AssetImage(
-                            'assets/images/pic.png',
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const ProductView()));
+                      },
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image(
+                            image: AssetImage(
+                              'assets/images/pic.png',
+                            ),
+                            width: 170,
+                            height: 161,
+                            fit: BoxFit.fill,
                           ),
-                          width: 170,
-                          height: 161,
-                          fit: BoxFit.fill,
-                        ),
-                        Text(
-                          '\u0024 150.00',
-                          style: AppTextStyle.body1Text,
-                        ),
-                        Text(
-                          'Wooden bedside table featuring a raised desissdssds',
-                          style: AppTextStyle.body3Text,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        )
-                      ],
+                          Text(
+                            '\u0024 150.00',
+                            style: AppTextStyle.body1Text,
+                          ),
+                          Text(
+                            'Wooden bedside table featuring a raised desissdssds',
+                            style: AppTextStyle.body3Text,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),

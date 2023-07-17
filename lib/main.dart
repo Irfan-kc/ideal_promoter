@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
       ),
-      home: const ProductView(),
+      home: const Home(),
     );
   }
 }
