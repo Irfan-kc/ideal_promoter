@@ -21,17 +21,17 @@ class CustTableRow extends StatelessWidget {
     return Row(
       children: [
         CustTableCell(
-          text: orderId ?? 'OrderId',
+          text: orderId ?? 'Order Id',
           flex: 2,
           textStyle: textStyle,
         ),
         CustTableCell(
-          text: orderAmount ?? 'OrderAmount',
+          text: orderAmount ?? 'Order Amount',
           flex: 3,
           textStyle: textStyle,
         ),
         CustTableCell(
-          text: earningsAmount ?? 'EarningsAmount',
+          text: earningsAmount ?? 'Earnings Amount',
           flex: 3,
           textStyle: textStyle,
         ),

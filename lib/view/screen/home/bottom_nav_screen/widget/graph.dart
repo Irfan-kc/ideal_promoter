@@ -93,7 +93,7 @@ class _GraphViewState extends State<GraphView> {
         ),
         const KHeight(9),
         SizedBox(
-          height: 108,
+          height: 100,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: LineChart(
@@ -160,7 +160,7 @@ class _GraphViewState extends State<GraphView> {
                 minX: 0,
                 maxX: 11,
                 minY: 0,
-                maxY: 15,
+                maxY: 8,
                 titlesData: FlTitlesData(
                   show: true,
                   rightTitles: const AxisTitles(
@@ -172,7 +172,7 @@ class _GraphViewState extends State<GraphView> {
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 20,
+                      reservedSize: 30,
                       interval: 1,
                       getTitlesWidget: bottomTitleWidgets,
                     ),
