@@ -25,7 +25,9 @@ class HomeScreen extends StatelessWidget {
         children: [
           const KHeight(20),
           // const GraphView(),
-          const GraphView(),
+          const GraphView(
+            title: 'Monthly Earnings',
+          ),
           const KHeight(16),
           Row(
             children: [

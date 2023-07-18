@@ -36,9 +36,14 @@ class WalletScreen extends StatelessWidget {
                 child: const Column(
                   children: [
                     KHeight(20),
-                    GraphView(),
+                    GraphView(
+                      title: 'Monthly Earnings',
+                    ),
                     KHeight(16),
-                    Expanded(child: CustTableData())
+                    Expanded(
+                        child: CustTableData(
+                      title: 'Monthly Earnings',
+                    ))
                   ],
                 )),
           )

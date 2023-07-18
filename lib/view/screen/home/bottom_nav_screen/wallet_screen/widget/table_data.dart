@@ -4,7 +4,8 @@ import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class CustTableData extends StatelessWidget {
-  const CustTableData({super.key});
+  final String title;
+  const CustTableData({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,8 @@ class CustTableData extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Monthly Earnings',
+                Text(
+                  title,
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../../../constant/text_style.dart';
 import '../../../../../widget/height_and_width.dart';

@@ -6,8 +6,10 @@ import '../../../../../constant/text_style.dart';
 import '../../../../widget/height_and_width.dart';
 
 class GraphView extends StatefulWidget {
+  final String title;
   const GraphView({
     super.key,
+    required this.title,
   });
 
   @override
@@ -69,8 +71,8 @@ class _GraphViewState extends State<GraphView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Monthly Earnings',
+              Text(
+                widget.title,
                 style: AppTextStyle.titleText1,
               ),
               Row(

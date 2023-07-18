@@ -87,12 +87,19 @@ class ProfileScreen extends StatelessWidget {
                           ? Image.asset(
                               'assets/icons/edit_icon.png',
                               height: 20,
-                              width: 18,
+                              width: 30,
                             )
-                          : const Icon(
-                              Icons.save_as_outlined,
-                              color: Colors.white,
-                              size: 20,
+                          : Container(
+                              height: 20,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: const Center(
+                                  child: Text(
+                                'Save',
+                                style: AppTextStyle.titleText1,
+                              )),
                             ))
                 ],
               ),
