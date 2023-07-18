@@ -80,7 +80,7 @@ class ProductView extends StatelessWidget {
                           CustIconButton(
                             flex: 5,
                             icon: Image.asset(
-                              'assets/icons/content_copy.png',
+                              'assets/icons/whatsapp_icon.png',
                               height: 14,
                               width: 14,
                             ),

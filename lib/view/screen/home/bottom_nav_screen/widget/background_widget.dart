@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constant/const_color.dart';
-
 class BackGroundWidget extends StatelessWidget {
   final List<Widget> column1;
   final Widget column2;

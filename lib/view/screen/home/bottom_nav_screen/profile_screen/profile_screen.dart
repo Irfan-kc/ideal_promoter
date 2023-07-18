@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/circular_percent_indicator.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/text_field.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/background_widget.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../../../widget/height_and_width.dart';
 
@@ -64,8 +62,8 @@ class ProfileScreen extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: const Icon(
-                              Icons.copy,
-                              size: 10,
+                              Icons.copy_all,
+                              size: 12,
                               color: Colors.white,
                             ),
                           )
@@ -75,16 +73,13 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                width: 25,
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                      size: 20,
-                    )),
-              )
+              InkWell(
+                  onTap: () {},
+                  child: Image.asset(
+                    'assets/icons/edit_icon.png',
+                    height: 20,
+                    width: 18,
+                  ))
             ],
           ),
         ),
