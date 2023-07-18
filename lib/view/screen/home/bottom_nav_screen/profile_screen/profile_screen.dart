@@ -82,7 +82,6 @@ class ProfileScreen extends StatelessWidget {
                       onTap: () {
                         data.readOnly = !data.readOnly;
                         data.onRefresh();
-                        print(data.readOnly);
                       },
                       child: data.readOnly == true
                           ? Image.asset(
