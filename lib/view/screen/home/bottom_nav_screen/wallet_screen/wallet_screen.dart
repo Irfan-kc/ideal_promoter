@@ -11,7 +11,12 @@ class WalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.primaryColor,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/background_image.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Column(
         children: [
           const KHeight(64),

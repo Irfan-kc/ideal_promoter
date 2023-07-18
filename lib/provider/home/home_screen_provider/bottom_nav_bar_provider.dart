@@ -6,7 +6,7 @@ import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/
 
 class BottomNavProvider extends ChangeNotifier {
   Widget currentPage = const HomeScreen();
-  int currentIndex = 1;
+  int currentIndex = 3;
   PreferredSize? appBar;
 
   List<Widget> pageBucket = const [
