@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/view/screen/home/product_page/product_page.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
 
 import '../../../../../constant/text_style.dart';
@@ -29,9 +30,19 @@ class GridViewData extends StatelessWidget {
                   style: AppTextStyle.titleText1,
                 ),
                 isShowViewAll
-                    ? const Text(
-                        'View all',
-                        style: AppTextStyle.smallText,
+                    ? SizedBox(
+                        height: 30,
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const ProductPage()));
+                            },
+                            child: const Text(
+                              'View all',
+                              style: AppTextStyle.smallText,
+                            )),
                       )
                     : const SizedBox()
               ],
