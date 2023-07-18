@@ -13,11 +13,10 @@ class CustAppBar extends StatelessWidget {
       children: [
         KHeight(52),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 29.0),
+          padding: EdgeInsets.symmetric(horizontal: 22.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(CupertinoIcons.arrow_left),
               Text(
                 'Select Your Product',
                 style: AppTextStyle.body1Text,
