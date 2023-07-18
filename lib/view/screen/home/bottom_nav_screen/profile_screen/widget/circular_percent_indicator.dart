@@ -8,22 +8,23 @@ class CircularPercentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double progress = 0.15;
     return SizedBox(
       height: 90,
       child: CircularPercentIndicator(
         radius: 45,
         lineWidth: 5.0,
-        percent: 0.7,
+        percent: progress,
         backgroundColor: const Color(0xFFD9D9D9),
         center: Container(
           width: 80,
           height: 80,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(100)),
-          child: const Center(
+          child: Center(
             child: Text(
-              "75%",
-              style: TextStyle(
+              "${(progress * 100).toStringAsFixed(0)}%",
+              style: const TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primaryColor),
