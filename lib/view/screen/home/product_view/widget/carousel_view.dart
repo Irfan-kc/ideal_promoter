@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/home/product_view/product_view_provider.dart';
+import 'package:ideal_promoter/provider/home/product_screen_provider/product_view_provider.dart';
 import 'package:provider/provider.dart';
 
 class CarouselView extends StatelessWidget {

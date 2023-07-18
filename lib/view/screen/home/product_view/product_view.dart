@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
-import 'package:ideal_promoter/provider/home/product_view/product_view_provider.dart';
+import 'package:ideal_promoter/provider/home/product_screen_provider/product_view_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/widget/carousel_view.dart';
 import 'package:ideal_promoter/view/widget/button/icon_button.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';

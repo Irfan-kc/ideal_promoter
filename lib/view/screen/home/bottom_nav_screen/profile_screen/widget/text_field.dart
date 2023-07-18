@@ -11,6 +11,7 @@ class ProfileTextField extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
   final TextInputType? keyboardType;
   final void Function(String value)? onFieldSubmitted;
+  final bool? readOnly;
   const ProfileTextField(
       {super.key,
       required this.value,
@@ -19,7 +20,8 @@ class ProfileTextField extends StatefulWidget {
       this.focusNode,
       this.padding,
       this.keyboardType,
-      this.onFieldSubmitted});
+      this.onFieldSubmitted,
+      this.readOnly});
 
   @override
   State<ProfileTextField> createState() => _ProfileTextFieldState();
@@ -62,6 +64,7 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
           ),
           const KHeight(5),
           TextFormField(
+            readOnly: widget.readOnly ?? false,
             controller: controller,
             focusNode: widget.focusNode,
             keyboardType: widget.keyboardType,
