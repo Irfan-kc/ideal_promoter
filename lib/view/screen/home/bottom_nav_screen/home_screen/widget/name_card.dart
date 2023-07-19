@@ -21,14 +21,14 @@ class NameCard extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
-                    color: Color(0XFFFFFFFF)),
+                    color: Colors.white),
                 children: [
               TextSpan(
                   text: 'welcome to ideal e shope',
                   style: TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.w400,
-                      color: Color(0XFFFFFFFF),
+                      color: Colors.white,
                       letterSpacing: -0.4))
             ]))
       ],

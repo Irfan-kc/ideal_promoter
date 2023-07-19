@@ -46,7 +46,7 @@ abstract class AppTextStyle {
   );
 
   static const body3Text = TextStyle(
-    color: Color(0xFF9E9E9E),
+    color: AppColors.textSecondary,
     fontWeight: FontWeight.w400,
     fontSize: 12,
     // fontFamily: 'Quicksand',
@@ -68,7 +68,7 @@ abstract class AppTextStyle {
       );
 
   static const dataColumnText = TextStyle(
-      color: Color(0xFF9D9D9D),
+      color: AppColors.textSecondary,
       fontWeight: FontWeight.w400,
       fontSize: 10,
       letterSpacing: -0.14
@@ -76,7 +76,7 @@ abstract class AppTextStyle {
       );
 
   static const text = TextStyle(
-    color: Color(0xFF9E9E9E),
+    color: AppColors.textSecondary,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );

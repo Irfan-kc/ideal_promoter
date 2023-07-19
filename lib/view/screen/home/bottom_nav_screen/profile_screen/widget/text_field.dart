@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
 
 import '../../../../../../constant/text_style.dart';
 import '../../../../../widget/height_and_width.dart';
@@ -60,7 +61,7 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
             style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 15,
-                color: Color.fromARGB(255, 129, 125, 125)),
+                color: AppColors.textSecondary),
           ),
           const KHeight(5),
           TextFormField(

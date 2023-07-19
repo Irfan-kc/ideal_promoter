@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
 
 import '../../../widget/height_and_width.dart';
 
@@ -36,7 +37,7 @@ class BackGroundWidget extends StatelessWidget {
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(25.0),
                             topRight: Radius.circular(25.0)),
-                        color: Colors.white,
+                        color: AppColors.backgroundColor,
                       ),
                       child: column2)
                 ],

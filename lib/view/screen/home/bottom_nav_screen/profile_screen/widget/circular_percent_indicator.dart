@@ -31,7 +31,7 @@ class CircularPercentWidget extends StatelessWidget {
             ),
           ),
         ),
-        progressColor: const Color(0XFF9F9F9F),
+        progressColor: AppColors.textSecondary,
       ),
     );
   }

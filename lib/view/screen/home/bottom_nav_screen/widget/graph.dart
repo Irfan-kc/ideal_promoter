@@ -205,7 +205,7 @@ class _GraphViewState extends State<GraphView> {
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-        color: Color(0xFFAEAEAE),
+        color: AppColors.textSecondary,
         fontWeight: FontWeight.w400,
         fontSize: 11,
         letterSpacing: 0.272);

@@ -18,7 +18,7 @@ class CustTableData extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                       letterSpacing: -0.195),
@@ -68,53 +68,6 @@ class CustTableData extends StatelessWidget {
                   ),
                 ],
               );
-              // SizedBox(
-              //   height: 34,
-              //   child: Row(
-              //     children: [
-              //       Expanded(
-              //           flex: 2,
-              //           child: Text(
-              //             '#00$index',
-              //             style: const TextStyle(
-              //                 fontSize: 11,
-              //                 color: Colors.black,
-              //                 fontWeight: FontWeight.w400,
-              //                 letterSpacing: -0.14),
-              //           )),
-              //       const Expanded(
-              //           flex: 3,
-              //           child: Text(
-              //             '300',
-              //             style: TextStyle(
-              //                 fontSize: 11,
-              //                 color: Colors.black,
-              //                 fontWeight: FontWeight.w400,
-              //                 letterSpacing: -0.14),
-              //           )),
-              //       const Expanded(
-              //           flex: 3,
-              //           child: Text(
-              //             '800',
-              //             style: TextStyle(
-              //                 fontSize: 11,
-              //                 color: Colors.black,
-              //                 fontWeight: FontWeight.w400,
-              //                 letterSpacing: -0.14),
-              //           )),
-              //       const Expanded(
-              //           flex: 2,
-              //           child: Text(
-              //             'Delivered',
-              //             style: TextStyle(
-              //                 fontSize: 11,
-              //                 color: Color(0xFF35C069),
-              //                 fontWeight: FontWeight.w400,
-              //                 letterSpacing: -0.14),
-              //           )),
-              //     ],
-              //   ),
-              // );
             },
           ),
         )

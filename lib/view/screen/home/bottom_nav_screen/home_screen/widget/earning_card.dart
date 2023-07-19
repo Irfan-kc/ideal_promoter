@@ -53,7 +53,7 @@ class EarningsCard extends StatelessWidget {
               style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFFFFFFFF)),
+                  color: Colors.white),
             ),
           ],
         ),
