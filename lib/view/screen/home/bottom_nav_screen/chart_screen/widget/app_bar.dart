@@ -1,30 +1,40 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../../constant/text_style.dart';
 import '../../../../../widget/height_and_width.dart';
 
 class CustAppBar extends StatelessWidget {
-  const CustAppBar({super.key});
+  final bool? backButton;
+  const CustAppBar({super.key, this.backButton});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        KHeight(52),
+        const KHeight(52),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 22.0),
+          padding: const EdgeInsets.symmetric(horizontal: 22.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              SizedBox(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(CupertinoIcons.arrow_left),
+                ),
+              ),
+              const Text(
                 'Select Your Product',
                 style: AppTextStyle.body1Text,
               ),
-              Icon(CupertinoIcons.search)
+              const Icon(CupertinoIcons.search)
             ],
           ),
         ),
-        KHeight(10)
+        const KHeight(10)
       ],
     );
   }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/background_widget.dart';
 
 import '../../../widget/height_and_width.dart';
 import '../bottom_nav_screen/wallet_screen/widget/table_data.dart';
+import '../bottom_nav_screen/widget/background_widget.dart';
 import '../bottom_nav_screen/widget/graph.dart';
 
-class EarningsPage extends StatelessWidget {
-  const EarningsPage({super.key});
+class PageViews extends StatelessWidget {
+  const PageViews({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class EarningsPage extends StatelessWidget {
             column1: [
               KHeight(64),
               Text(
-                'Earnings',
+                'Page Views',
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -28,12 +28,12 @@ class EarningsPage extends StatelessWidget {
               children: [
                 KHeight(20),
                 GraphView(
-                  title: 'Monthly Earnings',
+                  title: 'Page views',
                 ),
                 KHeight(16),
                 Expanded(
                     child: CustTableData(
-                  title: 'Monthly Earnings',
+                  title: 'Page views',
                 ))
               ],
             )));

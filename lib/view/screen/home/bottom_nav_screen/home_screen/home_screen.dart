@@ -4,6 +4,7 @@ import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/wi
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/background_widget.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';
+import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 import '../widget/graph.dart';
@@ -32,22 +33,25 @@ class HomeScreen extends StatelessWidget {
           Row(
             children: [
               const KWidth(20),
-              RichText(
-                  text: const TextSpan(
-                      text: 'You got ',
-                      style: TextStyle(
-                          color: Color(0xFFFF7448),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                      children: [
-                    TextSpan(
-                        text: '34 Page views',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFFFF7448),
-                            decoration: TextDecoration.underline))
-                  ]))
+              const Text(
+                'You got ',
+                style: TextStyle(
+                    color: Color(0xFFFF7448),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const PageViews()));
+                },
+                child: const Text('34 Page views',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFFFF7448),
+                        decoration: TextDecoration.underline)),
+              )
             ],
           ),
           const KHeight(9),

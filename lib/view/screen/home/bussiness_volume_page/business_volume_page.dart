@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/background_widget.dart';
 
 import '../../../widget/height_and_width.dart';
 import '../bottom_nav_screen/wallet_screen/widget/table_data.dart';
@@ -9,50 +10,32 @@ class BusinessVolumePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/background_image.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          children: [
-            const KHeight(64),
-            const Text(
-              'Business Volume',
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ),
-            const KHeight(30),
-            Expanded(
-              child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40.0),
-                        topRight: Radius.circular(40.0)),
-                    color: Colors.white,
-                  ),
-                  child: const Column(
-                    children: [
-                      KHeight(20),
-                      GraphView(
-                        title: 'Monhtly Business volume',
-                      ),
-                      KHeight(16),
-                      Expanded(
-                          child: CustTableData(
-                        title: 'Monthly Business volume',
-                      ))
-                    ],
-                  )),
-            )
-          ],
-        ),
-      ),
-    );
+    return const Scaffold(
+        body: BackGroundWidget(
+            isExpanded: true,
+            column1: [
+              KHeight(64),
+              Text(
+                'Business Volume',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+              KHeight(30),
+            ],
+            column2: Column(
+              children: [
+                KHeight(20),
+                GraphView(
+                  title: 'Monhtly Business volume',
+                ),
+                KHeight(16),
+                Expanded(
+                    child: CustTableData(
+                  title: 'Monthly Business volume',
+                ))
+              ],
+            )));
   }
 }
