@@ -12,15 +12,7 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BackGroundWidget(
         isExpanded: true,
-        column1: [
-          KHeight(64),
-          Text(
-            'Earnings',
-            style: TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
-          ),
-          KHeight(30),
-        ],
+        heading: 'Earnings',
         column2: Column(
           children: [
             KHeight(20),

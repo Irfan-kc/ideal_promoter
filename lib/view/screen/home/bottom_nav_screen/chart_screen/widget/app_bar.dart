@@ -5,8 +5,8 @@ import '../../../../../../constant/text_style.dart';
 import '../../../../../widget/height_and_width.dart';
 
 class CustAppBar extends StatelessWidget {
-  final bool? backButton;
-  const CustAppBar({super.key, this.backButton});
+  final bool backButton;
+  const CustAppBar({super.key, this.backButton = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +18,13 @@ class CustAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                child: InkWell(
+              if (backButton)
+                InkWell(
                   onTap: () {
                     Navigator.pop(context);
                   },
                   child: const Icon(CupertinoIcons.arrow_left),
                 ),
-              ),
               const Text(
                 'Select Your Product',
                 style: AppTextStyle.body1Text,

@@ -12,7 +12,9 @@ class ProductPage extends StatelessWidget {
     return const Scaffold(
       body: Column(
         children: [
-          CustAppBar(),
+          CustAppBar(
+            backButton: true,
+          ),
           KHeight(14),
           // CategoryTile(),
           // KHeight(12),

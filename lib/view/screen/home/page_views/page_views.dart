@@ -13,17 +13,7 @@ class PageViews extends StatelessWidget {
     return const Scaffold(
         body: BackGroundWidget(
             isExpanded: true,
-            column1: [
-              KHeight(64),
-              Text(
-                'Page Views',
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ),
-              KHeight(30),
-            ],
+            heading: 'Page Views',
             column2: Column(
               children: [
                 KHeight(20),
