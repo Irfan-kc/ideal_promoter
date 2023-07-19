@@ -3,7 +3,7 @@ import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/home/profile_screen_provider/profile_screen_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/circular_percent_indicator.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/text_field.dart';
-import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/background_widget.dart';
+import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../widget/height_and_width.dart';

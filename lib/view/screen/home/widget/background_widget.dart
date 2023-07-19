@@ -1,18 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../widget/height_and_width.dart';
+import '../../../widget/height_and_width.dart';
 
 class BackGroundWidget extends StatelessWidget {
   final List<Widget>? column1;
   final Widget column2;
   final bool isExpanded;
   final String? heading;
+  final bool backButton;
   const BackGroundWidget(
       {super.key,
       this.column1,
       required this.column2,
       this.isExpanded = false,
-      this.heading});
+      this.heading,
+      this.backButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +44,34 @@ class BackGroundWidget extends StatelessWidget {
             )
           : Column(
               children: [
-                const KHeight(64),
-                Text(
-                  heading.toString(),
-                  style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                const KHeight(60),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 22.0),
+                  child: Row(
+                    children: [
+                      if (backButton)
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(
+                            CupertinoIcons.arrow_left,
+                            color: Colors.white,
+                          ),
+                        ),
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            heading.toString(),
+                            style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const KHeight(30),
                 Expanded(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_data.dart';
 
 import '../../../../widget/height_and_width.dart';
-import '../widget/background_widget.dart';
+import '../../widget/background_widget.dart';
 import '../widget/graph.dart';
 
 class WalletScreen extends StatelessWidget {
@@ -12,6 +12,7 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BackGroundWidget(
         isExpanded: true,
+        backButton: false,
         heading: 'Earnings',
         column2: Column(
           children: [

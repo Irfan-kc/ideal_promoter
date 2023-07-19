@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../widget/height_and_width.dart';
 import '../bottom_nav_screen/wallet_screen/widget/table_data.dart';
-import '../bottom_nav_screen/widget/background_widget.dart';
+import '../widget/background_widget.dart';
 import '../bottom_nav_screen/widget/graph.dart';
 
 class PageViews extends StatelessWidget {
