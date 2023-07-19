@@ -90,15 +90,18 @@ class ProfileScreen extends StatelessWidget {
                               width: 30,
                             )
                           : Container(
-                              height: 20,
-                              width: 50,
+                              height: 25,
+                              width: 70,
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: const Color(0xFF35C069),
                                   borderRadius: BorderRadius.circular(10)),
                               child: const Center(
                                   child: Text(
                                 'Save',
-                                style: AppTextStyle.titleText1,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
                               )),
                             ))
                 ],
@@ -108,7 +111,7 @@ class ProfileScreen extends StatelessWidget {
           ],
           column2: Column(
             children: [
-              const KHeight(22),
+              const KHeight(24),
               ProfileTextField(
                 value: '',
                 labelText: 'Name',

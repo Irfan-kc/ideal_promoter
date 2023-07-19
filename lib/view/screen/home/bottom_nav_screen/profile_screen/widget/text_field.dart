@@ -58,9 +58,9 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
           Text(
             widget.labelText.toString(),
             style: const TextStyle(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w500,
                 fontSize: 15,
-                color: Color(0xFF9E9E9E)),
+                color: Color.fromARGB(255, 129, 125, 125)),
           ),
           const KHeight(5),
           TextFormField(

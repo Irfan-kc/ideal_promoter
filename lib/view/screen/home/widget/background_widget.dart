@@ -34,8 +34,8 @@ class BackGroundWidget extends StatelessWidget {
                   Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40.0),
-                            topRight: Radius.circular(40.0)),
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0)),
                         color: Colors.white,
                       ),
                       child: column2)
@@ -78,8 +78,8 @@ class BackGroundWidget extends StatelessWidget {
                   child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40.0),
-                            topRight: Radius.circular(40.0)),
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0)),
                         color: Colors.white,
                       ),
                       child: column2),
