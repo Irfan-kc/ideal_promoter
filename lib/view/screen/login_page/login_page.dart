@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
+import 'package:ideal_promoter/view/screen/login_page/widget/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/button/medium_button.dart';
 import 'package:ideal_promoter/view/widget/custom_textfield.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
@@ -52,31 +53,29 @@ class LoginPage extends StatelessWidget {
               isPassword: true,
               focusNode: passwordFocusNode,
             ),
-            const KHeight(32),
+            const KHeight(8),
+            TwoTextWidget(
+              firstText: 'Forgot password? ',
+              scndText: 'Reset password',
+              onTap: () {},
+            ),
+            const KHeight(24),
             MediumButton(
               onTap: () {},
               text: 'Login',
               padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
             ),
-            const KHeight(16),
-            const Row(
+            const KHeight(12),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Forgot password? ',
-                  style: TextStyle(
-                      color: Color(0xFF828282),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Reset password',
-                  style: TextStyle(
-                    color: AppColors.primaryColor,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                  ),
+                TwoTextWidget(
+                  firstText: "Don’t have an account? ",
+                  scndText: 'Signup',
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const SignUpPage()));
+                  },
                 ),
               ],
             ),
