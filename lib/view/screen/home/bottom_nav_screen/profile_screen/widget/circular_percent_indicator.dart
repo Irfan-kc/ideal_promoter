@@ -12,22 +12,36 @@ class CircularPercentWidget extends StatelessWidget {
     return SizedBox(
       height: 90,
       child: CircularPercentIndicator(
-        radius: 45,
+        radius: 50,
         lineWidth: 5.0,
         percent: progress,
         backgroundColor: const Color(0xFFD9D9D9),
         center: Container(
-          width: 80,
-          height: 80,
+          width: 90,
+          height: 90,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(100)),
           child: Center(
-            child: Text(
-              "${(progress * 100).toStringAsFixed(0)}%",
-              style: const TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              child: Column(
+                children: [
+                  Text(
+                    "${(progress * 100).toStringAsFixed(0)}%",
+                    style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryColor),
+                  ),
+                  const Text("Profile completed",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.textSecondary,
+                      ))
+                ],
+              ),
             ),
           ),
         ),
