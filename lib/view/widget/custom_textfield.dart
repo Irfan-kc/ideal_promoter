@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -13,6 +14,7 @@ class CustomTextField extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
   final FocusNode? focusNode;
   final void Function(String value)? onFieldSubmitted;
+  final void Function()? onTap;
 
   const CustomTextField({
     super.key,
@@ -27,6 +29,7 @@ class CustomTextField extends StatefulWidget {
     this.onFieldSubmitted,
     this.suffix,
     required this.value,
+    this.onTap,
   });
 
   @override
@@ -62,11 +65,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
         decoration: InputDecoration(
           prefixIcon: widget.prefix,
           suffixIcon: widget.suffix,
+          prefixStyle: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textSecondary),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide.none,
           ),
-          prefix: const KWidth(12),
+          // prefix: const KWidth(12),
           fillColor: const Color(0xFFF2F2F2),
           filled: true,
           hintText: widget.hintText,
@@ -82,6 +89,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         keyboardType: widget.keyboardType,
         focusNode: widget.focusNode,
         onFieldSubmitted: widget.onFieldSubmitted,
+        onTap: widget.onTap,
       ),
     );
   }
