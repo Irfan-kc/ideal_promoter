@@ -36,23 +36,33 @@ class LoginPage extends StatelessWidget {
             ),
             const KHeight(32),
             CustomTextField(
-              focusNode: emailFocusNode,
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              hintText: 'Email id',
-              prefixIcon: CupertinoIcons.person,
-              keyboardType: TextInputType.emailAddress,
-              onFieldSubmitted: (value) {
-                FocusScope.of(context).requestFocus(passwordFocusNode);
-              },
-            ),
+                value: '',
+                focusNode: emailFocusNode,
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                hintText: 'Username',
+                // prefixIcon: CupertinoIcons.person,
+                keyboardType: TextInputType.emailAddress,
+                onFieldSubmitted: (value) {
+                  FocusScope.of(context).requestFocus(passwordFocusNode);
+                },
+                prefix: Image.asset(
+                  'assets/icons/profile.png',
+                  height: 14,
+                  width: 14,
+                )),
             const KHeight(16),
             CustomTextField(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              hintText: 'Password',
-              prefixIcon: CupertinoIcons.lock,
-              isPassword: true,
-              focusNode: passwordFocusNode,
-            ),
+                value: '',
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                hintText: 'Password',
+                // prefixIcon: CupertinoIcons.lock,
+                isPassword: true,
+                focusNode: passwordFocusNode,
+                prefix: Image.asset(
+                  'assets/icons/key-square.png',
+                  height: 14,
+                  width: 14,
+                )),
             const KHeight(8),
             TwoTextWidget(
               firstText: 'Forgot password? ',
