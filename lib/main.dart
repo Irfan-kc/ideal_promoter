@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/view/screen/home/home.dart';
-import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
-import 'package:ideal_promoter/view/screen/login_page/login_page.dart';
+import 'package:ideal_promoter/view/screen/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
       ),
-      home: SignUpPage(),
+      home: const SplashScreen(),
     );
   }
 }
