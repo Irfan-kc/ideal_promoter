@@ -10,7 +10,7 @@ class CircularPercentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double progress = 0.15;
     return SizedBox(
-      height: 90,
+      height: 100,
       child: CircularPercentIndicator(
         radius: 50,
         lineWidth: 5.0,
