@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/home/profile_screen_provider/profile_screen_provider.dart';
@@ -85,8 +86,8 @@ class ProfileScreen extends StatelessWidget {
                         data.onRefresh();
                       },
                       child: data.readOnly == true
-                          ? Image.asset(
-                              'assets/icons/edit_icon.png',
+                          ? SvgPicture.asset(
+                              'assets/icons/edit_icon.svg',
                               height: 20,
                               width: 30,
                             )

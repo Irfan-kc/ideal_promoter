@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/home.dart';
 import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
@@ -37,33 +38,45 @@ class LoginPage extends StatelessWidget {
             ),
             const KHeight(32),
             CustomTextField(
-                value: '',
-                focusNode: emailFocusNode,
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                hintText: 'Username',
-                // prefixIcon: CupertinoIcons.person,
-                keyboardType: TextInputType.emailAddress,
-                onFieldSubmitted: (value) {
-                  FocusScope.of(context).requestFocus(passwordFocusNode);
-                },
-                prefix: Image.asset(
-                  'assets/icons/profile.png',
-                  height: 14,
-                  width: 14,
-                )),
+              value: '',
+              focusNode: emailFocusNode,
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              hintText: 'Username',
+              // prefixIcon: CupertinoIcons.person,
+              keyboardType: TextInputType.emailAddress,
+              onFieldSubmitted: (value) {
+                FocusScope.of(context).requestFocus(passwordFocusNode);
+              },
+              prefix: SizedBox(
+                // color: Colors.black,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: SvgPicture.asset(
+                    'assets/icons/profile.svg',
+                  ),
+                ),
+              ),
+            ),
             const KHeight(16),
             CustomTextField(
-                value: '',
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                hintText: 'Password',
-                // prefixIcon: CupertinoIcons.lock,
-                isPassword: true,
-                focusNode: passwordFocusNode,
-                prefix: Image.asset(
-                  'assets/icons/key-square.png',
-                  height: 14,
-                  width: 14,
-                )),
+              value: '',
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              hintText: 'Password',
+              // prefixIcon: CupertinoIcons.lock,
+              isPassword: true,
+              focusNode: passwordFocusNode,
+              prefix: SizedBox(
+                // color: Colors.black,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: SvgPicture.asset(
+                    'assets/icons/key-square.svg',
+                  ),
+                ),
+              ),
+            ),
             const KHeight(8),
             TwoTextWidget(
               firstText: 'Forgot password? ',
@@ -88,7 +101,7 @@ class LoginPage extends StatelessWidget {
                   scndText: 'Signup',
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => SignUpPage()));
+                        MaterialPageRoute(builder: (_) => const SignUpPage()));
                   },
                 ),
               ],

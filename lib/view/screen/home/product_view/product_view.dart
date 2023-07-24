@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/home/product_screen_provider/product_view_provider.dart';
@@ -79,8 +80,8 @@ class ProductView extends StatelessWidget {
                           const KWidth(10),
                           CustIconButton(
                             flex: 5,
-                            icon: Image.asset(
-                              'assets/icons/whatsapp_icon.png',
+                            icon: SvgPicture.asset(
+                              'assets/icons/',
                               height: 14,
                               width: 14,
                             ),
