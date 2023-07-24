@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/constant/const_color.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/view/screen/home/home.dart';
+import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
+import 'package:ideal_promoter/view/screen/login_page/widget/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/button/medium_button.dart';
 import 'package:ideal_promoter/view/widget/custom_textfield.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
@@ -35,48 +38,71 @@ class LoginPage extends StatelessWidget {
             ),
             const KHeight(32),
             CustomTextField(
+              value: '',
               focusNode: emailFocusNode,
               padding: const EdgeInsets.only(left: 20, right: 20),
-              hintText: 'Email id',
-              prefixIcon: CupertinoIcons.person,
+              hintText: 'Username',
+              // prefixIcon: CupertinoIcons.person,
               keyboardType: TextInputType.emailAddress,
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(passwordFocusNode);
               },
+              prefix: SizedBox(
+                // color: Colors.black,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: SvgPicture.asset(
+                    'assets/icons/profile.svg',
+                  ),
+                ),
+              ),
             ),
             const KHeight(16),
             CustomTextField(
+              value: '',
               padding: const EdgeInsets.only(left: 20, right: 20),
               hintText: 'Password',
-              prefixIcon: CupertinoIcons.lock,
+              // prefixIcon: CupertinoIcons.lock,
               isPassword: true,
               focusNode: passwordFocusNode,
+              prefix: SizedBox(
+                // color: Colors.black,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: SvgPicture.asset(
+                    'assets/icons/key-square.svg',
+                  ),
+                ),
+              ),
             ),
-            const KHeight(32),
-            MediumButton(
+            const KHeight(8),
+            TwoTextWidget(
+              firstText: 'Forgot password? ',
+              scndText: 'Reset password',
               onTap: () {},
+            ),
+            const KHeight(24),
+            MediumButton(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => const Home()));
+              },
               text: 'Login',
               padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
             ),
-            const KHeight(16),
-            const Row(
+            const KHeight(12),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Forgot password? ',
-                  style: TextStyle(
-                      color: Color(0xFF828282),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  'Reset password',
-                  style: TextStyle(
-                    color: AppColors.primaryColor,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                  ),
+                TwoTextWidget(
+                  firstText: "Don’t have an account? ",
+                  scndText: 'Signup',
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const SignUpPage()));
+                  },
                 ),
               ],
             ),
