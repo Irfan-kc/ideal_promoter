@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
-import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/home_screen.dart';
 import 'package:ideal_promoter/view/screen/home/home.dart';
 import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
 import 'package:ideal_promoter/view/screen/login_page/widget/two_text_line.dart';

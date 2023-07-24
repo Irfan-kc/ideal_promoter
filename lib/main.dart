@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
 import 'package:ideal_promoter/view/screen/splash_screen/splash_screen.dart';
 
 void main() {

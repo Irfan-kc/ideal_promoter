@@ -10,13 +10,7 @@ import '../../../widget/custom_textfield.dart';
 import '../../login_page/widget/two_text_line.dart';
 
 class SignUpPage extends StatelessWidget {
-  SignUpPage({super.key});
-
-  final FocusNode nameFocus = FocusNode();
-  final FocusNode emailFocus = FocusNode();
-  final FocusNode numberFocus = FocusNode();
-  final FocusNode passwordFocus = FocusNode();
-  final FocusNode confirmFocus = FocusNode();
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +41,10 @@ class SignUpPage extends StatelessWidget {
                     value: '',
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     hintText: 'Full Name',
-                    focusNode: nameFocus,
+                    focusNode: provider.nameFocus,
                     keyboardType: TextInputType.emailAddress,
                     onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(emailFocus);
+                      FocusScope.of(context).requestFocus(provider.emailFocus);
                     },
                     onTap: () {
                       provider.onRefresh();
@@ -66,10 +60,11 @@ class SignUpPage extends StatelessWidget {
                       value: '',
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       hintText: 'Eamil',
-                      focusNode: emailFocus,
+                      focusNode: provider.emailFocus,
                       keyboardType: TextInputType.emailAddress,
                       onFieldSubmitted: (value) {
-                        FocusScope.of(context).requestFocus(numberFocus);
+                        FocusScope.of(context)
+                            .requestFocus(provider.numberFocus);
                         provider.onRefresh();
                       },
                       onTap: () {
@@ -85,10 +80,11 @@ class SignUpPage extends StatelessWidget {
                     value: '',
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     hintText: 'WhatsApp number',
-                    focusNode: numberFocus,
+                    focusNode: provider.numberFocus,
                     keyboardType: TextInputType.number,
                     onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(passwordFocus);
+                      FocusScope.of(context)
+                          .requestFocus(provider.passwordFocus);
                       provider.onRefresh();
                     },
                     onTap: () {
@@ -96,7 +92,7 @@ class SignUpPage extends StatelessWidget {
                     },
                     // prefixText:
                     // numberFocus.hasFocus ? provider.countryCode : null,
-                    prefix: numberFocus.hasFocus
+                    prefix: provider.numberFocus.hasFocus
                         ? SizedBox(
                             width: 40,
                             child: Center(child: Text(provider.countryCode)))
@@ -123,10 +119,11 @@ class SignUpPage extends StatelessWidget {
                       value: '',
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       hintText: 'Password',
-                      focusNode: passwordFocus,
+                      focusNode: provider.passwordFocus,
                       isPassword: true,
                       onFieldSubmitted: (value) {
-                        FocusScope.of(context).requestFocus(confirmFocus);
+                        FocusScope.of(context)
+                            .requestFocus(provider.confirmFocus);
                       },
                       onTap: () {
                         provider.onRefresh();
@@ -141,7 +138,7 @@ class SignUpPage extends StatelessWidget {
                       value: '',
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       hintText: 'confirm Password',
-                      focusNode: confirmFocus,
+                      focusNode: provider.confirmFocus,
                       isPassword: true,
                       prefix: Image.asset(
                         'assets/icons/key-square.png',
