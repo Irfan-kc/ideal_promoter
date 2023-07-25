@@ -14,6 +14,7 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final void Function(String value)? onFieldSubmitted;
   final void Function()? onTap;
+  final int? maxLength;
 
   const CustomTextField({
     super.key,
@@ -29,6 +30,7 @@ class CustomTextField extends StatefulWidget {
     this.suffix,
     this.value,
     this.onTap,
+    this.maxLength,
   });
 
   @override
@@ -50,7 +52,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: widget.padding ?? const EdgeInsets.all(0),
       child: TextFormField(
         controller: controller,
+        maxLength: widget.maxLength,
         decoration: InputDecoration(
+          counterText: '',
           prefixIcon: widget.prefix,
           suffixIcon: widget.suffix,
           prefixStyle: const TextStyle(

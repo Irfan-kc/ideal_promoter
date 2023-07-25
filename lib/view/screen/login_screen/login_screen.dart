@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/home.dart';
-import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
-import 'package:ideal_promoter/view/screen/login_page/widget/input_forms.dart';
-import 'package:ideal_promoter/view/screen/login_page/widget/login_image.dart';
+import 'package:ideal_promoter/view/screen/signup_screen/signup_screen.dart';
+import 'package:ideal_promoter/view/screen/login_screen/widget/login_input_forms.dart';
+import 'package:ideal_promoter/view/screen/login_screen/widget/login_image.dart';
 import 'package:ideal_promoter/view/widget/button/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/button/medium_button.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
               style: AppTextStyle.h2,
             ),
             const KHeight(32),
-            InputForm(),
+            LoginInputForm(),
             const KHeight(8),
             TwoTextWidget(
               labelText: 'Forgot password? ',

@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/view/widget/custom_textfield.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
-class InputForm extends StatelessWidget {
-  InputForm({super.key});
+class LoginInputForm extends StatelessWidget {
+  LoginInputForm({super.key});
 
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
