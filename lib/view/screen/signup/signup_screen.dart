@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/signup_page/signup_page_provider.dart';
-import 'package:ideal_promoter/view/screen/login_screen/login_screen.dart';
-import 'package:ideal_promoter/view/screen/signup_screen/widgets/signup_input_form.dart';
+import 'package:ideal_promoter/view/screen/login/login_screen.dart';
+import 'package:ideal_promoter/view/screen/signup/widgets/signup_input_form.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 import 'package:provider/provider.dart';
 

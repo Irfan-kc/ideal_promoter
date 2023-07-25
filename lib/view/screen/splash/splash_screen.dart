@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/view/screen/login_screen/login_screen.dart';
+import 'package:ideal_promoter/view/screen/login/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
