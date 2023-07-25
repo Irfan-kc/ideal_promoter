@@ -6,8 +6,8 @@ abstract class AppTextStyle {
       color: AppColors.textPrimary,
       fontWeight: FontWeight.w600,
       fontSize: 24,
-      letterSpacing: -0.48
-      // fontFamily: 'Quicksand',
+      height: 1.3,
+      letterSpacing: -0.6
       );
 
   static const titleText1 = TextStyle(
@@ -16,14 +16,12 @@ abstract class AppTextStyle {
       fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: -0.197
-      // fontFamily: 'Quicksand',
       );
 
   static const heading2 = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.w600,
     fontSize: 24,
-    // fontFamily: 'Quicksand',
   );
 
   static const smallestText = TextStyle(
@@ -42,21 +40,18 @@ abstract class AppTextStyle {
     color: AppColors.black,
     fontWeight: FontWeight.w500,
     fontSize: 16,
-    // fontFamily: 'Quicksand',
   );
 
   static const body3Text = TextStyle(
     color: AppColors.textSecondary,
     fontWeight: FontWeight.w400,
     fontSize: 12,
-    // fontFamily: 'Quicksand',
   );
 
   static const buttonText = TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w500,
     fontSize: 18,
-    // fontFamily: 'Quicksand',
   );
 
   static const smallText = TextStyle(
@@ -64,7 +59,6 @@ abstract class AppTextStyle {
       fontWeight: FontWeight.w500,
       fontSize: 12,
       letterSpacing: -0.158
-      // fontFamily: 'Quicksand',
       );
 
   static const dataColumnText = TextStyle(
@@ -72,7 +66,6 @@ abstract class AppTextStyle {
       fontWeight: FontWeight.w400,
       fontSize: 10,
       letterSpacing: -0.14
-      // fontFamily: 'Quicksand',
       );
 
   static const text = TextStyle(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-
-import '../../../../constant/const_color.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
 
 class TwoTextWidget extends StatelessWidget {
-  final String firstText;
-  final String scndText;
+  const TwoTextWidget({
+    super.key,
+    required this.labelText,
+    required this.actionText,
+    required this.onTap,
+  });
+
+  final String labelText;
+  final String actionText;
   final VoidCallback onTap;
-  const TwoTextWidget(
-      {super.key,
-      required this.firstText,
-      required this.scndText,
-      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class TwoTextWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          firstText,
+          labelText,
           style: const TextStyle(
               color: Color(0xFF828282),
               fontSize: 13,
@@ -27,7 +28,7 @@ class TwoTextWidget extends StatelessWidget {
         InkWell(
           onTap: onTap,
           child: Text(
-            scndText,
+            actionText,
             style: const TextStyle(
               color: AppColors.primaryColor,
               fontSize: 13,

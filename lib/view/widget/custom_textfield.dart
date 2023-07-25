@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 
 class CustomTextField extends StatefulWidget {
-  final String value;
+  final String? value;
   final String? hintText;
   final Widget? prefix;
   final Widget? suffix;
@@ -27,7 +27,7 @@ class CustomTextField extends StatefulWidget {
     this.focusNode,
     this.onFieldSubmitted,
     this.suffix,
-    required this.value,
+    this.value,
     this.onTap,
   });
 
@@ -39,25 +39,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
   final TextEditingController controller = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    controller.text = widget.value;
-  }
-
-  @override
   void dispose() {
     controller.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (controller.text != widget.value) {
-        controller.text = widget.value.toString();
-      }
-    });
     return Padding(
       padding: widget.padding ?? const EdgeInsets.all(0),
       child: TextFormField(
@@ -66,14 +54,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
           prefixIcon: widget.prefix,
           suffixIcon: widget.suffix,
           prefixStyle: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: AppColors.textSecondary),
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: AppColors.textSecondary,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide.none,
           ),
-          // prefix: const KWidth(12),
           fillColor: const Color(0xFFF2F2F2),
           filled: true,
           hintText: widget.hintText,

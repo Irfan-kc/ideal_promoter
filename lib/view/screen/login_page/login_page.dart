@@ -1,19 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/home.dart';
 import 'package:ideal_promoter/view/screen/home/sign_up_page/sign_up_page.dart';
-import 'package:ideal_promoter/view/screen/login_page/widget/two_text_line.dart';
+import 'package:ideal_promoter/view/screen/login_page/widget/input_forms.dart';
+import 'package:ideal_promoter/view/screen/login_page/widget/login_image.dart';
+import 'package:ideal_promoter/view/widget/button/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/button/medium_button.dart';
-import 'package:ideal_promoter/view/widget/custom_textfield.dart';
 import 'package:ideal_promoter/view/widget/height_and_width.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
-
-  final FocusNode emailFocusNode = FocusNode();
-  final FocusNode passwordFocusNode = FocusNode();
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +19,7 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const KHeight(36),
-            const Flexible(
-              fit: FlexFit.tight,
-              child: Image(
-                image: AssetImage('assets/images/stunning_3D_cartoon.png'),
-              ),
-            ),
+            const ImageWidget(),
             const KHeight(16),
             const Text(
               'Welcome back \n to ideal e shope',
@@ -37,74 +27,37 @@ class LoginPage extends StatelessWidget {
               style: AppTextStyle.h2,
             ),
             const KHeight(32),
-            CustomTextField(
-              value: '',
-              focusNode: emailFocusNode,
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              hintText: 'Username',
-              // prefixIcon: CupertinoIcons.person,
-              keyboardType: TextInputType.emailAddress,
-              onFieldSubmitted: (value) {
-                FocusScope.of(context).requestFocus(passwordFocusNode);
-              },
-              prefix: SizedBox(
-                // color: Colors.black,
-                width: 50,
-                height: 50,
-                child: Center(
-                  child: SvgPicture.asset(
-                    'assets/icons/profile.svg',
-                  ),
-                ),
-              ),
-            ),
-            const KHeight(16),
-            CustomTextField(
-              value: '',
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              hintText: 'Password',
-              // prefixIcon: CupertinoIcons.lock,
-              isPassword: true,
-              focusNode: passwordFocusNode,
-              prefix: SizedBox(
-                // color: Colors.black,
-                width: 50,
-                height: 50,
-                child: Center(
-                  child: SvgPicture.asset(
-                    'assets/icons/key-square.svg',
-                  ),
-                ),
-              ),
-            ),
+            InputForm(),
             const KHeight(8),
             TwoTextWidget(
-              firstText: 'Forgot password? ',
-              scndText: 'Reset password',
+              labelText: 'Forgot password? ',
+              actionText: 'Reset password',
               onTap: () {},
             ),
             const KHeight(24),
             MediumButton(
               onTap: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const Home()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const Home(),
+                  ),
+                );
               },
-              text: 'Login',
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+              label: 'Login',
             ),
             const KHeight(12),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TwoTextWidget(
-                  firstText: "Don’t have an account? ",
-                  scndText: 'Signup',
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const SignUpPage()));
-                  },
-                ),
-              ],
+            TwoTextWidget(
+              labelText: "Don’t have an account? ",
+              actionText: 'Signup',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SignUpPage(),
+                  ),
+                );
+              },
             ),
           ],
         ),

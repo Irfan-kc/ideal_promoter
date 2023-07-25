@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../../constant/text_style.dart';
 import '../../../widget/button/medium_button.dart';
 import '../../../widget/custom_textfield.dart';
-import '../../login_page/widget/two_text_line.dart';
+import '../../../widget/button/two_text_line.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -170,25 +170,25 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  const Spacer(),
                   const Spacer(),
                   MediumButton(
                     onTap: () {},
-                    text: 'Sign up',
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 80, vertical: 20),
+                    label: 'Sign up',
                   ),
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TwoTextWidget(
-                        firstText: "Already have an account? ",
-                        scndText: 'Login',
+                        labelText: "Already have an account? ",
+                        actionText: 'Login',
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => LoginPage()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const LoginPage(),
+                            ),
+                          );
                         },
                       ),
                     ],
