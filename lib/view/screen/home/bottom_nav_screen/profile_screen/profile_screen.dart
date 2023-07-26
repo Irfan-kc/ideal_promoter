@@ -6,9 +6,9 @@ import 'package:ideal_promoter/provider/home/profile_screen_provider/profile_scr
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/circular_percent_indicator.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/profile_text_field.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../widget/height_and_width.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

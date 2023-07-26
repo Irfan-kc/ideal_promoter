@@ -1,9 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../constant/const_color.dart';
-import '../../../../../constant/text_style.dart';
-import '../../../../widget/height_and_width.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
+import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class GraphView extends StatefulWidget {
   final String title;

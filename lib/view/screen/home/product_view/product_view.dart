@@ -4,8 +4,8 @@ import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/home/product_screen_provider/product_view_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/widget/carousel_view.dart';
-import 'package:ideal_promoter/view/widget/button/icon_button.dart';
-import 'package:ideal_promoter/view/widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/buttons/icon_button.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
 class ProductView extends StatelessWidget {

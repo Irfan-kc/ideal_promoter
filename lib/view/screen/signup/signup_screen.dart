@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/signup_page/signup_page_provider.dart';
-import 'package:ideal_promoter/view/screen/login/login_screen.dart';
-import 'package:ideal_promoter/view/screen/signup/widgets/signup_input_form.dart';
-import 'package:ideal_promoter/view/widget/height_and_width.dart';
+import 'package:ideal_promoter/Constant/text_style.dart';
+import 'package:ideal_promoter/Provider/signup_page/signup_page_provider.dart';
+import 'package:ideal_promoter/View/screen/login/login_screen.dart';
+import 'package:ideal_promoter/View/screen/signup/widgets/signup_input_form.dart';
+import 'package:ideal_promoter/view/widget/buttons/medium_button.dart';
+import 'package:ideal_promoter/view/widget/buttons/two_text_line.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
-
-import '../../../constant/text_style.dart';
-import '../../widget/button/medium_button.dart';
-import '../../widget/button/two_text_line.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ideal_promoter/view/screen/home/bussiness_volume_page/business_volume_page.dart';
 import 'package:ideal_promoter/view/screen/home/earnings_page/earning_page.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
-import '../../../../../widget/height_and_width.dart';
 import 'earning_card.dart';
 
 class DashBoardCard extends StatelessWidget {

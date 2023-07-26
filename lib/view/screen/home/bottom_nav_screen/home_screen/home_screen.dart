@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/View/screen/home/page_views/page_views.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';
-import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
-import 'package:ideal_promoter/view/widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 import '../widget/graph.dart';
 

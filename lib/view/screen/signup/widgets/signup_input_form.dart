@@ -2,8 +2,8 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/provider/signup_page/signup_page_provider.dart';
-import 'package:ideal_promoter/view/widget/custom_textfield.dart';
-import 'package:ideal_promoter/view/widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/textfields/custom_textfield.dart';
 import 'package:provider/provider.dart';
 
 class SignupInputForm extends StatelessWidget {

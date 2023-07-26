@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/chart_screen/widget/app_bar.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';
-import 'package:ideal_promoter/view/widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class ChartScreen extends StatelessWidget {
   const ChartScreen({super.key});

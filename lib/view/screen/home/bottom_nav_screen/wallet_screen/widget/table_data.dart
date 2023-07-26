@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
-import 'package:ideal_promoter/view/widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class CustTableData extends StatelessWidget {
   final String title;
