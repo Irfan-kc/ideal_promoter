@@ -15,9 +15,11 @@ class CustomTextField extends StatefulWidget {
   final void Function(String value)? onFieldSubmitted;
   final void Function()? onTap;
   final int? maxLength;
+  final String? Function(String? value)? validator;
 
   const CustomTextField({
     super.key,
+    this.validator,
     this.hintText,
     this.prefix,
     this.controller,
@@ -38,11 +40,10 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  final TextEditingController controller = TextEditingController();
-
+  
   @override
   void dispose() {
-    controller.dispose();
+    if (widget.controller != null) widget.controller!.dispose();
     super.dispose();
   }
 
@@ -51,7 +52,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: widget.padding ?? const EdgeInsets.all(0),
       child: TextFormField(
-        controller: controller,
+        validator: widget.validator,
+        controller: widget.controller,
         maxLength: widget.maxLength,
         decoration: InputDecoration(
           counterText: '',

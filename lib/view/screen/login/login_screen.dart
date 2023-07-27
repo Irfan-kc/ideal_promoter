@@ -1,19 +1,23 @@
-
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/View/screen/home/home.dart';
 import 'package:ideal_promoter/View/screen/login/widget/login_image.dart';
 import 'package:ideal_promoter/View/screen/signup/signup_screen.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
 import 'package:ideal_promoter/view/screen/login/widget/login_input_forms.dart';
 import 'package:ideal_promoter/view/widget/buttons/medium_button.dart';
 import 'package:ideal_promoter/view/widget/buttons/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController email = TextEditingController(text: 'newtestpromoter@gmail.com');
+    TextEditingController password = TextEditingController(text: "111111");
+    GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -28,7 +32,11 @@ class LoginPage extends StatelessWidget {
               style: AppTextStyle.h2,
             ),
             const KHeight(32),
-            LoginInputForm(),
+            LoginInputForm(
+              formKey: formKey,
+              emailController: email,
+              passwordController: password,
+            ),
             const KHeight(8),
             TwoTextWidget(
               labelText: 'Forgot password? ',
@@ -36,16 +44,23 @@ class LoginPage extends StatelessWidget {
               onTap: () {},
             ),
             const KHeight(24),
-            MediumButton(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const Home(),
-                  ),
+            Consumer<AuthProvider>(
+              builder: (context, authProvider, _) {
+                return MediumButton(
+                  isLoading: authProvider.isLoading,
+                  onTap: () async {
+                    if (formKey.currentState!.validate()) {
+                      await Provider.of<AuthProvider>(context, listen: false)
+                          .login(
+                        context,
+                        email.text,
+                        password.text,
+                      );
+                    }
+                  },
+                  label: 'Login',
                 );
               },
-              label: 'Login',
             ),
             const KHeight(12),
             TwoTextWidget(

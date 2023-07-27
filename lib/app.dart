@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/utils/choppers.dart';
 import 'package:ideal_promoter/utils/providers.dart';
 import 'package:ideal_promoter/view/screen/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ...providers,
-        // ...choppers,
+        ...choppers,
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
