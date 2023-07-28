@@ -9,13 +9,16 @@ class MediumButton extends StatelessWidget {
     required this.onTap,
     required this.label,
     this.color,
-    this.isLoading = false,
+    this.isLoading = false, this.width, this.textStyle, this.height,
   });
 
   final VoidCallback onTap;
   final String label;
   final bool isLoading;
   final Color? color;
+  final double? width;
+  final double? height;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +27,9 @@ class MediumButton extends StatelessWidget {
         if (!isLoading) onTap();
       },
       child: Container(
-        width: 190,
-        height: 60,
+        width:  width ?? 190,
+        // padding: padding,
+        height: height ?? 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: color ?? AppColors.primaryColor,
@@ -35,7 +39,7 @@ class MediumButton extends StatelessWidget {
             : Center(
                 child: Text(
                   label,
-                  style: AppTextStyle.buttonText,
+                  style: textStyle ?? AppTextStyle.buttonText,
                 ),
               ),
       ),

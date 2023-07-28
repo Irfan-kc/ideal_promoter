@@ -88,9 +88,28 @@ class AuthProvider extends BaseProvider {
       }
     } catch (e) {
       rethrow;
-    }finally{
+    } finally {
       isLoading = false;
       notifyListeners();
+    }
+  }
+
+  Future reset(BuildContext context, String email) async {
+    try {
+      Map<String, dynamic> body = {"email": email, "password": ""};
+      var response = await Provider.of<AuthService>(context, listen: false)
+          .passwordReset(body: body);
+
+      if (response.isSuccessful) {
+        print(response);
+        successSnackBar(message: response.body['message'], context: context);
+        Navigator.pop(context);
+      } else {
+        await errorSnackBar(
+            message: response.error.toString().split('"')[3], context: context);
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 
