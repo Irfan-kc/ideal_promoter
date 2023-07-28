@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class HeaderInterceptor implements RequestInterceptor {
   static const String authHeader = "Authorization";
-  static const String role = "Role";
   static const String tokens = "Bearer ";
 
   Future<String> getToken() async {

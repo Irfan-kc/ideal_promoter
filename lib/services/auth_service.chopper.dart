@@ -28,4 +28,17 @@ class _$AuthService extends AuthService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> signup({required Map<String, dynamic> body}) {
+    final Uri $url = Uri.parse('promoter/form/new');
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }
