@@ -24,7 +24,6 @@ class AuthProvider extends BaseProvider {
       };
       var response = await Provider.of<AuthService>(context, listen: false)
           .login(body: body);
-      print(body);
       if (response.isSuccessful) {
         if (await setToken(response.body["token"])) {
           Navigator.push(
@@ -64,9 +63,6 @@ class AuthProvider extends BaseProvider {
       if (password == confirm) {
         var response = await Provider.of<AuthService>(context, listen: false)
             .signup(body: body);
-
-        print(body);
-        print(response);
         if (response.isSuccessful) {
           successSnackBar(
               message:
@@ -99,9 +95,7 @@ class AuthProvider extends BaseProvider {
       Map<String, dynamic> body = {"email": email, "password": ""};
       var response = await Provider.of<AuthService>(context, listen: false)
           .passwordReset(body: body);
-
       if (response.isSuccessful) {
-        print(response);
         successSnackBar(message: response.body['message'], context: context);
         Navigator.pop(context);
       } else {
