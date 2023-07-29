@@ -14,6 +14,9 @@ import '../../view/widget/snackbars/success_snackbar.dart';
 class AuthProvider extends BaseProvider {
   bool isLoading = false;
 
+  String? email;
+  String? password;
+
   Future login(BuildContext context, String email, String password) async {
     try {
       isLoading = true;
@@ -25,6 +28,7 @@ class AuthProvider extends BaseProvider {
       var response = await Provider.of<AuthService>(context, listen: false)
           .login(body: body);
       if (response.isSuccessful) {
+        print(response);
         if (await setToken(response.body["token"])) {
           Navigator.push(
             context,
@@ -92,6 +96,7 @@ class AuthProvider extends BaseProvider {
 
   Future reset(BuildContext context, String email) async {
     try {
+      isLoading = true;
       Map<String, dynamic> body = {"email": email, "password": ""};
       var response = await Provider.of<AuthService>(context, listen: false)
           .passwordReset(body: body);
@@ -104,6 +109,30 @@ class AuthProvider extends BaseProvider {
       }
     } catch (e) {
       rethrow;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future logout(BuildContext context) async {
+    try {
+      isLoading = true;
+      Map<String, dynamic> body = {"email": email, "password": password};
+      var response = await Provider.of<AuthService>(context, listen: false)
+          .logout(body: body);
+      if (response.isSuccessful) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => const LoginPage()));
+      } else {
+        await errorSnackBar(
+            message: response.error.toString().split('"')[3], context: context);
+      }
+    } catch (e) {
+      rethrow;
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
   }
 

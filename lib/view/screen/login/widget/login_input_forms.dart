@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:ideal_promoter/view/widget/textfields/custom_textfield.dart';
+import 'package:provider/provider.dart';
 
 class LoginInputForm extends StatelessWidget {
   LoginInputForm({
@@ -33,6 +35,9 @@ class LoginInputForm extends StatelessWidget {
             },
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
+            onChanged: (value) {
+              Provider.of<AuthProvider>(context, listen: false).email = value;
+            },
             onFieldSubmitted: (value) {
               FocusScope.of(context).requestFocus(passwordFocusNode);
             },
@@ -53,6 +58,10 @@ class LoginInputForm extends StatelessWidget {
             validator: (value) {
               if (value == null || value.isEmpty) return "Enter the password";
               return null;
+            },
+            onChanged: (value) {
+              Provider.of<AuthProvider>(context, listen: false).password =
+                  value;
             },
             isPassword: true,
             controller: passwordController,

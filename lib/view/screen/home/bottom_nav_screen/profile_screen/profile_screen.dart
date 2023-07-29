@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
 import 'package:ideal_promoter/provider/home/profile_screen_provider/profile_screen_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/circular_percent_indicator.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/logout_alert.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/profile_text_field.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -80,32 +81,46 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  InkWell(
-                      onTap: () {
-                        data.readOnly = !data.readOnly;
-                        data.onRefresh();
-                      },
-                      child: data.readOnly == true
-                          ? SvgPicture.asset(
-                              'assets/icons/edit_icon.svg',
-                              height: 20,
-                              width: 30,
-                            )
-                          : Container(
-                              height: 25,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  color: AppColors.green,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: const Center(
-                                  child: Text(
-                                'Save',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                              )),
-                            ))
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (_) => const LogoutAlert());
+                          },
+                          icon: const Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          )),
+                      InkWell(
+                          onTap: () {
+                            data.readOnly = !data.readOnly;
+                            data.onRefresh();
+                          },
+                          child: data.readOnly == true
+                              ? SvgPicture.asset(
+                                  'assets/icons/edit_icon.svg',
+                                  height: 20,
+                                  width: 30,
+                                )
+                              : Container(
+                                  height: 25,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.green,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: const Center(
+                                      child: Text(
+                                    'Save',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  )),
+                                )),
+                    ],
+                  )
                 ],
               ),
             ),

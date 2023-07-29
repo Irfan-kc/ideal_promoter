@@ -17,7 +17,9 @@ abstract class AuthService extends ChopperService {
   Future<Response<dynamic>> passwordReset(
       {@Body() required Map<String, dynamic> body});
 
-
+  @Get(path: 'logout')
+  Future<Response<dynamic>> logout(
+      {@Body() required Map<String, dynamic> body});
 
   static AuthService create() {
     final client = ChopperClient(

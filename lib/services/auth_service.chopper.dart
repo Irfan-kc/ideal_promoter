@@ -55,4 +55,17 @@ class _$AuthService extends AuthService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> logout({required Map<String, dynamic> body}) {
+    final Uri $url = Uri.parse('logout');
+    final $body = body;
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }
