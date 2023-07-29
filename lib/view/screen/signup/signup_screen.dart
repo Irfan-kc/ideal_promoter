@@ -18,6 +18,7 @@ class SignUpPage extends StatelessWidget {
     TextEditingController numberController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController confirmController = TextEditingController();
+    GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
         body: ChangeNotifierProvider(
@@ -38,6 +39,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   const KHeight(40),
                   SignupInputForm(
+                    formKey: formKey,
                     nameController: nameController,
                     emailController: emailController,
                     numberController: numberController,
@@ -46,16 +48,18 @@ class SignUpPage extends StatelessWidget {
                   ),
                   const KHeight(40),
                   MediumButton(
-                    isLoading:provider.isLoading,
+                    isLoading: provider.isLoading,
                     onTap: () async {
-                      await Provider.of<AuthProvider>(context, listen: false)
-                          .signup(
-                              context,
-                              nameController.text,
-                              numberController.text,
-                              emailController.text,
-                              passwordController.text,
-                              confirmController.text);
+                      if (formKey.currentState!.validate()) {
+                        await Provider.of<AuthProvider>(context, listen: false)
+                            .signup(
+                                context,
+                                nameController.text,
+                                numberController.text,
+                                emailController.text,
+                                passwordController.text,
+                                confirmController.text);
+                      }
                     },
                     label: 'Sign up',
                   ),
