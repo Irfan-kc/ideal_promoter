@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 warningSnackBar({
   required String message,
-  int duration = 1,
+  int duration = 2,
   required BuildContext context,
 }) {
   return ScaffoldMessenger.of(context).showSnackBar(SnackBar(

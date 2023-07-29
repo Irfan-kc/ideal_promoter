@@ -64,7 +64,7 @@ class AuthProvider extends BaseProvider {
         var response = await Provider.of<AuthService>(context, listen: false)
             .signup(body: body);
         if (response.isSuccessful) {
-          successSnackBar(
+          await successSnackBar(
               message:
                   'Successfully registered as promoter, Please wait for the approval',
               context: context);

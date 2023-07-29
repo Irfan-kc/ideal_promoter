@@ -26,7 +26,7 @@ class LoginInputForm extends StatelessWidget {
           CustomTextField(
             focusNode: emailFocusNode,
             padding: const EdgeInsets.only(left: 16, right: 16),
-            hintText: 'Username',
+            hintText: 'Email ID',
             validator: (value) {
               if (value == null || value.isEmpty) return "Enter the username";
               return null;
@@ -41,7 +41,7 @@ class LoginInputForm extends StatelessWidget {
               height: 50,
               child: Center(
                 child: SvgPicture.asset(
-                  'assets/icons/profile.svg',
+                  'assets/icons/sms.svg',
                 ),
               ),
             ),

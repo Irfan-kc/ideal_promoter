@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -16,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final void Function()? onTap;
   final int? maxLength;
   final String? Function(String? value)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextField({
     super.key,
@@ -33,6 +35,7 @@ class CustomTextField extends StatefulWidget {
     this.value,
     this.onTap,
     this.maxLength,
+    this.inputFormatters,
   });
 
   @override
@@ -40,7 +43,6 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  
   @override
   void dispose() {
     if (widget.controller != null) widget.controller!.dispose();
@@ -52,6 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: widget.padding ?? const EdgeInsets.all(0),
       child: TextFormField(
+        inputFormatters: widget.inputFormatters,
         validator: widget.validator,
         controller: widget.controller,
         maxLength: widget.maxLength,
