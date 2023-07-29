@@ -19,7 +19,6 @@ class PasswordResetAlert extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(22.0),
       ),
-      // contentPadding: EdgeInsets.all(),
       titleTextStyle: AppTextStyle.alertHead,
       scrollable: true,
       title: const Text('Password Reset'),
