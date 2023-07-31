@@ -53,7 +53,7 @@ class LogoutAlert extends StatelessWidget {
                   Provider.of<AuthProvider>(context, listen: false)
                       .logout(context);
                 },
-                label: 'Reset',
+                label: 'Logout',
                 width: 100,
                 height: 50,
               ),

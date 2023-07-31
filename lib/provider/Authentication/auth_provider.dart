@@ -122,8 +122,11 @@ class AuthProvider extends BaseProvider {
       var response = await Provider.of<AuthService>(context, listen: false)
           .logout(body: body);
       if (response.isSuccessful) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const LoginPage()));
+        clearToken();
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (_) => const LoginPage()),
+            (route) => false);
       } else {
         await errorSnackBar(
             message: response.error.toString().split('"')[3], context: context);
@@ -140,5 +143,10 @@ class AuthProvider extends BaseProvider {
     if (token == null) return false;
     var sharedPref = await SharedPreferences.getInstance();
     return await sharedPref.setString("token", token);
+  }
+
+  Future<bool> clearToken() async {
+    var sharedPref = await SharedPreferences.getInstance();
+    return await sharedPref.remove("token");
   }
 }
