@@ -4,6 +4,7 @@ import 'package:ideal_promoter/View/screen/signup/signup_screen.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
 import 'package:ideal_promoter/view/screen/login/widget/login_input_forms.dart';
+import 'package:ideal_promoter/view/screen/login/widget/password_reset_alert.dart';
 import 'package:ideal_promoter/view/widget/buttons/medium_button.dart';
 import 'package:ideal_promoter/view/widget/buttons/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
@@ -14,8 +15,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController email = TextEditingController(text: 'newtestpromoter@gmail.com');
-    TextEditingController password = TextEditingController(text: "111111");
+    TextEditingController email =
+        TextEditingController();
+    TextEditingController password = TextEditingController();
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
@@ -41,7 +43,9 @@ class LoginPage extends StatelessWidget {
             TwoTextWidget(
               labelText: 'Forgot password? ',
               actionText: 'Reset password',
-              onTap: () {},
+              onTap: () {
+                showDialog(context: context, builder: (_) => PasswordResetAlert());
+              },
             ),
             const KHeight(24),
             Consumer<AuthProvider>(

@@ -9,6 +9,18 @@ abstract class AuthService extends ChopperService {
   @Post(path: 'login/mail')
   Future<Response<dynamic>> login({@Body() required Map<String, dynamic> body});
 
+  @Post(path: 'promoter/form/new')
+  Future<Response<dynamic>> signup(
+      {@Body() required Map<String, dynamic> body});
+
+  @Post(path: 'forgot')
+  Future<Response<dynamic>> passwordReset(
+      {@Body() required Map<String, dynamic> body});
+
+  @Get(path: 'logout')
+  Future<Response<dynamic>> logout(
+      {@Body() required Map<String, dynamic> body});
+
   static AuthService create() {
     final client = ChopperClient(
       interceptors: [
