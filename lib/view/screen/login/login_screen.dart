@@ -16,8 +16,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController email =
-        TextEditingController();
-    TextEditingController password = TextEditingController();
+        TextEditingController(text: "fahisup369@gmail.com");
+    TextEditingController password = TextEditingController(text: "123456789");
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
@@ -44,7 +44,9 @@ class LoginPage extends StatelessWidget {
               labelText: 'Forgot password? ',
               actionText: 'Reset password',
               onTap: () {
-                showDialog(context: context, builder: (_) => PasswordResetAlert());
+                showDialog(
+                    context: context,
+                    builder: (_) => const PasswordResetAlert());
               },
             ),
             const KHeight(24),

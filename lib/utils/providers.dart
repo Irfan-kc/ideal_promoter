@@ -5,6 +5,8 @@ import 'package:provider/single_child_widget.dart';
 
 import 'package:ideal_promoter/Provider/signup_page/signup_page_provider.dart';
 
+import '../provider/dashboard_provider/dashboard_provider.dart';
+
 List<SingleChildWidget> providers = [
   ChangeNotifierProvider.value(
     value: SignUpPageProvider(),
@@ -15,5 +17,7 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider.value(
     value: AuthProvider(),
   ),
+  ChangeNotifierProvider.value(
+    value: DashboardProvider(),
+  ),
 ];
-  

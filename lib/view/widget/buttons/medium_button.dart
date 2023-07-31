@@ -9,7 +9,10 @@ class MediumButton extends StatelessWidget {
     required this.onTap,
     required this.label,
     this.color,
-    this.isLoading = false, this.width, this.textStyle, this.height,
+    this.isLoading = false,
+    this.width,
+    this.textStyle,
+    this.height,
   });
 
   final VoidCallback onTap;
@@ -27,7 +30,7 @@ class MediumButton extends StatelessWidget {
         if (!isLoading) onTap();
       },
       child: Container(
-        width:  width ?? 190,
+        width: width ?? 190,
         // padding: padding,
         height: height ?? 60,
         decoration: BoxDecoration(

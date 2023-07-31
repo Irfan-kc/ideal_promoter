@@ -4,7 +4,6 @@ import 'package:ideal_promoter/View/screen/home/bottom_nav_screen/widget/graph.d
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
-
 class EarningsPage extends StatelessWidget {
   const EarningsPage({super.key});
 
