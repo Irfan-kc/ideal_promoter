@@ -13,9 +13,16 @@ import '../../view/widget/snackbars/success_snackbar.dart';
 
 class AuthProvider extends BaseProvider {
   bool isLoading = false;
+  bool isSigned = false;
+
 
   String? email;
   String? password;
+
+
+  AuthProvider(){
+    signInCheck();
+  }
 
   Future login(BuildContext context, String email, String password) async {
     try {
@@ -28,7 +35,6 @@ class AuthProvider extends BaseProvider {
       var response = await Provider.of<AuthService>(context, listen: false)
           .login(body: body);
       if (response.isSuccessful) {
-        print(response);
         if (await setToken(response.body["token"])) {
           Navigator.push(
             context,
@@ -137,6 +143,11 @@ class AuthProvider extends BaseProvider {
       isLoading = false;
       notifyListeners();
     }
+  }
+
+  signInCheck() async{
+    var sharedPref = await SharedPreferences.getInstance();
+     isSigned = sharedPref.containsKey("token");
   }
 
   Future<bool> setToken(String? token) async {

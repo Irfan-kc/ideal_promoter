@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/Constant/text_style.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
-
 class CustAppBar extends StatelessWidget {
   final bool backButton;
   const CustAppBar({super.key, this.backButton = false});

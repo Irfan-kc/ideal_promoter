@@ -1,6 +1,5 @@
 // ignore_for_file: constant_identifier_names, avoid_print
 
-
 import 'package:ideal_promoter/utils/enum_utils.dart';
 
 enum Flavor { DEV, PRODUCTION }

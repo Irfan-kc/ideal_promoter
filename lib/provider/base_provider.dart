@@ -1,6 +1,3 @@
 import 'package:flutter/widgets.dart';
 
-class BaseProvider extends ChangeNotifier {
-
-  
-}
+class BaseProvider extends ChangeNotifier {}
