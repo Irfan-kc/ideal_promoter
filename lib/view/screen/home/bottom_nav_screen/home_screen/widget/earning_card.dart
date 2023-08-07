@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
 
 class EarningsCard extends StatelessWidget {
   final String heading;
@@ -6,13 +7,15 @@ class EarningsCard extends StatelessWidget {
   final String todayAmount;
   final Color totalColor;
   final VoidCallback? onTap;
+  final DashboardProvider provider;
   const EarningsCard(
       {super.key,
       required this.heading,
       required this.totalAmount,
       required this.todayAmount,
       required this.totalColor,
-      this.onTap});
+      this.onTap,
+      required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +39,19 @@ class EarningsCard extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Text(
-              totalAmount,
-              style: TextStyle(
-                  fontSize: 24, fontWeight: FontWeight.w600, color: totalColor),
-            ),
+            provider.dataNotGet == false
+                ? Text(
+                    totalAmount,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: totalColor),
+                  )
+                : const Text(
+                    'Failed to load data from the server',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: Colors.red),
+                  ),
             const Text(
               'Today',
               style: TextStyle(
@@ -48,13 +59,19 @@ class EarningsCard extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: Colors.white),
             ),
-            Text(
-              todayAmount,
-              style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
+            provider.dataNotGet == false
+                ? Text(
+                    todayAmount,
+                    style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  )
+                : const Text(
+                    'Failed to load data from the server',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: Colors.red),
+                  ),
           ],
         ),
       ),

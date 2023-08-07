@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/chart_screen/widget/app_bar.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
-import '../../../widget/height_and_width.dart';
 import '../bottom_nav_screen/widget/suggested_grid_view.dart';
 
 class ProductPage extends StatelessWidget {
@@ -19,11 +19,12 @@ class ProductPage extends StatelessWidget {
           // CategoryTile(),
           // KHeight(12),
           Expanded(
-              child: GridViewData(
-            isExpanded: true,
-            title: 'Product',
-            isShowViewAll: false,
-          )),
+            child: GridViewData(
+              isExpanded: true,
+              title: 'Product',
+              isShowViewAll: false,
+            ),
+          ),
         ],
       ),
     );

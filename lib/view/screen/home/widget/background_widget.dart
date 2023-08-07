@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
-
-import '../../../widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class BackGroundWidget extends StatelessWidget {
   final List<Widget>? column1;

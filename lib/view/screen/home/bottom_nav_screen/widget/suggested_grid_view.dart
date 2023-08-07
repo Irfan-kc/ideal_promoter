@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/Constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/product_page/product_page.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
-
-import '../../../../../constant/text_style.dart';
-import '../../../../widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class GridViewData extends StatelessWidget {
   final bool isExpanded;

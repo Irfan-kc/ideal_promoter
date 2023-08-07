@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../widget/height_and_width.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class NameCard extends StatelessWidget {
   const NameCard({super.key});

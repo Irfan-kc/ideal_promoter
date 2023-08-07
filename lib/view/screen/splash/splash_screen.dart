@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/view/screen/login_page/login_page.dart';
+import 'package:ideal_promoter/View/screen/home/home.dart';
+import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
+import 'package:ideal_promoter/view/screen/login/login_screen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,8 +13,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(
         const Duration(seconds: 5),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => LoginPage())));
+        () {
+          if(Provider.of<AuthProvider>(context,listen: false).isSigned == true){
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => const Home()));
+          }else{
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => const LoginPage()));
+          }
+        });
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20),

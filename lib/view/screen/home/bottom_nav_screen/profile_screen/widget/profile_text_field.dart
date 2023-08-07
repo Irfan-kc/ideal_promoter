@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 import '../../../../../../constant/text_style.dart';
-import '../../../../../widget/height_and_width.dart';
 
 class ProfileTextField extends StatefulWidget {
   final String value;

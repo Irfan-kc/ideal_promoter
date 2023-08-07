@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bussiness_volume_page/business_volume_page.dart';
-import 'package:ideal_promoter/view/screen/home/earnings_page/earning_page.dart';
+import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
-import '../../../../../widget/height_and_width.dart';
 import 'earning_card.dart';
 
 class DashBoardCard extends StatelessWidget {
-  const DashBoardCard({super.key});
+  final DashboardProvider provider;
+  const DashBoardCard({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,16 @@ class DashBoardCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: EarningsCard(
+              provider: provider,
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const EarningsPage()));
+                // Navigator.push(context,
+                // MaterialPageRoute(builder: (_) => const EarningsPage()));
+                provider.getDashboardData(context);
               },
               heading: 'Total Earnings',
               todayAmount: '\u20B98600.00',
-              totalAmount: '\u20B9122.00',
+              totalAmount:
+                  '\u20B9${provider.dashboardData?.totalEarningsAmount.toString()}',
               totalColor: const Color(0xFF9FFFCB),
             ),
           ),
@@ -33,6 +36,7 @@ class DashBoardCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: EarningsCard(
+              provider: provider,
               onTap: () {
                 Navigator.push(
                     context,
@@ -40,8 +44,10 @@ class DashBoardCard extends StatelessWidget {
                         builder: (_) => const BusinessVolumePage()));
               },
               heading: 'Business volume',
-              todayAmount: '22',
-              totalAmount: '4255',
+              todayAmount:
+                  '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount.toString()}',
+              totalAmount:
+                  '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount.toString()}',
               totalColor: const Color(0xFFFFF59F),
             ),
           ),
