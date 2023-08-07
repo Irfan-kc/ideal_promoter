@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/View/screen/home/page_views/page_views.dart';
 import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
+import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/View/screen/home/bottom_nav_screen/widget/graph.dart';
-import 'package:ideal_promoter/View/screen/home/widget/background_widget.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/graph.dart';
+import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 import '../bottom_nav_screen/wallet_screen/widget/table_data.dart';
@@ -10,7 +10,7 @@ class PageViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  const Scaffold(
         body: BackGroundWidget(
             isExpanded: true,
             heading: 'Page Views',

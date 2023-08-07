@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/View/screen/home/home.dart';
 import 'package:ideal_promoter/provider/base_provider.dart';
 import 'package:ideal_promoter/services/auth_service.dart';
+import 'package:ideal_promoter/view/screen/home/home.dart';
 import 'package:ideal_promoter/view/widget/snackbars/error_snackbar.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
