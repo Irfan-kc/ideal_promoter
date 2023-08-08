@@ -39,7 +39,7 @@ class EarningsCard extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            provider.dataNotGet == false
+            provider.dashboardData != null
                 ? Text(
                     totalAmount,
                     style: TextStyle(
@@ -59,7 +59,7 @@ class EarningsCard extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: Colors.white),
             ),
-            provider.dataNotGet == false
+            provider.dashboardData != null
                 ? Text(
                     todayAmount,
                     style: const TextStyle(

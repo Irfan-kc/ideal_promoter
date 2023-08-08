@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/Constant/text_style.dart';
-import 'package:ideal_promoter/View/screen/login/login_screen.dart';
-import 'package:ideal_promoter/View/screen/signup/widgets/signup_input_form.dart';
+import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
+import 'package:ideal_promoter/view/screen/login/login_screen.dart';
+import 'package:ideal_promoter/view/screen/signup/widgets/signup_input_form.dart';
 import 'package:ideal_promoter/view/widget/buttons/medium_button.dart';
 import 'package:ideal_promoter/view/widget/buttons/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';

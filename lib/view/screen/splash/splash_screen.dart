@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/View/screen/home/home.dart';
 import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
+import 'package:ideal_promoter/view/screen/home/home.dart';
 import 'package:ideal_promoter/view/screen/login/login_screen.dart';
 import 'package:provider/provider.dart';
 

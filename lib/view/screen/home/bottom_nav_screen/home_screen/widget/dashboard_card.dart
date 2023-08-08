@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bussiness_volume_page/business_volume_page.dart';
+import 'package:ideal_promoter/view/screen/home/earnings_page/earning_page.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 import 'earning_card.dart';
@@ -21,8 +22,8 @@ class DashBoardCard extends StatelessWidget {
             child: EarningsCard(
               provider: provider,
               onTap: () {
-                // Navigator.push(context,
-                // MaterialPageRoute(builder: (_) => const EarningsPage()));
+                Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const EarningsPage()));
                 provider.getDashboardData(context);
               },
               heading: 'Total Earnings',

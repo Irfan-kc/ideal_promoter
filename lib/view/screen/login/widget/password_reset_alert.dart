@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ideal_promoter/Constant/text_style.dart';
+import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
 import 'package:ideal_promoter/view/widget/buttons/medium_button.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';

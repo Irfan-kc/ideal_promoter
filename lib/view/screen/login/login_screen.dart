@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/View/screen/login/widget/login_image.dart';
-import 'package:ideal_promoter/View/screen/signup/signup_screen.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
+import 'package:ideal_promoter/view/screen/login/widget/login_image.dart';
 import 'package:ideal_promoter/view/screen/login/widget/login_input_forms.dart';
 import 'package:ideal_promoter/view/screen/login/widget/password_reset_alert.dart';
+import 'package:ideal_promoter/view/screen/signup/signup_screen.dart';
 import 'package:ideal_promoter/view/widget/buttons/medium_button.dart';
 import 'package:ideal_promoter/view/widget/buttons/two_text_line.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
@@ -15,9 +15,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController email =
-        TextEditingController(text: "fahisup369@gmail.com");
-    TextEditingController password = TextEditingController(text: "123456789");
+    TextEditingController email = TextEditingController(text: 'newtestpromoter@gmail.com');
+    TextEditingController password = TextEditingController(text: '111111');
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(

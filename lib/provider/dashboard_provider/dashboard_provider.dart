@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 class DashboardProvider extends ChangeNotifier {
   DashboardData? dashboardData;
-  bool dataNotGet = false;
 
   bool isLoading = false;
 
@@ -20,11 +19,7 @@ class DashboardProvider extends ChangeNotifier {
       var response = await Provider.of<DashboardService>(context, listen: false)
           .dashboardData();
       if (response.isSuccessful) {
-        dataNotGet = false;
         dashboardData = DashboardData.fromJson(response.body);
-        notifyListeners();
-      } else {
-        dataNotGet = true;
         notifyListeners();
       }
     } catch (e) {
