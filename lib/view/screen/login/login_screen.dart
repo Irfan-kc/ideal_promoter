@@ -15,8 +15,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController email = TextEditingController();
-    TextEditingController password = TextEditingController();
+    TextEditingController email = TextEditingController(text: 'newtestpromoter@gmail.com');
+    TextEditingController password = TextEditingController(text: '111111');
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
