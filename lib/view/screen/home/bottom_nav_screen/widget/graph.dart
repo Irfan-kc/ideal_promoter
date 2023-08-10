@@ -2,13 +2,16 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
+import 'package:ideal_promoter/models/Graph/graph_model.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class GraphView extends StatefulWidget {
   final String title;
+  final GraphModel model;
   const GraphView({
     super.key,
     required this.title,
+    required this.model,
   });
 
   @override
@@ -18,24 +21,26 @@ class GraphView extends StatefulWidget {
 class _GraphViewState extends State<GraphView> {
   List<int> showingTooltipOnSpots = [];
 
-  List<FlSpot> get allSpots => const [
-        FlSpot(-1, 3),
-        FlSpot(0, 3),
-        FlSpot(1, 2),
-        FlSpot(2, 4),
-        FlSpot(3, 3),
-        FlSpot(4, 4),
-        FlSpot(5, 6),
-        FlSpot(6, 6),
-        FlSpot(7, 8),
-        FlSpot(8, 6),
-        FlSpot(9, 7),
-        FlSpot(10, 6),
-        FlSpot(11, 5),
-        FlSpot(12, 4),
+  List<FlSpot> get allSpots => [
+        // FlSpot(-1, 3),
+        FlSpot(0, widget.model.jan),
+        FlSpot(1, widget.model.feb),
+        FlSpot(2, widget.model.march),
+        FlSpot(3, widget.model.april),
+        FlSpot(4, widget.model.may),
+        FlSpot(5, widget.model.jun),
+        FlSpot(6, widget.model.july),
+        FlSpot(7, widget.model.aug),
+        FlSpot(8, widget.model.sep),
+        FlSpot(9, widget.model.oct),
+        FlSpot(10, widget.model.nov),
+        FlSpot(11, widget.model.dec),
+        // FlSpot(12, 4),
       ];
 
   double selectedYValue = 0.0;
+
+  
 
   @override
   Widget build(BuildContext context) {

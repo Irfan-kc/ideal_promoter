@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ideal_promoter/models/Category/category.dart';
 
 class CategoryResponse {
@@ -10,10 +8,9 @@ class CategoryResponse {
   });
 
   factory CategoryResponse.fromJson(List<dynamic> json) {
-    log(json.length.toString());
-     return CategoryResponse(
-        allCategories: (json)
-            .map((e) => CategoryModel.fromJson(e))
-            .toList(),
-      );}
+    // log(json.length.toString());
+    return CategoryResponse(
+      allCategories: (json).map((e) => CategoryModel.fromJson(e)).toList(),
+    );
+  }
 }

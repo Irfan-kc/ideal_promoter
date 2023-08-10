@@ -2,14 +2,14 @@ import 'package:chopper/chopper.dart';
 import 'package:ideal_promoter/config/flavor_config.dart';
 import 'package:ideal_promoter/interceptors/error_interceptors.dart';
 import 'package:ideal_promoter/interceptors/header_interceptor.dart';
-part 'category_service.chopper.dart';
+part 'graph_service.chopper.dart';
 
 @ChopperApi()
-abstract class CategoryService extends ChopperService {
-  @Get(path: 'category/user/custom/all')
-  Future<Response<dynamic>> getCategories();
+abstract class GraphService extends ChopperService {
+  @Get(path: 'earning/promoter/monthly/all')
+  Future<Response<dynamic>> getAllraphData();
 
-  static CategoryService create() {
+  static GraphService create() {
     final client = ChopperClient(
       interceptors: [
         HttpLoggingInterceptor(),
@@ -18,10 +18,10 @@ abstract class CategoryService extends ChopperService {
       ],
       baseUrl: Uri.parse(FlavorConfig.values.baseUrlApi),
       services: [
-        _$CategoryService(),
+        _$GraphService(),
       ],
       converter: const JsonConverter(),
     );
-    return _$CategoryService(client);
+    return _$GraphService(client);
   }
 }

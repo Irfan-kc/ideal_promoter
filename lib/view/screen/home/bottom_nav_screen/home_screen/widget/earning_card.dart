@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
+import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 
 class EarningsCard extends StatelessWidget {
   final String heading;

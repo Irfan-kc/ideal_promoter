@@ -1,12 +1,12 @@
 class DashboardData {
-  int? totalPageViewsCount;
-  int? totalEarningsCount;
-  int? totalEarningsAmount;
-  int? todayPageViewsCount;
-  int? todayEarningsCount;
-  int? totalBusinessVolumeCount;
-  int? totalBusinessVolumeAmount;
-  int? todayBusinessVolumeCount;
+  double? totalPageViewsCount;
+  double? totalEarningsCount;
+  double? totalEarningsAmount;
+  double? todayPageViewsCount;
+  double? todayEarningsCount;
+  double? totalBusinessVolumeCount;
+  double? totalBusinessVolumeAmount;
+  double? todayBusinessVolumeCount;
 
   DashboardData({
     this.totalPageViewsCount,
@@ -20,14 +20,14 @@ class DashboardData {
   });
 
   factory DashboardData.fromJson(Map<String, dynamic> json) => DashboardData(
-        totalPageViewsCount: json['totalPageViewsCount'] as int?,
-        totalEarningsCount: json['totalEarningsCount'] as int?,
-        totalEarningsAmount: json['totalEarningsAmount'] as int?,
-        todayPageViewsCount: json['todayPageViewsCount'] as int?,
-        todayEarningsCount: json['todayEarningsCount'] as int?,
-        totalBusinessVolumeCount: json['totalBusinessVolumeCount'] as int?,
-        totalBusinessVolumeAmount: json['totalBusinessVolumeAmount'] as int?,
-        todayBusinessVolumeCount: json['todayBusinessVolumeCount'] as int?,
+        totalPageViewsCount: json['totalPageViewsCount'] as double?,
+        totalEarningsCount: json['totalEarningsCount'] as double?,
+        totalEarningsAmount: json['totalEarningsAmount'] as double?,
+        todayPageViewsCount: json['todayPageViewsCount'] as double?,
+        todayEarningsCount: json['todayEarningsCount'] as double?,
+        totalBusinessVolumeCount: json['totalBusinessVolumeCount'] as double?,
+        totalBusinessVolumeAmount: json['totalBusinessVolumeAmount'] as double?,
+        todayBusinessVolumeCount: json['todayBusinessVolumeCount'] as double?,
       );
 
   Map<String, dynamic> toJson() => {

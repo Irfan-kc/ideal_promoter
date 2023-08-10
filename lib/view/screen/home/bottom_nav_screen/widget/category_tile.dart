@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/app_images.dart';
-import 'package:ideal_promoter/provider/CategoryProvider/category_provider.dart';
+import 'package:ideal_promoter/provider/Category/category_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/title_and_view_bar.dart';
+import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CategoryTile extends StatefulWidget {
   const CategoryTile({super.key});
@@ -14,15 +14,6 @@ class CategoryTile extends StatefulWidget {
 }
 
 class _CategoryTileState extends State<CategoryTile> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero, () async {
-      await Provider.of<CategoryProvider>(context, listen: false)
-          .getAllCategories(context);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<CategoryProvider>(
@@ -37,9 +28,13 @@ class _CategoryTileState extends State<CategoryTile> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: categoryProvider.isLoading
-                    ? CustomShimmer(
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: CustomShimmer(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width,
+                          radius: 10,
+                        ),
                       )
                     : ListView.builder(
                         physics: const BouncingScrollPhysics(),
@@ -54,20 +49,19 @@ class _CategoryTileState extends State<CategoryTile> {
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: categoryProvider
-                                    .categories[index].logoImages!.isEmpty
-                                ? const NetworkImage(AppImages.noImage)
-                                : NetworkImage(
-                                    categoryProvider.categories[index]
-                                            .logoImages![0].url ??
-                                        AppImages.noImage,
-                                  ),
+                                        .categories[index].logoImages!.isEmpty
+                                    ? const NetworkImage(AppImages.noImage)
+                                    : NetworkImage(
+                                        categoryProvider.categories[index]
+                                                .logoImages![0].url ??
+                                            AppImages.noImage,
+                                      ),
                               ),
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(
                                 color: const Color(0xFF22B250),
                               ),
                             ),
-                            
                           );
                         },
                       ),
@@ -76,33 +70,6 @@ class _CategoryTileState extends State<CategoryTile> {
           ],
         );
       },
-    );
-  }
-}
-
-class CustomShimmer extends StatelessWidget {
-  const CustomShimmer({
-    super.key,
-    this.width,
-    this.height,
-  });
-  final double? height;
-  final double? width;
-  @override
-  Widget build(BuildContext context) {
-    return Shimmer.fromColors(
-      baseColor: const Color.fromARGB(255, 234, 234, 234),
-      highlightColor: const Color.fromARGB(255, 242, 242, 242),
-      enabled: true,
-      child: Container(
-        margin: const EdgeInsets.only(right: 16),
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
     );
   }
 }
