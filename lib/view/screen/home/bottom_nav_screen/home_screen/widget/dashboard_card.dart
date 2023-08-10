@@ -23,13 +23,16 @@ class DashBoardCard extends StatelessWidget {
               provider: provider,
               onTap: () {
                 Navigator.push(context,
-                MaterialPageRoute(builder: (_) => const EarningsPage()));
+                    MaterialPageRoute(builder: (_) => const EarningsPage()));
                 provider.getDashboardData(context);
               },
               heading: 'Total Earnings',
-              todayAmount: '\u20B98600.00',
-              totalAmount:
-                  '\u20B9${provider.dashboardData?.totalEarningsAmount.toString()}',
+              todayAmount: provider.dashboardData?.totalEarningsAmount != null
+                  ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
+                  : '\u20B90',
+              totalAmount: provider.dashboardData?.totalEarningsAmount != null
+                  ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
+                  : '\u20B90',
               totalColor: const Color(0xFF9FFFCB),
             ),
           ),
@@ -45,10 +48,14 @@ class DashBoardCard extends StatelessWidget {
                         builder: (_) => const BusinessVolumePage()));
               },
               heading: 'Business volume',
-              todayAmount:
-                  '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount.toString()}',
-              totalAmount:
-                  '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount.toString()}',
+              todayAmount: provider.dashboardData?.totalBusinessVolumeAmount !=
+                      null
+                  ? '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount}'
+                  : '\u20B90',
+              totalAmount: provider.dashboardData?.totalBusinessVolumeAmount !=
+                      null
+                  ? '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount}'
+                  : '\u20B90',
               totalColor: const Color(0xFFFFF59F),
             ),
           ),

@@ -2,103 +2,182 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
-import 'package:ideal_promoter/provider/Home/product_screen_provider/product_view_provider.dart';
+import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/widget/carousel_view.dart';
+import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
+import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
 import 'package:ideal_promoter/view/widget/buttons/icon_button.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 
-class ProductView extends StatelessWidget {
-  const ProductView({super.key});
+class ProductView extends StatefulWidget {
+  const ProductView({
+    super.key,
+    required this.id,
+  });
+  final String id;
+
+  @override
+  State<ProductView> createState() => _ProductViewState();
+}
+
+class _ProductViewState extends State<ProductView> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () async {
+      Provider.of<ProductProvider>(context, listen: false)
+          .getProduct(context, widget.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ProductPageProvider(),
-      child: Consumer<ProductPageProvider>(builder: (context, data, _) {
-        return Scaffold(
-          body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CarouselView(),
-                // const KHeight(24),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 24),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RichText(
-                          text: const TextSpan(
-                              style: AppTextStyle.heading2,
-                              children: [
-                            TextSpan(text: '\$150.00'),
-                            WidgetSpan(child: KWidth(10)),
-                            TextSpan(
-                                text: '\$300.00',
-                                style: TextStyle(
-                                    color: Color(0xFF9C9C9C),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                    decoration: TextDecoration.lineThrough,
-                                    decorationThickness: 1.5)),
-                            WidgetSpan(child: KWidth(10)),
-                            TextSpan(
-                                text: '50% off',
-                                style: TextStyle(
-                                  color: AppColors.green,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ))
-                          ])),
-                      const KHeight(8),
-                      const Text(
-                        'Wooden bedside table featuring a raised'
-                        ' design on the door. Wooden bedside table'
-                        ' featuring a raised design on the door,'
-                        ' Wooden bedside table featuring a raised design'
-                        ' on the door  Wooden bedside table featuring '
-                        'a raised design on the doo',
-                        style: AppTextStyle.text,
-                      ),
-                      const KHeight(16),
-                      Row(
-                        children: [
-                          CustIconButton(
-                            flex: 3,
-                            icon: const Icon(
-                              Icons.copy_rounded,
-                              color: Colors.white,
-                              size: 14,
-                            ),
-                            onTap: () {},
-                            text: 'Copy Urls',
+    return Consumer<ProductProvider>(builder: (context, productProvider, _) {
+      return Scaffold(
+        body: productProvider.isSingleProductLoading
+            ? loader()
+            : productProvider.singleProduct == null
+                ? const Center(child: Text("FAILED TO LOAD DATA!"))
+                : SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CarouselView(
+                          images: productProvider.singleProduct!.images ?? [],
+                        ),
+                        // const KHeight(24),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 24),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              productProvider.isLoading
+                                  ? const CustomShimmer(
+                                      width: double.infinity,
+                                      height: 20,
+                                      radius: 6,
+                                    )
+                                  : Text(
+                                      productProvider.singleProduct!
+                                                      .primaryLang!.name !=
+                                                  null &&
+                                              productProvider.singleProduct!
+                                                      .primaryLang!.name !=
+                                                  ''
+                                          ? productProvider
+                                              .singleProduct!.primaryLang!.name!
+                                          : "NA",
+                                      style: AppTextStyle.body1Text,
+                                    ),
+                              productProvider.isLoading
+                                  ? const Padding(
+                                      padding: EdgeInsets.only(top: 8.0),
+                                      child: CustomShimmer(
+                                        width: double.infinity,
+                                        height: 18,
+                                        radius: 6,
+                                      ),
+                                    )
+                                  : RichText(
+                                      text: TextSpan(
+                                        style: AppTextStyle.buttonText.apply(
+                                          color: AppColors.black,
+                                        ),
+                                        children: [
+                                          TextSpan(
+                                              text: productProvider
+                                                          .singleProduct!
+                                                          .offerPrice !=
+                                                      null
+                                                  ? '\$${productProvider.singleProduct!.offerPrice}'
+                                                  : '\$0'),
+                                          const WidgetSpan(child: KWidth(10)),
+                                          TextSpan(
+                                              text: productProvider
+                                                          .singleProduct!
+                                                          .price !=
+                                                      null
+                                                  ? '\$${productProvider.singleProduct!.price}'
+                                                  : '\$0',
+                                              style: const TextStyle(
+                                                  color: Color(0xFF9C9C9C),
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w500,
+                                                  decoration: TextDecoration
+                                                      .lineThrough,
+                                                  decorationThickness: 1.5)),
+                                          const WidgetSpan(child: KWidth(10)),
+                                          const TextSpan(
+                                            text: '50% off',
+                                            style: TextStyle(
+                                              color: AppColors.green,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                              const KHeight(8),
+                              productProvider.isLoading
+                                  ? const CustomShimmer(
+                                      width: double.infinity,
+                                      height: 200,
+                                      radius: 8,
+                                    )
+                                  : productProvider.singleProduct!.primaryLang!
+                                                  .description !=
+                                              null &&
+                                          productProvider.singleProduct!
+                                                  .primaryLang!.description !=
+                                              ''
+                                      ? Html(
+                                          data: productProvider.singleProduct!
+                                              .primaryLang!.description!,
+                                        )
+                                      : const Text(
+                                          "NA",
+                                          style: AppTextStyle.text,
+                                        ),
+                              const KHeight(16),
+                              Row(
+                                children: [
+                                  CustIconButton(
+                                    flex: 3,
+                                    icon: const Icon(
+                                      Icons.copy_rounded,
+                                      color: Colors.white,
+                                      size: 14,
+                                    ),
+                                    onTap: () {},
+                                    text: 'Copy Urls',
+                                  ),
+                                  const KWidth(10),
+                                  CustIconButton(
+                                    flex: 5,
+                                    icon: SvgPicture.asset(
+                                      'assets/icons/content_copy.svg',
+                                      height: 14,
+                                      width: 14,
+                                    ),
+                                    onTap: () {},
+                                    text: 'Get it on Whatsapp',
+                                    color: AppColors.green,
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          const KWidth(10),
-                          CustIconButton(
-                            flex: 5,
-                            icon: SvgPicture.asset(
-                              'assets/icons/',
-                              height: 14,
-                              width: 14,
-                            ),
-                            onTap: () {},
-                            text: 'Get it on Whatsapp',
-                            color: AppColors.green,
-                          )
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        );
-      }),
-    );
+      );
+    });
   }
 }

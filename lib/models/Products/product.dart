@@ -27,9 +27,9 @@ class Product {
   bool? isFeatured;
   List<dynamic>? extras;
   double? cost;
-  int? price;
-  int? offerPrice;
-  int? primePrice;
+  double? price;
+  double? offerPrice;
+  double? primePrice;
   int? stock;
   int? minStock;
   int? reorderQuantity;
@@ -120,10 +120,10 @@ class Product {
         isReturnViable: json['isReturnViable'] as bool?,
         isFeatured: json['isFeatured'] as bool?,
         extras: json['extras'] as List<dynamic>?,
-        cost: (json['cost'] as num?)?.toDouble(),
-        price: json['price'] as int?,
-        offerPrice: json['offerPrice'] as int?,
-        primePrice: json['primePrice'] as int?,
+        cost: json['cost'] as double?,
+        price: json['price'] as double?,
+        offerPrice: json['offerPrice'] as double?,
+        primePrice: json['primePrice'] as double?,
         stock: json['stock'] as int?,
         minStock: json['minStock'] as int?,
         reorderQuantity: json['reorderQuantity'] as int?,
