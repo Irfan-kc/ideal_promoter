@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category_service.dart';
+part of 'product_service.dart';
 
 // **************************************************************************
 // ChopperGenerator
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$CategoryService extends CategoryService {
-  _$CategoryService([ChopperClient? client]) {
+class _$ProductService extends ProductService {
+  _$ProductService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = CategoryService;
+  final definitionType = ProductService;
 
   @override
-  Future<Response<dynamic>> getCategories() {
-    final Uri $url = Uri.parse('category/user/custom/all');
+  Future<Response<dynamic>> getProducts() {
+    final Uri $url = Uri.parse('product/promoter/custom/featured');
     final Request $request = Request(
       'GET',
       $url,

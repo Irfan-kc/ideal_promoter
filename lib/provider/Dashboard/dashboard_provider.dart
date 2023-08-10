@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/models/dashboard_data.dart';
+import 'package:ideal_promoter/models/Dashboard/dashboard_data.dart';
 import 'package:ideal_promoter/services/dashboard_service.dart';
 import 'package:provider/provider.dart';
 

@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category_service.dart';
+part of 'graph_service.dart';
 
 // **************************************************************************
 // ChopperGenerator
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$CategoryService extends CategoryService {
-  _$CategoryService([ChopperClient? client]) {
+class _$GraphService extends GraphService {
+  _$GraphService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = CategoryService;
+  final definitionType = GraphService;
 
   @override
-  Future<Response<dynamic>> getCategories() {
-    final Uri $url = Uri.parse('category/user/custom/all');
+  Future<Response<dynamic>> getAllraphData() {
+    final Uri $url = Uri.parse('earning/promoter/monthly/all');
     final Request $request = Request(
       'GET',
       $url,

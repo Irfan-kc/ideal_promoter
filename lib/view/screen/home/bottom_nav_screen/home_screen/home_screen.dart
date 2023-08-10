@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
+import 'package:ideal_promoter/provider/Category/category_provider.dart';
+import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
+import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
+import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
 import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
@@ -11,13 +14,32 @@ import 'package:provider/provider.dart';
 
 import '../widget/graph.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () async {
+      await Provider.of<DashboardProvider>(context, listen: false)
+          .getDashboardData(context);
+      await Provider.of<GraphProvider>(context, listen: false)
+          .getGraphData(context);
+      await Provider.of<CategoryProvider>(context, listen: false)
+          .getAllCategories(context);
+      await Provider.of<ProductProvider>(context,listen: false).getAllProducts(context);    
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Consumer<DashboardProvider>(
-      builder: (context, provider, _) {
+    return Consumer2<DashboardProvider, GraphProvider>(
+      builder: (context, provider, graphProvider, _) {
         return provider.isLoading
             ? const Center(
                 child: CircularProgressIndicator(),
@@ -37,9 +59,12 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const KHeight(20),
                     // const GraphView(),
-                    const GraphView(
-                      title: 'Monthly Earnings',
-                    ),
+                    graphProvider.graphData == null
+                        ? const Text("Data retrieval failed")
+                        : GraphView(
+                            title: 'Monthly Earnings',
+                            model: graphProvider.graphData!,
+                          ),
                     const KHeight(16),
                     Provider.of<DashboardProvider>(context, listen: false)
                                 .dashboardData
@@ -63,13 +88,15 @@ class HomeScreen extends StatelessWidget {
                                           builder: (_) => const PageViews()));
                                 },
                                 child: Text(
-                                    '${Provider.of<DashboardProvider>(context, listen: false).dashboardData?.totalPageViewsCount} Page views',
-                                    style: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xFFFF7448),
-                                        decoration: TextDecoration.underline)),
-                              )
+                                  '${Provider.of<DashboardProvider>(context, listen: false).dashboardData?.totalPageViewsCount} Page views',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xFFFF7448),
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
                             ],
                           )
                         : const Row(
@@ -78,9 +105,10 @@ class HomeScreen extends StatelessWidget {
                               Text(
                                 'You dont have any page views',
                                 style: TextStyle(
-                                    color: Color(0xFFFF7448),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400),
+                                  color: Color(0xFFFF7448),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                             ],
                           ),
