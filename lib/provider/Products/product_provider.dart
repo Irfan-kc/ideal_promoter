@@ -17,7 +17,7 @@ class ProductProvider extends BaseProvider {
       isLoading = true;
       notifyListeners();
       var response = await Provider.of<ProductService>(context, listen: false)
-          .getAllProducts();
+          .getAllProducts(page: page);
       if (response.isSuccessful) {
         var result = FeaturedProducts.fromJson(response.body);
         products = result.products ?? [];

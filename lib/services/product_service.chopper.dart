@@ -17,12 +17,14 @@ class _$ProductService extends ProductService {
   final definitionType = ProductService;
 
   @override
-  Future<Response<dynamic>> getAllProducts() {
+  Future<Response<dynamic>> getAllProducts({int? page}) {
     final Uri $url = Uri.parse('product/promoter/custom/featured');
+    final Map<String, dynamic> $params = <String, dynamic>{'page': page};
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client.send<dynamic, dynamic>($request);
   }

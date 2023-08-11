@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/Category/category_provider.dart';
 import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
-import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
 import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
@@ -32,8 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           .getGraphData(context);
       await Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
-      await Provider.of<ProductProvider>(context, listen: false)
-          .getAllProducts(context);
+      
     });
   }
 

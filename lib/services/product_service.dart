@@ -7,7 +7,9 @@ part 'product_service.chopper.dart';
 @ChopperApi()
 abstract class ProductService extends ChopperService {
   @Get(path: 'product/promoter/custom/featured')
-  Future<Response<dynamic>> getAllProducts();
+  Future<Response<dynamic>> getAllProducts({
+    @Query('page') int? page,
+  });
   
   @Get(path: 'product/promoter/single/{productId}')
   Future<Response<dynamic>> getProduct(
