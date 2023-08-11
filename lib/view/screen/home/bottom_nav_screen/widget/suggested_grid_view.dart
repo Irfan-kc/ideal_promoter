@@ -5,11 +5,12 @@ import 'package:ideal_promoter/models/Products/product.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_page/product_page.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
+import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
-class GridViewData extends StatelessWidget {
+class GridViewData extends StatefulWidget {
   final bool isExpanded;
   final String title;
   final bool isShowViewAll;
@@ -22,6 +23,41 @@ class GridViewData extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<GridViewData> createState() => _GridViewDataState();
+}
+
+class _GridViewDataState extends State<GridViewData> {
+  final ScrollController controller = ScrollController();
+  int page = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () async {
+      await Provider.of<ProductProvider>(context, listen: false).getAllProducts(
+        context,
+        page: 1,
+        // isFirst: true,
+      );
+
+      // Move the following line outside the `setState` callback
+      controller.addListener(_scrollListener);
+    });
+  }
+
+  void _scrollListener() {
+    if (controller.position.maxScrollExtent == controller.offset) {
+      setState(() {
+        page++;
+      });
+      Provider.of<ProductProvider>(context, listen: false).getAllProducts(
+        context,
+        page: page,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<ProductProvider>(builder: (context, productProvider, _) {
       return Column(
@@ -32,10 +68,10 @@ class GridViewData extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  title,
+                  widget.title,
                   style: AppTextStyle.titleText1,
                 ),
-                isShowViewAll
+                widget.isShowViewAll
                     ? SizedBox(
                         height: 30,
                         child: TextButton(
@@ -55,21 +91,25 @@ class GridViewData extends StatelessWidget {
             ),
           ),
           const KHeight(8),
-          productProvider.products.isEmpty?
-                  const Text("No products to show"):
-          isExpanded
-              ? Expanded(
-                      child: ProductBuilder(
-                        isExpanded: isExpanded,
-                        isLoading: productProvider.isLoading,
-                        products: productProvider.products,
-                      ),
-                    )
-              : ProductBuilder(
-                  isExpanded: isExpanded,
-                  isLoading: productProvider.isLoading,
-                  products: productProvider.products,
-                )
+          productProvider.isLoading
+              ? loader()
+              : productProvider.products.isEmpty
+                  ? const Text("No products to show")
+                  : widget.isExpanded
+                      ? Expanded(
+                          child: ProductBuilder(
+                            controller: controller,
+                            isExpanded: widget.isExpanded,
+                            isLoading: productProvider.isLoading,
+                            products: productProvider.products,
+                          ),
+                        )
+                      : ProductBuilder(
+                          controller: controller,
+                          isExpanded: widget.isExpanded,
+                          isLoading: productProvider.isLoading,
+                          products: productProvider.products,
+                        )
         ],
       );
     });
@@ -82,14 +122,17 @@ class ProductBuilder extends StatelessWidget {
     required this.isExpanded,
     required this.products,
     required this.isLoading,
+    required this.controller,
   });
 
   final bool isExpanded;
   final List<Product> products;
   final bool isLoading;
+  final ScrollController controller;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      controller: controller,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       shrinkWrap: true,
       itemCount: products.length,
@@ -155,8 +198,8 @@ class ProductBuilder extends StatelessWidget {
                     )
                   : Text(
                       products[index].varients![0].price != null
-                          ? '\u0024 ${products[index].varients![0].price}'
-                          : '\u0024 150.00',
+                          ? '\u0024${products[index].varients![0].price}'
+                          : '\u00240.00',
                       style: AppTextStyle.body3Text,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

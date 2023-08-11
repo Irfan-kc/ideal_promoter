@@ -32,7 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
           .getGraphData(context);
       await Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
-      await Provider.of<ProductProvider>(context,listen: false).getAllProducts(context);    
+      await Provider.of<ProductProvider>(context, listen: false)
+          .getAllProducts(context);
     });
   }
 

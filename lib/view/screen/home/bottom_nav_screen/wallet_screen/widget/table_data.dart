@@ -5,7 +5,10 @@ import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
 class CustTableData extends StatelessWidget {
   final String title;
-  const CustTableData({super.key, required this.title});
+  const CustTableData({
+    super.key,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {

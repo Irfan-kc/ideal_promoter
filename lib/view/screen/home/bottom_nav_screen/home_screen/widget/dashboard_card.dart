@@ -8,7 +8,10 @@ import 'earning_card.dart';
 
 class DashBoardCard extends StatelessWidget {
   final DashboardProvider provider;
-  const DashBoardCard({super.key, required this.provider});
+  const DashBoardCard({
+    super.key,
+    required this.provider,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +51,14 @@ class DashBoardCard extends StatelessWidget {
                         builder: (_) => const BusinessVolumePage()));
               },
               heading: 'Business volume',
-              todayAmount: provider.dashboardData?.totalBusinessVolumeAmount !=
-                      null
-                  ? '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount}'
-                  : '\u20B90',
-              totalAmount: provider.dashboardData?.totalBusinessVolumeAmount !=
-                      null
-                  ? '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount}'
-                  : '\u20B90',
+              todayAmount:
+                  provider.dashboardData?.totalBusinessVolumeAmount != null
+                      ? '${provider.dashboardData?.totalBusinessVolumeAmount}'
+                      : '0',
+              totalAmount:
+                  provider.dashboardData?.totalBusinessVolumeAmount != null
+                      ? '${provider.dashboardData?.totalBusinessVolumeAmount}'
+                      : '0',
               totalColor: const Color(0xFFFFF59F),
             ),
           ),

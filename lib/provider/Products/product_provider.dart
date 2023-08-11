@@ -12,7 +12,7 @@ class ProductProvider extends BaseProvider {
   List<Product> products = [];
   SingleProductModel? singleProduct;
 
-  Future getAllProducts(BuildContext context) async {
+  Future getAllProducts(BuildContext context, {int? page}) async {
     try {
       isLoading = true;
       notifyListeners();

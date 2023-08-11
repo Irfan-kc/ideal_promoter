@@ -1,16 +1,16 @@
 class GraphModel {
-  double jan;
-  double feb;
-  double march;
-  double april;
-  double may;
-  double jun;
-  double july;
-  double aug;
-  double sep;
-  double oct;
-  double nov;
-  double dec;
+  double? jan;
+  double? feb;
+  double? march;
+  double? april;
+  double? may;
+  double? jun;
+  double? july;
+  double? aug;
+  double? sep;
+  double? oct;
+  double? nov;
+  double? dec;
 
   GraphModel({
     this.jan = 0,
