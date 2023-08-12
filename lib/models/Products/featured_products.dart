@@ -1,13 +1,13 @@
 import 'product.dart';
 
-class FeaturedProducts {
+class ProductModel {
   List<Product>? products;
   int? total;
 
-  FeaturedProducts({this.products, this.total});
+  ProductModel({this.products, this.total});
 
-  factory FeaturedProducts.fromJson(Map<String, dynamic> json) {
-    return FeaturedProducts(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),

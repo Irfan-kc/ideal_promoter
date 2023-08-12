@@ -19,7 +19,26 @@ class ProductProvider extends BaseProvider {
       var response = await Provider.of<ProductService>(context, listen: false)
           .getAllProducts(page: page);
       if (response.isSuccessful) {
-        var result = FeaturedProducts.fromJson(response.body);
+        var result = ProductModel.fromJson(response.body);
+        products = result.products ?? [];
+        notifyListeners();
+      }
+    } catch (e) {
+      rethrow;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future getAllFeaturedProducts(BuildContext context, {int? page}) async {
+    try {
+      isLoading = true;
+      notifyListeners();
+      var response = await Provider.of<ProductService>(context, listen: false)
+          .getFeaturedProducts(page: page);
+      if (response.isSuccessful) {
+        var result = ProductModel.fromJson(response.body);
         products = result.products ?? [];
         notifyListeners();
       }

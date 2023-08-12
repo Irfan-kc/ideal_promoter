@@ -3,7 +3,6 @@ import 'package:ideal_promoter/constant/app_images.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/models/Products/product.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
-import 'package:ideal_promoter/view/screen/home/product_page/product_page.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
 import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
@@ -13,13 +12,13 @@ import 'package:provider/provider.dart';
 class GridViewData extends StatefulWidget {
   final bool isExpanded;
   final String title;
-  final bool isShowViewAll;
+  final Function(int page) isScrollExtents;
 
   const GridViewData({
     Key? key,
     this.isExpanded = false,
     required this.title,
-    this.isShowViewAll = true,
+    required this.isScrollExtents,
   }) : super(key: key);
 
   @override
@@ -50,10 +49,7 @@ class _GridViewDataState extends State<GridViewData> {
       setState(() {
         page++;
       });
-      Provider.of<ProductProvider>(context, listen: false).getAllProducts(
-        context,
-        page: page,
-      );
+      widget.isScrollExtents(page);
     }
   }
 
@@ -71,22 +67,6 @@ class _GridViewDataState extends State<GridViewData> {
                   widget.title,
                   style: AppTextStyle.titleText1,
                 ),
-                widget.isShowViewAll
-                    ? SizedBox(
-                        height: 30,
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => const ProductPage()));
-                            },
-                            child: const Text(
-                              'View all',
-                              style: AppTextStyle.smallText,
-                            )),
-                      )
-                    : const SizedBox()
               ],
             ),
           ),

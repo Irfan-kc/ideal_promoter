@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/Category/category_provider.dart';
 import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
+import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
 import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
@@ -30,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
       Provider.of<GraphProvider>(context, listen: false).getGraphData(context);
       Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
+      Provider.of<ProductProvider>(context, listen: false)
+          .getAllFeaturedProducts(context);
     });
   }
 
@@ -112,7 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     const KHeight(9),
                     const CategoryTile(),
                     const KHeight(12),
-                    const GridViewData(title: 'Suggested for you'),
+                    GridViewData(
+                      title: 'Suggested for you',
+                      isScrollExtents: (page) async {
+                        await Provider.of<ProductProvider>(context,
+                                listen: false)
+                            .getAllFeaturedProducts(context, page: page);
+                      },
+                    ),
                   ],
                 ),
               );
