@@ -17,29 +17,28 @@ class Product {
   bool? isSpecialOffer;
   bool? isBulkyProduct;
   bool? isExtraChargeNeeded;
-  int? extraCharge;
+  double? extraCharge;
   List<dynamic>? availableAreas;
   bool? isAvailableEveryWhere;
   bool? isFittingNeeded;
   bool? isFitted;
-  int? fittingCharge;
+  double? fittingCharge;
   bool? isReturnViable;
   bool? isFeatured;
   List<dynamic>? extras;
   double? cost;
-  int? price;
-  int? offerPrice;
-  int? primePrice;
-  int? stock;
-  int? minStock;
-  int? reorderQuantity;
+  double? price;
+  double? offerPrice;
+  double? primePrice;
+  double? stock;
+  double? minStock;
+  double? reorderQuantity;
   bool? isActive;
   bool? isDeleted;
-  int? commisionPercentage;
+  double? commisionPercentage;
   List<ProductImage>? images;
   DateTime? createdAt;
   DateTime? updatedAt;
-  int? v;
   dynamic maxOrderQuantity;
   dynamic minOrderQuantity;
   String? user;
@@ -82,7 +81,6 @@ class Product {
     this.images,
     this.createdAt,
     this.updatedAt,
-    this.v,
     this.maxOrderQuantity,
     this.minOrderQuantity,
     this.user,
@@ -111,25 +109,26 @@ class Product {
         isSpecialOffer: json['isSpecialOffer'] as bool?,
         isBulkyProduct: json['isBulkyProduct'] as bool?,
         isExtraChargeNeeded: json['isExtraChargeNeeded'] as bool?,
-        extraCharge: json['extraCharge'] as int?,
+        extraCharge: double.tryParse(json['extraCharge'].toString()),
         availableAreas: json['availableAreas'] as List<dynamic>?,
         isAvailableEveryWhere: json['isAvailableEveryWhere'] as bool?,
         isFittingNeeded: json['isFittingNeeded'] as bool?,
         isFitted: json['isFitted'] as bool?,
-        fittingCharge: json['fittingCharge'] as int?,
+        fittingCharge: double.tryParse(json['fittingCharge'].toString()),
         isReturnViable: json['isReturnViable'] as bool?,
         isFeatured: json['isFeatured'] as bool?,
         extras: json['extras'] as List<dynamic>?,
-        cost: (json['cost'] as num?)?.toDouble(),
-        price: json['price'] as int?,
-        offerPrice: json['offerPrice'] as int?,
-        primePrice: json['primePrice'] as int?,
-        stock: json['stock'] as int?,
-        minStock: json['minStock'] as int?,
-        reorderQuantity: json['reorderQuantity'] as int?,
+        cost: double.tryParse(json['cost'].toString()),
+        price: double.tryParse(json['price'].toString()),
+        offerPrice: double.tryParse(json['offerPrice'].toString()),
+        primePrice: double.tryParse(json['primePrice'].toString()),
+        stock: double.tryParse((json['stock']).toString()),
+        minStock: double.tryParse((json['minStock']).toString()),
+        reorderQuantity: double.tryParse((json['reorderQuantity']).toString()),
         isActive: json['isActive'] as bool?,
         isDeleted: json['isDeleted'] as bool?,
-        commisionPercentage: json['commisionPercentage'] as int?,
+        commisionPercentage:
+            double.tryParse((json['commisionPercentage']).toString()),
         images: (json['images'] as List<dynamic>?)
             ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
             .toList(),
@@ -139,7 +138,6 @@ class Product {
         updatedAt: json['updatedAt'] == null
             ? null
             : DateTime.parse(json['updatedAt'] as String),
-        v: json['__v'] as int?,
         maxOrderQuantity: json['maxOrderQuantity'] as dynamic,
         minOrderQuantity: json['minOrderQuantity'] as dynamic,
         user: json['user'] as String?,
@@ -183,7 +181,6 @@ class Product {
         'images': images?.map((e) => e.toJson()).toList(),
         'createdAt': createdAt?.toIso8601String(),
         'updatedAt': updatedAt?.toIso8601String(),
-        '__v': v,
         'maxOrderQuantity': maxOrderQuantity,
         'minOrderQuantity': minOrderQuantity,
         'user': user,

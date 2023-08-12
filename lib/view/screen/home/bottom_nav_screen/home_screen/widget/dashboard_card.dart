@@ -8,7 +8,10 @@ import 'earning_card.dart';
 
 class DashBoardCard extends StatelessWidget {
   final DashboardProvider provider;
-  const DashBoardCard({super.key, required this.provider});
+  const DashBoardCard({
+    super.key,
+    required this.provider,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +26,16 @@ class DashBoardCard extends StatelessWidget {
               provider: provider,
               onTap: () {
                 Navigator.push(context,
-                MaterialPageRoute(builder: (_) => const EarningsPage()));
+                    MaterialPageRoute(builder: (_) => const EarningsPage()));
                 provider.getDashboardData(context);
               },
               heading: 'Total Earnings',
-              todayAmount: '\u20B98600.00',
-              totalAmount:
-                  '\u20B9${provider.dashboardData?.totalEarningsAmount.toString()}',
+              todayAmount: provider.dashboardData?.totalEarningsAmount != null
+                  ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
+                  : '\u20B90',
+              totalAmount: provider.dashboardData?.totalEarningsAmount != null
+                  ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
+                  : '\u20B90',
               totalColor: const Color(0xFF9FFFCB),
             ),
           ),
@@ -46,9 +52,13 @@ class DashBoardCard extends StatelessWidget {
               },
               heading: 'Business volume',
               todayAmount:
-                  '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount.toString()}',
+                  provider.dashboardData?.totalBusinessVolumeAmount != null
+                      ? '${provider.dashboardData?.totalBusinessVolumeAmount}'
+                      : '0',
               totalAmount:
-                  '\u20B9${provider.dashboardData?.totalBusinessVolumeAmount.toString()}',
+                  provider.dashboardData?.totalBusinessVolumeAmount != null
+                      ? '${provider.dashboardData?.totalBusinessVolumeAmount}'
+                      : '0',
               totalColor: const Color(0xFFFFF59F),
             ),
           ),

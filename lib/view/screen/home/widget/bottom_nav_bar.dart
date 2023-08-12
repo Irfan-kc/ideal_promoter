@@ -67,10 +67,10 @@ class BottomNavBarItem extends StatelessWidget {
     final bool isSelected = currentIndex == defaultIndex;
 
     return Consumer<BottomNavProvider>(builder: (
-        context,
-        bottomNavProvider,
-        _,
-        ) {
+      context,
+      bottomNavProvider,
+      _,
+    ) {
       return GestureDetector(
         onTap: () {
           Provider.of<BottomNavProvider>(context, listen: false)

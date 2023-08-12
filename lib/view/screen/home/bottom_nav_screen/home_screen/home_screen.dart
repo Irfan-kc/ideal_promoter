@@ -26,13 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
-      await Provider.of<DashboardProvider>(context, listen: false)
+      Provider.of<DashboardProvider>(context, listen: false)
           .getDashboardData(context);
-      await Provider.of<GraphProvider>(context, listen: false)
-          .getGraphData(context);
-      await Provider.of<CategoryProvider>(context, listen: false)
+      Provider.of<GraphProvider>(context, listen: false).getGraphData(context);
+      Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
-      await Provider.of<ProductProvider>(context,listen: false).getAllProducts(context);    
+      Provider.of<ProductProvider>(context, listen: false)
+          .getAllFeaturedProducts(context);
     });
   }
 
@@ -115,7 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     const KHeight(9),
                     const CategoryTile(),
                     const KHeight(12),
-                    const GridViewData(title: 'Suggested for you'),
+                    GridViewData(
+                      title: 'Suggested for you',
+                      isScrollExtents: (page) async {
+                        await Provider.of<ProductProvider>(context,
+                                listen: false)
+                            .getAllFeaturedProducts(context, page: page);
+                      },
+                    ),
                   ],
                 ),
               );

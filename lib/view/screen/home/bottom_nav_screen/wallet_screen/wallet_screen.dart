@@ -12,27 +12,27 @@ class WalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<GraphProvider>(
-      builder: (context, graphProvider,_) {
-        return BackGroundWidget(
-            isExpanded: true,
-            backButton: false,
-            heading: 'Earnings',
-            column2: Column(
-              children: [
-                const KHeight(20),
-                GraphView(
-                  title: 'Monthly Earnings',
-                  model: graphProvider.graphData!,
-                ),
-                const KHeight(16),
-                const Expanded(
-                    child: CustTableData(
-                  title: 'Monthly Earnings',
-                ))
-              ],
-            ));
-      }
-    );
+    return Consumer<GraphProvider>(builder: (context, graphProvider, _) {
+      return BackGroundWidget(
+        isExpanded: true,
+        backButton: false,
+        heading: 'Earnings',
+        column2: Column(
+          children: [
+            const KHeight(20),
+            GraphView(
+              title: 'Monthly Earnings',
+              model: graphProvider.graphData!,
+            ),
+            const KHeight(16),
+            const Expanded(
+              child: CustTableData(
+                title: 'Monthly Earnings',
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
