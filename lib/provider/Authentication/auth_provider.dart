@@ -15,12 +15,10 @@ class AuthProvider extends BaseProvider {
   bool isLoading = false;
   bool isSigned = false;
 
-
   String? email;
   String? password;
 
-
-  AuthProvider(){
+  AuthProvider() {
     signInCheck();
   }
 
@@ -145,9 +143,9 @@ class AuthProvider extends BaseProvider {
     }
   }
 
-  signInCheck() async{
+  signInCheck() async {
     var sharedPref = await SharedPreferences.getInstance();
-     isSigned = sharedPref.containsKey("token");
+    isSigned = sharedPref.containsKey("token");
   }
 
   Future<bool> setToken(String? token) async {

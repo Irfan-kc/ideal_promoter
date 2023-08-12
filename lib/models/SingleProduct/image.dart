@@ -5,7 +5,8 @@ class SingleProductImage {
 
   SingleProductImage({this.publicId, this.url, this.id});
 
-  factory SingleProductImage.fromJson(Map<String, dynamic> json) => SingleProductImage(
+  factory SingleProductImage.fromJson(Map<String, dynamic> json) =>
+      SingleProductImage(
         publicId: json['public_id'] as String?,
         url: json['url'] as String?,
         id: json['_id'] as String?,

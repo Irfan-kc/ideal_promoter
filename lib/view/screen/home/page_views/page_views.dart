@@ -12,27 +12,25 @@ class PageViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Consumer<GraphProvider>(
-      builder: (context, graphProvider,_) {
-        return Scaffold(
-            body: BackGroundWidget(
-                isExpanded: true,
-                heading: 'Page Views',
-                column2: Column(
-                  children: [
-                    const KHeight(20),
-                    GraphView(
-                      title: 'Page views',
-                      model: graphProvider.graphData!,
-                    ),
-                    const KHeight(16),
-                    const Expanded(
-                        child: CustTableData(
-                      title: 'Page views',
-                    ))
-                  ],
-                )));
-      }
-    );
+    return Consumer<GraphProvider>(builder: (context, graphProvider, _) {
+      return Scaffold(
+          body: BackGroundWidget(
+              isExpanded: true,
+              heading: 'Page Views',
+              column2: Column(
+                children: [
+                  const KHeight(20),
+                  GraphView(
+                    title: 'Page views',
+                    model: graphProvider.graphData!,
+                  ),
+                  const KHeight(16),
+                  const Expanded(
+                      child: CustTableData(
+                    title: 'Page views',
+                  ))
+                ],
+              )));
+    });
   }
 }

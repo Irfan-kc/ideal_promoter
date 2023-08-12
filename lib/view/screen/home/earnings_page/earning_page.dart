@@ -14,8 +14,6 @@ class EarningsPage extends StatefulWidget {
 }
 
 class _EarningsPageState extends State<EarningsPage> {
-
-
   @override
   void initState() {
     super.initState();
@@ -23,27 +21,25 @@ class _EarningsPageState extends State<EarningsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<GraphProvider>(
-      builder: (context, graphProvider,_) {
-        return Scaffold(
-            body: BackGroundWidget(
-                isExpanded: true,
-                heading: 'Earnings',
-                column2: Column(
-                  children: [
-                    const KHeight(20),
-                    GraphView(
-                      title: 'Monthly Earnings',
-                      model: graphProvider.graphData!,
-                    ),
-                    const KHeight(16),
-                    const Expanded(
-                        child: CustTableData(
-                      title: 'Monthly Earnings',
-                    ))
-                  ],
-                )));
-      }
-    );
+    return Consumer<GraphProvider>(builder: (context, graphProvider, _) {
+      return Scaffold(
+          body: BackGroundWidget(
+              isExpanded: true,
+              heading: 'Earnings',
+              column2: Column(
+                children: [
+                  const KHeight(20),
+                  GraphView(
+                    title: 'Monthly Earnings',
+                    model: graphProvider.graphData!,
+                  ),
+                  const KHeight(16),
+                  const Expanded(
+                      child: CustTableData(
+                    title: 'Monthly Earnings',
+                  ))
+                ],
+              )));
+    });
   }
 }

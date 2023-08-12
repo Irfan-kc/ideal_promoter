@@ -11,17 +11,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(
-        const Duration(seconds: 5),
-        () {
-          if(Provider.of<AuthProvider>(context,listen: false).isSigned == true){
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const Home()));
-          }else{
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const LoginPage()));
-          }
-        });
+    Timer(const Duration(seconds: 5), () {
+      if (Provider.of<AuthProvider>(context, listen: false).isSigned == true) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => const Home()));
+      } else {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => const LoginPage()));
+      }
+    });
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20),

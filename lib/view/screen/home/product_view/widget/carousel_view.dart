@@ -64,7 +64,9 @@ class _CarouselViewState extends State<CarouselView> {
                 bottom: 20,
                 child: Container(
                   height: 18,
-                  width: widget.images.length ==2 ? widget.images.length * 24 : widget.images.length * 20,
+                  width: widget.images.length == 2
+                      ? widget.images.length * 24
+                      : widget.images.length * 20,
                   decoration: BoxDecoration(
                       color: AppColors.black.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(10)),
