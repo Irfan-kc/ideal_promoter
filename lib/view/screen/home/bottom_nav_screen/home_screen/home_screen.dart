@@ -25,13 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
-      await Provider.of<DashboardProvider>(context, listen: false)
+      Provider.of<DashboardProvider>(context, listen: false)
           .getDashboardData(context);
-      await Provider.of<GraphProvider>(context, listen: false)
-          .getGraphData(context);
-      await Provider.of<CategoryProvider>(context, listen: false)
+      Provider.of<GraphProvider>(context, listen: false).getGraphData(context);
+      Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
-      
     });
   }
 

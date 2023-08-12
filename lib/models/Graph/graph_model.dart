@@ -29,18 +29,18 @@ class GraphModel {
 
   factory GraphModel.fromJson(Map<String, dynamic> json) {
     return GraphModel(
-      jan: json['1'] ?? 0,
-      feb: json['2'] ?? 0,
-      march: json['3'] ?? 0,
-      april: json['4'] ?? 0,
-      may: json['5'] ?? 0,
-      jun: json['6'] ?? 0,
-      july: json['7'] ?? 0,
-      aug: json['8'] ?? 0,
-      sep: json['9'] ?? 0,
-      oct: json['10'] ?? 0,
-      nov: json['11'] ?? 0,
-      dec: json['12'] ?? 0,
+      jan: double.tryParse((json['1'] ?? 0).toString()),
+      feb: double.tryParse((json['2'] ?? 0).toString()),
+      march: double.tryParse((json['3'] ?? 0).toString()),
+      april: double.tryParse((json['4'] ?? 0).toString()),
+      may: double.tryParse((json['5'] ?? 0).toString()),
+      jun: double.tryParse((json['6'] ?? 0).toString()),
+      july: double.tryParse((json['7'] ?? 0).toString()),
+      aug: double.tryParse((json['8'] ?? 0).toString()),
+      sep: double.tryParse((json['9'] ?? 0).toString()),
+      oct: double.tryParse((json['10'] ?? 0).toString()),
+      nov: double.tryParse((json['11'] ?? 0).toString()),
+      dec: double.tryParse((json['12'] ?? 0).toString()),
     );
   }
 }
