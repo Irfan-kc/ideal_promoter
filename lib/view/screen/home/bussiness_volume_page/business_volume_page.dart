@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/BusinessVolume/business_volume_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
@@ -16,14 +15,7 @@ class BusinessVolumePage extends StatefulWidget {
 }
 
 class _BusinessVolumePageState extends State<BusinessVolumePage> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero, () async {
-      await Provider.of<BusinessVolumeProvider>(context, listen: false)
-          .getAllBusinessVolume(context);
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {

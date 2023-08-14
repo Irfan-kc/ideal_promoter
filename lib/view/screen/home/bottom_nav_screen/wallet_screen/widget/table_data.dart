@@ -44,10 +44,28 @@ class CustTableData extends StatefulWidget {
 class _CustTableDataState extends State<CustTableData> {
   final DateFormat formatter = DateFormat('dd-MM-yyyy');
 
-  DateTime fromDate = DateTime(DateTime.now().year, DateTime.now().month,
-      DateTime.now().day, 0, 0, 0, 1);
+  DateTime fromDate = DateTime(
+    DateTime.now().year,
+    DateTime.now().month,
+    DateTime.now().day,
+    0,
+    0,
+    0,
+    0,
+  );
 
   DateTime toDate = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () async {
+      await Provider.of<BusinessVolumeProvider>(context, listen: false)
+          .getAllBusinessVolume(context,
+              fromDate: formatDate(fromDate.toString().split(" ")[0]),
+              toDate: formatDate(toDate.toString().split(" ")[0]));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +123,14 @@ class _CustTableDataState extends State<CustTableData> {
                           fromDate = DateTime(
                               value!.year, value.month, value.day, 0, 0, 0, 0);
                           setState(() {});
+                          Provider.of<BusinessVolumeProvider>(context,
+                                  listen: false)
+                              .getAllBusinessVolume(
+                            context,
+                            fromDate:
+                                formatDate(fromDate.toString().split(" ")[0]),
+                            toDate: formatDate(toDate.toString().split(" ")[0]),
+                          );
                         });
                       },
                       label: 'From date',
@@ -120,6 +146,14 @@ class _CustTableDataState extends State<CustTableData> {
                         CustTableData.selectDate(context, toDate).then((value) {
                           toDate = value!;
                           setState(() {});
+                          Provider.of<BusinessVolumeProvider>(context,
+                                  listen: false)
+                              .getAllBusinessVolume(
+                            context,
+                            fromDate:
+                                formatDate(fromDate.toString().split(" ")[0]),
+                            toDate: formatDate(toDate.toString().split(" ")[0]),
+                          );
                         });
                       },
                       label: 'To date',
