@@ -77,5 +77,8 @@ abstract class AppTextStyle {
   );
 
   static const textFieldText = TextStyle(
-      color: Colors.black, fontSize: 14.6, fontWeight: FontWeight.w400);
+    color: Colors.black,
+    fontSize: 14.6,
+    fontWeight: FontWeight.w400,
+  );
 }

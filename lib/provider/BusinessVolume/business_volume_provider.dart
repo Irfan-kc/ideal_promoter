@@ -9,12 +9,18 @@ class BusinessVolumeProvider extends BaseProvider {
   bool isLoading = false;
   List<BusinessVolume> businessVolumeData = [];
 
-  Future getAllBusinessVolume(BuildContext context) async {
+  Future getAllBusinessVolume(
+    BuildContext context, {
+    String? fromDate,
+    String? toDate,
+    int? page,
+  }) async {
     try {
       isLoading = true;
       notifyListeners();
-      var response = await Provider.of<BusinessVolumeService>(context, listen: false)
-          .getBusinessVolume();
+      var response = await Provider.of<BusinessVolumeService>(context,
+              listen: false)
+          .getBusinessVolume(fromDate: fromDate, toDate: toDate, page: page);
       if (response.isSuccessful) {
         var result = BusinessVolumeModel.fromJson(response.body);
         businessVolumeData = result.businessVolumes ?? [];

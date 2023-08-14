@@ -41,7 +41,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                   model: graphProvider.graphData!,
                 ),
                 const KHeight(16),
-                const Expanded(
+                 const Expanded(
                   child: CustTableData(
                     title: 'Monthly Business volume',
                   ),

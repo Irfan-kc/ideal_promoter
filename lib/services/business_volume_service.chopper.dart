@@ -17,12 +17,22 @@ class _$BusinessVolumeService extends BusinessVolumeService {
   final definitionType = BusinessVolumeService;
 
   @override
-  Future<Response<dynamic>> getBusinessVolume() {
+  Future<Response<dynamic>> getBusinessVolume({
+    String? fromDate,
+    String? toDate,
+    int? page,
+  }) {
     final Uri $url = Uri.parse('business-volume/promoter/all');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'from': fromDate,
+      'to': toDate,
+      'page': page,
+    };
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client.send<dynamic, dynamic>($request);
   }
