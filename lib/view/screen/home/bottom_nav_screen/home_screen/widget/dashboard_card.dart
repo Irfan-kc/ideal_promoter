@@ -30,8 +30,8 @@ class DashBoardCard extends StatelessWidget {
                 provider.getDashboardData(context);
               },
               heading: 'Total Earnings',
-              todayAmount: provider.dashboardData?.totalEarningsAmount != null
-                  ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
+              todayAmount: provider.dashboardData?.todayEarningsAmount != null
+                  ? '\u20B9${provider.dashboardData?.todayEarningsAmount}'
                   : '\u20B90',
               totalAmount: provider.dashboardData?.totalEarningsAmount != null
                   ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
@@ -52,8 +52,8 @@ class DashBoardCard extends StatelessWidget {
               },
               heading: 'Business volume',
               todayAmount:
-                  provider.dashboardData?.totalBusinessVolumeAmount != null
-                      ? '${provider.dashboardData?.totalBusinessVolumeAmount}'
+                  provider.dashboardData?.todayBusinessVolumeAmount != null
+                      ? '${provider.dashboardData?.todayBusinessVolumeAmount}'
                       : '0',
               totalAmount:
                   provider.dashboardData?.totalBusinessVolumeAmount != null

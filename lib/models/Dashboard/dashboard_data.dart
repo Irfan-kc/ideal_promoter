@@ -1,51 +1,55 @@
 class DashboardData {
   double? totalPageViewsCount;
-  double? totalEarningsCount;
-  double? totalEarningsAmount;
   double? todayPageViewsCount;
+  double? totalEarningsCount;
   double? todayEarningsCount;
+  double? totalEarningsAmount;
+  double? todayEarningsAmount;
   double? totalBusinessVolumeCount;
-  double? totalBusinessVolumeAmount;
   double? todayBusinessVolumeCount;
+  double? totalBusinessVolumeAmount;
+  double? todayBusinessVolumeAmount;
 
   DashboardData({
     this.totalPageViewsCount,
-    this.totalEarningsCount,
-    this.totalEarningsAmount,
     this.todayPageViewsCount,
+    this.totalEarningsCount,
     this.todayEarningsCount,
+    this.totalEarningsAmount,
+    this.todayEarningsAmount,
     this.totalBusinessVolumeCount,
-    this.totalBusinessVolumeAmount,
     this.todayBusinessVolumeCount,
+    this.totalBusinessVolumeAmount,
+    this.todayBusinessVolumeAmount,
   });
 
   factory DashboardData.fromJson(Map<String, dynamic> json) => DashboardData(
-        totalPageViewsCount:
-            double.tryParse(json['totalPageViewsCount'].toString()),
-        totalEarningsCount:
-            double.tryParse(json['totalEarningsCount'].toString()),
-        totalEarningsAmount:
-            double.tryParse(json['totalEarningsAmount'].toString()),
-        todayPageViewsCount:
-            double.tryParse(json['todayPageViewsCount'].toString()),
-        todayEarningsCount:
-            double.tryParse(json['todayEarningsCount'].toString()),
+        totalPageViewsCount: double.parse(["totalPageViewsCount"].toString()),
+        todayPageViewsCount: double.parse(["todayPageViewsCount"].toString()),
+        totalEarningsCount: double.parse(["totalEarningsCount"].toString()),
+        todayEarningsCount: double.parse(["todayEarningsCount"].toString()),
+        totalEarningsAmount: double.parse(["totalEarningsAmount"].toString()),
+        todayEarningsAmount: double.parse(["todayEarningsAmount"].toString()),
         totalBusinessVolumeCount:
-            double.tryParse(json['totalBusinessVolumeCount'].toString()),
-        totalBusinessVolumeAmount:
-            double.tryParse(json['totalBusinessVolumeAmount'].toString()),
+            double.parse(["totalBusinessVolumeCount"].toString()),
         todayBusinessVolumeCount:
-            double.tryParse(json['todayBusinessVolumeCount'].toString()),
+            double.parse(["todayBusinessVolumeCount"].toString()),
+        totalBusinessVolumeAmount:
+            double.parse(["totalBusinessVolumeAmount"].toString()),
+        todayBusinessVolumeAmount:
+            double.parse(["todayBusinessVolumeAmount"].toString()),
       );
 
   Map<String, dynamic> toJson() => {
-        'totalPageViewsCount': totalPageViewsCount,
-        'totalEarningsCount': totalEarningsCount,
-        'totalEarningsAmount': totalEarningsAmount,
-        'todayPageViewsCount': todayPageViewsCount,
-        'todayEarningsCount': todayEarningsCount,
-        'totalBusinessVolumeCount': totalBusinessVolumeCount,
-        'totalBusinessVolumeAmount': totalBusinessVolumeAmount,
-        'todayBusinessVolumeCount': todayBusinessVolumeCount,
+        "totalPageViewsCount": totalPageViewsCount,
+        "todayPageViewsCount": todayPageViewsCount,
+        "totalEarningsCount": totalEarningsCount,
+        "todayEarningsCount": todayEarningsCount,
+        "totalEarningsAmount": totalEarningsAmount,
+        "todayEarningsAmount": todayEarningsAmount,
+        "totalBusinessVolumeCount": totalBusinessVolumeCount,
+        "todayBusinessVolumeCount": todayBusinessVolumeCount,
+        "totalBusinessVolumeAmount": totalBusinessVolumeAmount,
+        "todayBusinessVolumeAmount": todayBusinessVolumeAmount,
       };
 }

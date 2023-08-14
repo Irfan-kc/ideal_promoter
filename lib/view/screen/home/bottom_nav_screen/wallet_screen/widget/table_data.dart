@@ -62,8 +62,8 @@ class _CustTableDataState extends State<CustTableData> {
     Future.delayed(Duration.zero, () async {
       await Provider.of<BusinessVolumeProvider>(context, listen: false)
           .getAllBusinessVolume(context,
-              fromDate: formatDate(fromDate.toString().split(" ")[0]),
-              toDate: formatDate(toDate.toString().split(" ")[0]));
+              fromDate: fromDate.toString().split(" ")[0],
+              toDate: toDate.toString().split(" ")[0]);
     });
   }
 
@@ -127,9 +127,8 @@ class _CustTableDataState extends State<CustTableData> {
                                   listen: false)
                               .getAllBusinessVolume(
                             context,
-                            fromDate:
-                                formatDate(fromDate.toString().split(" ")[0]),
-                            toDate: formatDate(toDate.toString().split(" ")[0]),
+                            fromDate: fromDate.toString().split(" ")[0],
+                            toDate: toDate.toString().split(" ")[0],
                           );
                         });
                       },
@@ -150,9 +149,8 @@ class _CustTableDataState extends State<CustTableData> {
                                   listen: false)
                               .getAllBusinessVolume(
                             context,
-                            fromDate:
-                                formatDate(fromDate.toString().split(" ")[0]),
-                            toDate: formatDate(toDate.toString().split(" ")[0]),
+                            fromDate: fromDate.toString().split(" ")[0],
+                            toDate: toDate.toString().split(" ")[0],
                           );
                         });
                       },

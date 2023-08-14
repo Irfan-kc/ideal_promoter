@@ -8,8 +8,8 @@ part 'business_volume_service.chopper.dart';
 abstract class BusinessVolumeService extends ChopperService {
   @Get(path: 'business-volume/promoter/all')
   Future<Response<dynamic>> getBusinessVolume({
-    @Query('from') String? fromDate,
-    @Query('to') String? toDate,
+    @Query('fromDate') String? fromDate,
+    @Query('toDate') String? toDate,
     @Query('page') int? page,
   });
 
