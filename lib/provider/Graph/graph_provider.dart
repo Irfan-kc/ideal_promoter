@@ -5,17 +5,37 @@ import 'package:ideal_promoter/services/graph_service.dart';
 import 'package:provider/provider.dart';
 
 class GraphProvider extends BaseProvider {
-  GraphModel? graphData;
+  GraphModel? earningsGraphData;
+  GraphModel? bvGraphData;
+
   bool isLoading = false;
 
-  Future getGraphData(BuildContext context) async {
+  Future getEarningsGraphData(BuildContext context) async {
     try {
       isLoading = true;
       notifyListeners();
       var response = await Provider.of<GraphService>(context, listen: false)
-          .getAllraphData();
+          .getEarningsGraphData();
       if (response.isSuccessful) {
-        graphData = GraphModel.fromJson(response.body);
+        earningsGraphData = GraphModel.fromJson(response.body);
+        notifyListeners();
+      }
+    } catch (e) {
+      rethrow;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future getBusinessVolumeGraphData(BuildContext context) async {
+    try {
+      isLoading = true;
+      notifyListeners();
+      var response = await Provider.of<GraphService>(context, listen: false)
+          .getBusinessVolumeGraphData();
+      if (response.isSuccessful) {
+        bvGraphData = GraphModel.fromJson(response.body);
         notifyListeners();
       }
     } catch (e) {

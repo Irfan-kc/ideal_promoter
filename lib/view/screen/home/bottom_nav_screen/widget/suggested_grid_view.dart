@@ -13,12 +13,14 @@ class GridViewData extends StatefulWidget {
   final bool isExpanded;
   final String title;
   final Function(int page) isScrollExtents;
+  final Function() initFunction;
 
   const GridViewData({
     Key? key,
     this.isExpanded = false,
     required this.title,
     required this.isScrollExtents,
+    required this.initFunction,
   }) : super(key: key);
 
   @override
@@ -33,11 +35,7 @@ class _GridViewDataState extends State<GridViewData> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
-      await Provider.of<ProductProvider>(context, listen: false).getAllProducts(
-        context,
-        page: 1,
-        // isFirst: true,
-      );
+      widget.initFunction();
 
       // Move the following line outside the `setState` callback
       controller.addListener(_scrollListener);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
-import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_data.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
@@ -22,14 +21,14 @@ class WalletScreen extends StatelessWidget {
             const KHeight(20),
             GraphView(
               title: 'Monthly Earnings',
-              model: graphProvider.graphData!,
+              model: graphProvider.earningsGraphData!,
             ),
             const KHeight(16),
-            const Expanded(
-              child: CustTableData(
-                title: 'Monthly Earnings',
-              ),
-            ),
+            // const Expanded(
+            //   child: CustTableData(
+            //     title: 'Monthly Earnings',
+            //   ),
+            // ),
           ],
         ),
       );

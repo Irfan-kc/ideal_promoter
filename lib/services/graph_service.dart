@@ -7,7 +7,10 @@ part 'graph_service.chopper.dart';
 @ChopperApi()
 abstract class GraphService extends ChopperService {
   @Get(path: 'earning/promoter/monthly/all')
-  Future<Response<dynamic>> getAllraphData();
+  Future<Response<dynamic>> getEarningsGraphData();
+
+  @Get(path: 'business-volume/promoter/monthly/all')
+  Future<Response<dynamic>> getBusinessVolumeGraphData();
 
   static GraphService create() {
     final client = ChopperClient(

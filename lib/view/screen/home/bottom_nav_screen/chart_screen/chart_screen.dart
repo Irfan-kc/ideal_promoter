@@ -19,6 +19,10 @@ class ChartScreen extends StatelessWidget {
         const KHeight(12),
         Expanded(
             child: GridViewData(
+          initFunction: () async {
+            await Provider.of<ProductProvider>(context, listen: false)
+                .getAllProducts(context,page: 1);
+          },
           isExpanded: true,
           title: 'Product',
           isScrollExtents: (page) async {

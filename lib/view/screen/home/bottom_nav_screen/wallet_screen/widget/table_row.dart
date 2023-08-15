@@ -3,40 +3,43 @@ import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 
 class CustTableRow extends StatelessWidget {
-  final String? orderId;
-  final String? orderAmount;
-  final String? earningsAmount;
-  final String? orderStatus;
+  final String orderId;
+  final String orderAmount;
+  final String earningsAmount;
+  final String orderStatus;
   final bool? textStyle;
-  const CustTableRow(
-      {super.key,
-      this.orderId,
-      this.orderAmount,
-      this.earningsAmount,
-      this.orderStatus,
-      this.textStyle = true});
+  final bool isEarnings;
+  const CustTableRow({
+    super.key,
+    required this.orderId,
+    required this.orderAmount,
+    required this.earningsAmount,
+    required this.orderStatus,
+    this.textStyle = true,
+    this.isEarnings = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CustTableCell(
-          text: orderId ?? 'Order Id',
+          text: orderId,
           flex: 2,
           textStyle: textStyle,
         ),
         CustTableCell(
-          text: orderAmount ?? 'Order Amount',
+          text: orderAmount,
           flex: 3,
           textStyle: textStyle,
         ),
         CustTableCell(
-          text: earningsAmount ?? 'Earnings Amount',
+          text: earningsAmount,
           flex: 3,
           textStyle: textStyle,
         ),
         CustTableCell(
-          text: orderStatus ?? 'Order Status',
+          text: orderStatus,
           flex: 2,
           color: AppColors.green,
           textStyle: textStyle,
@@ -49,7 +52,6 @@ class CustTableRow extends StatelessWidget {
 class CustTableCell extends StatelessWidget {
   final String text;
   final int flex;
-  // final TextStyle? textStyle;
   final bool? textStyle;
   final Color? color;
   const CustTableCell(
@@ -62,16 +64,18 @@ class CustTableCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        flex: flex,
-        child: Text(
-          text,
-          style: textStyle == false
-              ? AppTextStyle.dataColumnText
-              : TextStyle(
-                  fontSize: 11,
-                  color: color ?? Colors.black,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: -0.14),
-        ));
+      flex: flex,
+      child: Text(
+        text,
+        style: textStyle == false
+            ? AppTextStyle.dataColumnText
+            : TextStyle(
+                fontSize: 11,
+                color: color ?? Colors.black,
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.14,
+              ),
+      ),
+    );
   }
 }

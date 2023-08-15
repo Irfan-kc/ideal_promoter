@@ -24,8 +24,8 @@ class _$BusinessVolumeService extends BusinessVolumeService {
   }) {
     final Uri $url = Uri.parse('business-volume/promoter/all');
     final Map<String, dynamic> $params = <String, dynamic>{
-      'from': fromDate,
-      'to': toDate,
+      'fromDate': fromDate,
+      'toDate': toDate,
       'page': page,
     };
     final Request $request = Request(
