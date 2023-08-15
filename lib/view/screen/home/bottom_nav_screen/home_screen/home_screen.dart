@@ -28,7 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Future.delayed(Duration.zero, () async {
       Provider.of<DashboardProvider>(context, listen: false)
           .getDashboardData(context);
-      Provider.of<GraphProvider>(context, listen: false).getEarningsGraphData(context);
+      Provider.of<GraphProvider>(context, listen: false)
+          .getEarningsGraphData(context);
       Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
     });

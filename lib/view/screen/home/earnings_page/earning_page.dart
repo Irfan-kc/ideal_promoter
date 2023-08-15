@@ -20,7 +20,7 @@ class _EarningsPageState extends State<EarningsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<GraphProvider>( 
+    return Consumer<GraphProvider>(
       builder: (context, graphProvider, _) {
         return Scaffold(
           body: BackGroundWidget(

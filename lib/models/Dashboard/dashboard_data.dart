@@ -24,12 +24,16 @@ class DashboardData {
   });
 
   factory DashboardData.fromJson(Map<String, dynamic> json) => DashboardData(
-        totalPageViewsCount: double.parse(json["totalPageViewsCount"].toString()),
-        todayPageViewsCount: double.parse(json["todayPageViewsCount"].toString()),
+        totalPageViewsCount:
+            double.parse(json["totalPageViewsCount"].toString()),
+        todayPageViewsCount:
+            double.parse(json["todayPageViewsCount"].toString()),
         totalEarningsCount: double.parse(json["totalEarningsCount"].toString()),
         todayEarningsCount: double.parse(json["todayEarningsCount"].toString()),
-        totalEarningsAmount: double.parse(json["totalEarningsAmount"].toString()),
-        todayEarningsAmount: double.parse(json["todayEarningsAmount"].toString()),
+        totalEarningsAmount:
+            double.parse(json["totalEarningsAmount"].toString()),
+        todayEarningsAmount:
+            double.parse(json["todayEarningsAmount"].toString()),
         totalBusinessVolumeCount:
             double.parse(json["totalBusinessVolumeCount"].toString()),
         todayBusinessVolumeCount:

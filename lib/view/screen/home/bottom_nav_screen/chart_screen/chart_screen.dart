@@ -21,7 +21,7 @@ class ChartScreen extends StatelessWidget {
             child: GridViewData(
           initFunction: () async {
             await Provider.of<ProductProvider>(context, listen: false)
-                .getAllProducts(context,page: 1);
+                .getAllProducts(context, page: 1);
           },
           isExpanded: true,
           title: 'Product',
