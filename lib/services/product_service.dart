@@ -11,7 +11,7 @@ abstract class ProductService extends ChopperService {
     @Query('page') int? page,
   });
 
-  @Get(path: 'product/promoter/custom/featured')
+  @Get(path: 'product/promoter/featured')
   Future<Response<dynamic>> getFeaturedProducts({
     @Query('page') int? page,
   });

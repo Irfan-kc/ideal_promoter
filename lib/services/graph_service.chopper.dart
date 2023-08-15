@@ -17,8 +17,19 @@ class _$GraphService extends GraphService {
   final definitionType = GraphService;
 
   @override
-  Future<Response<dynamic>> getAllraphData() {
+  Future<Response<dynamic>> getEarningsGraphData() {
     final Uri $url = Uri.parse('earning/promoter/monthly/all');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> getBusinessVolumeGraphData() {
+    final Uri $url = Uri.parse('business-volume/promoter/monthly/all');
     final Request $request = Request(
       'GET',
       $url,

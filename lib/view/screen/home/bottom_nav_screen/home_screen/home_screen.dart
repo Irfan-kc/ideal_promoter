@@ -28,11 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Future.delayed(Duration.zero, () async {
       Provider.of<DashboardProvider>(context, listen: false)
           .getDashboardData(context);
-      Provider.of<GraphProvider>(context, listen: false).getGraphData(context);
+      Provider.of<GraphProvider>(context, listen: false).getEarningsGraphData(context);
       Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
-      Provider.of<ProductProvider>(context, listen: false)
-          .getAllFeaturedProducts(context);
     });
   }
 
@@ -59,11 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     const KHeight(20),
                     // const GraphView(),
-                    graphProvider.graphData == null
+                    graphProvider.earningsGraphData == null
                         ? const Text("Data retrieval failed")
                         : GraphView(
                             title: 'Monthly Earnings',
-                            model: graphProvider.graphData!,
+                            model: graphProvider.earningsGraphData!,
                           ),
                     const KHeight(16),
                     Provider.of<DashboardProvider>(context, listen: false)
@@ -116,6 +114,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     const CategoryTile(),
                     const KHeight(12),
                     GridViewData(
+                      initFunction: () async {
+                        await Provider.of<ProductProvider>(context,
+                                listen: false)
+                            .getAllFeaturedProducts(context, page: 1);
+                      },
                       title: 'Suggested for you',
                       isScrollExtents: (page) async {
                         await Provider.of<ProductProvider>(context,

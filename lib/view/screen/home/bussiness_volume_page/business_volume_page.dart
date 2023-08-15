@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/BusinessVolume/business_volume_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
+import 'package:ideal_promoter/view/widget/DateCard/date_card_widget.dart';
+import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
@@ -16,34 +18,113 @@ class BusinessVolumePage extends StatefulWidget {
 }
 
 class _BusinessVolumePageState extends State<BusinessVolumePage> {
+  DateTime fromDate = DateTime(
+    DateTime.now().year,
+    DateTime.now().month,
+    DateTime.now().day,
+    0,
+    0,
+    0,
+    0,
+  );
+
+  DateTime toDate = DateTime.now();
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () async {
-      await Provider.of<BusinessVolumeProvider>(context, listen: false)
-          .getAllBusinessVolume(context);
-    });
+    Future.delayed(
+      Duration.zero,
+      () async {
+        Provider.of<BusinessVolumeProvider>(context, listen: false)
+            .getAllBusinessVolume(context);
+        Provider.of<GraphProvider>(context, listen: false)
+            .getBusinessVolumeGraphData(context);
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<GraphProvider>(
-      builder: (context, graphProvider, _) {
+    return Consumer2<GraphProvider, BusinessVolumeProvider>(
+      builder: (context, graphProvider, businessVolumeProvider, _) {
         return Scaffold(
           body: BackGroundWidget(
             isExpanded: true,
             heading: 'Business Volume',
             column2: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const KHeight(20),
-                GraphView(
-                  title: 'Monhtly Business volume',
-                  model: graphProvider.graphData!,
+                graphProvider.isLoading
+                    ? loader()
+                    : graphProvider.bvGraphData == null
+                        ? const Text("Data retrieval failed")
+                        : GraphView(
+                            title: 'Monhtly Business volume',
+                            model: graphProvider.bvGraphData!,
+                          ),
+                const KHeight(16),
+                const Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    'Monthly Business volume',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.195,
+                    ),
+                  ),
                 ),
                 const KHeight(16),
-                const Expanded(
+                DateCard(
+                  onFromTap: () {
+                    DateCard.selectDate(context, fromDate).then((value) {
+                      fromDate = value!;
+                      setState(() {});
+                      Provider.of<BusinessVolumeProvider>(context,
+                              listen: false)
+                          .getAllBusinessVolume(
+                        context,
+                        fromDate: fromDate.toString().split(" ")[0],
+                        toDate: toDate.toString().split(" ")[0],
+                      );
+                    });
+                  },
+                  onToTap: () {
+                    DateCard.selectDate(context, toDate).then((value) {
+                      toDate = value!;
+                      setState(() {});
+                      Provider.of<BusinessVolumeProvider>(context,
+                              listen: false)
+                          .getAllBusinessVolume(
+                        context,
+                        fromDate: fromDate.toString().split(" ")[0],
+                        toDate: toDate.toString().split(" ")[0],
+                      );
+                    });
+                  },
+                  fromDate: fromDate.toString(),
+                  toDate: toDate.toString(),
+                ),
+                const KHeight(16),
+                Expanded(
                   child: CustTableData(
-                    title: 'Monthly Business volume',
+                    isEarnings: false,
+                    isLoading: businessVolumeProvider.isLoading,
+                    itemCount: businessVolumeProvider.businessVolumeData.length,
+                    orderId: businessVolumeProvider.businessVolumeData
+                        .map((e) => e.refId ?? "#000")
+                        .toList(),
+                    orderAmount: businessVolumeProvider.businessVolumeData
+                        .map((e) => e.earning!.orderAmount.toString())
+                        .toList(),
+                    earningsAmount: businessVolumeProvider.businessVolumeData
+                        .map((e) => e.earning!.promoterAmount.toString())
+                        .toList(),
+                    orderStatus: businessVolumeProvider.businessVolumeData
+                        .map((e) => e.status ?? "NA")
+                        .toList(),
                   ),
                 ),
               ],
