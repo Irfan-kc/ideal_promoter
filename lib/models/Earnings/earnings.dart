@@ -1,4 +1,4 @@
-class Earning {
+class Earnings {
   String? id;
   String? promoter;
   String? refId;
@@ -11,7 +11,7 @@ class Earning {
   int? v;
   String? type;
 
-  Earning({
+  Earnings({
     this.id,
     this.promoter,
     this.refId,
@@ -25,7 +25,7 @@ class Earning {
     this.type,
   });
 
-  factory Earning.fromJson(Map<String, dynamic> json) => Earning(
+  factory Earnings.fromJson(Map<String, dynamic> json) => Earnings(
         id: json['_id'] as String?,
         promoter: json['promoter'] as String?,
         refId: json['ref_id'] as String?,

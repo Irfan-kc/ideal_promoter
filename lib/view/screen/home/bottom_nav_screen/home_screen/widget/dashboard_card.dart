@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/wallet_screen.dart';
 import 'package:ideal_promoter/view/screen/home/bussiness_volume_page/business_volume_page.dart';
 import 'package:ideal_promoter/view/screen/home/earnings_page/earning_page.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
@@ -26,7 +27,7 @@ class DashBoardCard extends StatelessWidget {
               provider: provider,
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const EarningsPage()));
+                    MaterialPageRoute(builder: (_) => const WalletScreen()));
                 provider.getDashboardData(context);
               },
               heading: 'Total Earnings',

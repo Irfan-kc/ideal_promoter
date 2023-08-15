@@ -65,18 +65,6 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                             model: graphProvider.bvGraphData!,
                           ),
                 const KHeight(16),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Text(
-                    'Monthly Business volume',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -0.195,
-                    ),
-                  ),
-                ),
-                const KHeight(16),
                 DateCard(
                   onFromTap: () {
                     DateCard.selectDate(context, fromDate).then((value) {
