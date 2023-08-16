@@ -30,13 +30,13 @@ abstract class AppTextStyle {
 
   static const smallestText = TextStyle(
     color: Colors.white,
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: FontWeight.w400,
   );
 
-  static const smalleWhiteText = TextStyle(
+  static const smallWhiteText = TextStyle(
     color: Colors.white,
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
   );
 
