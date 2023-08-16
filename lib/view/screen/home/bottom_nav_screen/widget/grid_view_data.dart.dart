@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/app_images.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
-import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 
