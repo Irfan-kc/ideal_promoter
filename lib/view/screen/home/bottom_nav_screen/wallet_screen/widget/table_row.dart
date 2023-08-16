@@ -9,6 +9,11 @@ class CustTableRow extends StatelessWidget {
   final String orderStatus;
   final bool? textStyle;
   final bool isEarnings;
+  final int flex1;
+  final int flex2;
+  final int flex3;
+  final int flex4;
+
   const CustTableRow({
     super.key,
     required this.orderId,
@@ -17,6 +22,10 @@ class CustTableRow extends StatelessWidget {
     required this.orderStatus,
     this.textStyle = true,
     this.isEarnings = false,
+    this.flex1 = 2,
+    this.flex2 = 3,
+    this.flex3 = 3,
+    this.flex4 = 2,
   });
 
   @override
@@ -25,22 +34,22 @@ class CustTableRow extends StatelessWidget {
       children: [
         CustTableCell(
           text: orderId,
-          flex: 2,
+          flex: flex1,
           textStyle: textStyle,
         ),
         CustTableCell(
           text: orderAmount,
-          flex: 3,
+          flex: flex2,
           textStyle: textStyle,
         ),
         CustTableCell(
           text: earningsAmount,
-          flex: 3,
+          flex: flex3,
           textStyle: textStyle,
         ),
         CustTableCell(
           text: orderStatus,
-          flex: 2,
+          flex: flex4,
           color: AppColors.green,
           textStyle: textStyle,
         ),

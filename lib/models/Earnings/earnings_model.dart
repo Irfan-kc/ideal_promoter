@@ -1,7 +1,7 @@
-import 'earning.dart';
+import 'earnings.dart';
 
 class EarningsModel {
-  List<Earning>? earnings;
+  List<Earnings>? earnings;
   double? totalEarningsAmount;
   double? totalOrderEarningsAmount;
   int? totalBvEarningsAmount;
@@ -19,7 +19,7 @@ class EarningsModel {
 
   factory EarningsModel.fromJson(Map<String, dynamic> json) => EarningsModel(
         earnings: (json['earnings'] as List<dynamic>?)
-            ?.map((e) => Earning.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => Earnings.fromJson(e as Map<String, dynamic>))
             .toList(),
         totalEarningsAmount: (json['totalEarningsAmount'] as num?)?.toDouble(),
         totalOrderEarningsAmount:

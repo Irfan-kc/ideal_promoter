@@ -5,10 +5,11 @@ import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
-import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
+import 'package:ideal_promoter/view/screen/home/page_views/page_view_screen.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
-import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/suggested_grid_view.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/grid_view_data.dart.dart';
+import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +23,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController controller = ScrollController();
+
+  int page = 1;
+
   @override
   void initState() {
     super.initState();
@@ -32,13 +37,26 @@ class _HomeScreenState extends State<HomeScreen> {
           .getEarningsGraphData(context);
       Provider.of<CategoryProvider>(context, listen: false)
           .getAllCategories(context);
+      Provider.of<ProductProvider>(context, listen: false)
+          .getAllFeaturedProducts(context, page: page);
+      controller.addListener(_scrollListener);
     });
+  }
+
+  void _scrollListener() {
+    if (controller.position.maxScrollExtent == controller.offset) {
+      setState(() {
+        page++;
+      });
+      Provider.of<ProductProvider>(context, listen: false)
+          .getAllFeaturedProducts(context, page: page);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<DashboardProvider, GraphProvider>(
-      builder: (context, provider, graphProvider, _) {
+    return Consumer3<DashboardProvider, GraphProvider, ProductProvider>(
+      builder: (context, provider, graphProvider, productProvider, _) {
         return provider.isLoading
             ? const Center(
                 child: CircularProgressIndicator(),
@@ -84,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const PageViews()));
+                                          builder: (_) => const PageViewsScreen()));
                                 },
                                 child: Text(
                                   '${Provider.of<DashboardProvider>(context, listen: false).dashboardData?.totalPageViewsCount} Page views',
@@ -114,19 +132,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     const KHeight(9),
                     const CategoryTile(),
                     const KHeight(12),
-                    GridViewData(
-                      initFunction: () async {
-                        await Provider.of<ProductProvider>(context,
-                                listen: false)
-                            .getAllFeaturedProducts(context, page: 1);
-                      },
-                      title: 'Suggested for you',
-                      isScrollExtents: (page) async {
-                        await Provider.of<ProductProvider>(context,
-                                listen: false)
-                            .getAllFeaturedProducts(context, page: page);
-                      },
-                    ),
+                    productProvider.isLoading
+                        ? loader()
+                        : productProvider.featuredProducts.isEmpty
+                            ? const Text("No products to show")
+                            : GridViewData(
+                                title: 'Suggested for you',
+                                controller: controller,
+                                isLoading: productProvider.isLoading,
+                                itemCount:
+                                    productProvider.featuredProducts.length,
+                                id: productProvider.featuredProducts
+                                    .map((e) => e.id!)
+                                    .toList(),
+                                imageUrl: productProvider.featuredProducts
+                                    .map((e) => e.images![0].url!)
+                                    .toList(),
+                                productName: productProvider.featuredProducts
+                                    .map((e) => e.primaryLang!.name!)
+                                    .toList(),
+                                productPrice: productProvider.featuredProducts
+                                    .map((e) => e.varients![0].price.toString())
+                                    .toList(),
+                              ),
                   ],
                 ),
               );
