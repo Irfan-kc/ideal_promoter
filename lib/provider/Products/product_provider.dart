@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/models/Products/featured_products.dart';
+import 'package:ideal_promoter/models/Products/product_model.dart.dart';
 import 'package:ideal_promoter/models/Products/product.dart';
 import 'package:ideal_promoter/models/SingleProduct/single_product_model.dart';
 import 'package:ideal_promoter/provider/base_provider.dart';
@@ -9,18 +9,22 @@ import 'package:provider/provider.dart';
 class ProductProvider extends BaseProvider {
   bool isLoading = false;
   bool isSingleProductLoading = false;
-  List<Product> products = [];
+  List<Product> allProducts = [];
+  List<Product> featuredProducts = [];
   SingleProductModel? singleProduct;
 
   Future getAllProducts(BuildContext context, {int? page}) async {
     try {
       isLoading = true;
       notifyListeners();
+      if (page == null || page == 1) {
+        allProducts.clear();
+      }
       var response = await Provider.of<ProductService>(context, listen: false)
           .getAllProducts(page: page);
       if (response.isSuccessful) {
         var result = ProductModel.fromJson(response.body);
-        products = result.products ?? [];
+        allProducts.addAll(result.products ?? []);
         notifyListeners();
       }
     } catch (e) {
@@ -35,11 +39,14 @@ class ProductProvider extends BaseProvider {
     try {
       isLoading = true;
       notifyListeners();
+      if (page == null || page == 1) {
+        featuredProducts.clear();
+      }
       var response = await Provider.of<ProductService>(context, listen: false)
           .getFeaturedProducts(page: page);
       if (response.isSuccessful) {
         var result = ProductModel.fromJson(response.body);
-        products = result.products ?? [];
+        featuredProducts.addAll(result.products ?? []);
         notifyListeners();
       }
     } catch (e) {

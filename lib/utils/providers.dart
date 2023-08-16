@@ -1,6 +1,7 @@
 import 'package:ideal_promoter/provider/Authentication/auth_provider.dart';
 import 'package:ideal_promoter/provider/BusinessVolume/business_volume_provider.dart';
 import 'package:ideal_promoter/provider/Category/category_provider.dart';
+import 'package:ideal_promoter/provider/Earnings/earnings_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/provider/base_provider.dart';
@@ -34,5 +35,8 @@ List<SingleChildWidget> providers = [
   ),
   ChangeNotifierProvider.value(
     value: BusinessVolumeProvider(),
+  ),
+  ChangeNotifierProvider.value(
+    value: EarningsProvider(),
   ),
 ];

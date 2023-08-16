@@ -1,8 +1,10 @@
+import 'package:ideal_promoter/models/Earnings/order.dart';
+
 class Earnings {
   String? id;
   String? promoter;
   String? refId;
-  dynamic order;
+  Order? order;
   int? orderAmount;
   double? promoterAmount;
   String? status;
@@ -29,7 +31,9 @@ class Earnings {
         id: json['_id'] as String?,
         promoter: json['promoter'] as String?,
         refId: json['ref_id'] as String?,
-        order: json['order'] as dynamic,
+        order: json['order'] == null
+            ? null
+            : Order.fromJson(json['order'] as Map<String, dynamic>),
         orderAmount: json['orderAmount'] as int?,
         promoterAmount: (json['promoterAmount'] as num?)?.toDouble(),
         status: json['status'] as String?,

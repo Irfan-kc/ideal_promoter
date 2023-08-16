@@ -1,96 +1,82 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/app_images.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
-import 'package:ideal_promoter/models/Products/product.dart';
-import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
 import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
-import 'package:provider/provider.dart';
 
-class GridViewData extends StatefulWidget {
+class GridViewData extends StatelessWidget {
   final bool isExpanded;
   final String title;
-  final Function(int page) isScrollExtents;
-  final Function() initFunction;
+  final ScrollController controller;
+  // final Function(int page) isScrollExtents;
+  // final Function() initFunction;
+  final bool isLoading;
+  final int itemCount;
+  final List<String> id;
+
+  final List<String> imageUrl;
+  final List<String> productName;
+  final List<String> productPrice;
 
   const GridViewData({
     Key? key,
     this.isExpanded = false,
     required this.title,
-    required this.isScrollExtents,
-    required this.initFunction,
+    required this.controller,
+    // required this.isScrollExtents,
+    // required this.initFunction,
+    required this.isLoading,
+    required this.itemCount,
+    required this.id,
+    required this.imageUrl,
+    required this.productName,
+    required this.productPrice,
   }) : super(key: key);
 
   @override
-  State<GridViewData> createState() => _GridViewDataState();
-}
-
-class _GridViewDataState extends State<GridViewData> {
-  final ScrollController controller = ScrollController();
-  int page = 1;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero, () async {
-      widget.initFunction();
-
-      // Move the following line outside the `setState` callback
-      controller.addListener(_scrollListener);
-    });
-  }
-
-  void _scrollListener() {
-    if (controller.position.maxScrollExtent == controller.offset) {
-      setState(() {
-        page++;
-      });
-      widget.isScrollExtents(page);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Consumer<ProductProvider>(builder: (context, productProvider, _) {
-      return Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.title,
-                  style: AppTextStyle.titleText1,
-                ),
-              ],
-            ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: AppTextStyle.titleText1,
+              ),
+            ],
           ),
-          const KHeight(8),
-          productProvider.isLoading
-              ? loader()
-              : productProvider.products.isEmpty
-                  ? const Text("No products to show")
-                  : widget.isExpanded
-                      ? Expanded(
-                          child: ProductBuilder(
-                            controller: controller,
-                            isExpanded: widget.isExpanded,
-                            isLoading: productProvider.isLoading,
-                            products: productProvider.products,
-                          ),
-                        )
-                      : ProductBuilder(
-                          controller: controller,
-                          isExpanded: widget.isExpanded,
-                          isLoading: productProvider.isLoading,
-                          products: productProvider.products,
-                        )
-        ],
-      );
-    });
+        ),
+        const KHeight(8),
+        isExpanded
+            ? Expanded(
+                child: ProductBuilder(
+                  controller: controller,
+                  isExpanded: isExpanded,
+                  isLoading: isLoading,
+                  itemCount: itemCount,
+                  id: id,
+                  imageUrl: imageUrl,
+                  productName: productName,
+                  price: productPrice,
+                ),
+              )
+            : ProductBuilder(
+                controller: controller,
+                isExpanded: isExpanded,
+                isLoading: isLoading,
+                itemCount: itemCount,
+                id: id,
+                imageUrl: imageUrl,
+                productName: productName,
+                price: productPrice,
+              )
+      ],
+    );
   }
 }
 
@@ -98,14 +84,23 @@ class ProductBuilder extends StatelessWidget {
   const ProductBuilder({
     super.key,
     required this.isExpanded,
-    required this.products,
     required this.isLoading,
     required this.controller,
+    required this.imageUrl,
+    required this.productName,
+    required this.price,
+    required this.itemCount,
+    required this.id,
   });
 
   final bool isExpanded;
-  final List<Product> products;
+  // final List<dynamic> products;
+  final List<String> imageUrl;
+  final List<String> productName;
+  final List<String> price;
+  final int itemCount;
   final bool isLoading;
+  final List<String> id;
   final ScrollController controller;
   @override
   Widget build(BuildContext context) {
@@ -113,7 +108,7 @@ class ProductBuilder extends StatelessWidget {
       controller: controller,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       shrinkWrap: true,
-      itemCount: products.length,
+      itemCount: itemCount,
       physics: isExpanded
           ? const BouncingScrollPhysics()
           : const NeverScrollableScrollPhysics(),
@@ -125,12 +120,8 @@ class ProductBuilder extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => ProductView(
-                          id: products[index].id!,
-                        )));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => ProductView(id: id[index])));
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -143,11 +134,10 @@ class ProductBuilder extends StatelessWidget {
                       radius: 8,
                     )
                   : Image(
-                      image: products[index].images!.isEmpty
+                      image: imageUrl.isEmpty
                           ? const NetworkImage(AppImages.noImage)
                           : NetworkImage(
-                              products[index].images![0].url ??
-                                  AppImages.noImage,
+                              imageUrl[index],
                             ),
                       width: 170,
                       height: 161,
@@ -163,7 +153,7 @@ class ProductBuilder extends StatelessWidget {
                       ),
                     )
                   : Text(
-                      products[index].primaryLang!.name ?? "NA",
+                      productName[index],
                       style: AppTextStyle.body1Text,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -175,9 +165,8 @@ class ProductBuilder extends StatelessWidget {
                       radius: 3,
                     )
                   : Text(
-                      products[index].varients![0].price != null
-                          ? '\u0024${products[index].varients![0].price}'
-                          : '\u00240.00',
+                      '\u0024 ${price[index]}',
+                      // : '\u00240.00',
                       style: AppTextStyle.body3Text,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

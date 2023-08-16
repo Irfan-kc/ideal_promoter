@@ -21,7 +21,7 @@ class _WalletScreenState extends State<WalletScreen> {
   DateTime fromDate = DateTime(
     DateTime.now().year,
     DateTime.now().month,
-    DateTime.now().day,
+    1,
     0,
     0,
     0,
@@ -29,6 +29,19 @@ class _WalletScreenState extends State<WalletScreen> {
   );
 
   DateTime toDate = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      Duration.zero,
+      () async {
+        await Provider.of<EarningsProvider>(context, listen: false)
+            .getAllEarnings(context);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer2<GraphProvider, EarningsProvider>(
@@ -50,45 +63,58 @@ class _WalletScreenState extends State<WalletScreen> {
                       ),
             const KHeight(16),
             DateCard(
-                  onFromTap: () {
-                    DateCard.selectDate(context, fromDate).then((value) {
-                      fromDate = value!;
-                      setState(() {});
-                      Provider.of<EarningsProvider>(context,
-                              listen: false)
-                          .getAllEarnings(
-                        context,
-                        fromDate: fromDate.toString().split(" ")[0],
-                        toDate: toDate.toString().split(" ")[0],
-                      );
-                    });
-                  },
-                  onToTap: () {
-                    DateCard.selectDate(context, toDate).then((value) {
-                      toDate = value!;
-                      setState(() {});
-                      Provider.of<EarningsProvider>(context,
-                              listen: false)
-                          .getAllEarnings(
-                        context,
-                        fromDate: fromDate.toString().split(" ")[0],
-                        toDate: toDate.toString().split(" ")[0],
-                      );
-                    });
-                  },
-                  fromDate: fromDate.toString(),
-                  toDate: toDate.toString(),
-                ),
-            // Expanded(
-            //   child: CustTableData(
-            //     isLoading: earningsProvider.isLoading,
-            //     itemCount: earningsProvider.earningsData.length,
-            //     orderId: earningsProvider.earningsData.map((e) => e.refId ?? "#000"),
-            //     orderAmount: ,
-            //     earningsAmount: ,
-            //     orderStatus: ,
-            //   ),
-            // ),
+              onFromTap: () {
+                DateCard.selectDate(context, fromDate).then((value) {
+                  fromDate = value!;
+                  setState(() {});
+                  Provider.of<EarningsProvider>(context, listen: false)
+                      .getAllEarnings(
+                    context,
+                    fromDate: fromDate.toString().split(" ")[0],
+                    toDate: toDate.toString().split(" ")[0],
+                  );
+                });
+              },
+              onToTap: () {
+                DateCard.selectDate(context, toDate).then((value) {
+                  toDate = value!;
+                  setState(() {});
+                  Provider.of<EarningsProvider>(context, listen: false)
+                      .getAllEarnings(
+                    context,
+                    fromDate: fromDate.toString().split(" ")[0],
+                    toDate: toDate.toString().split(" ")[0],
+                  );
+                });
+              },
+              fromDate: fromDate.toString(),
+              toDate: toDate.toString(),
+            ),
+            Expanded(
+              child: CustTableData(
+                isEarnings: true,
+                isLoading: earningsProvider.isLoading,
+                itemCount: earningsProvider.earningsData.length,
+                orderId: earningsProvider.earningsData.map((e) {
+                  if (e.order == null) {
+                    return "#000";
+                  }
+                  return e.order!.orderId ?? "#000";
+                }).toList(),
+                orderAmount: earningsProvider.earningsData
+                    .map((e) => e.orderAmount.toString())
+                    .toList(),
+                earningsAmount: earningsProvider.earningsData
+                    .map((e) => e.promoterAmount.toString())
+                    .toList(),
+                orderStatus: earningsProvider.earningsData.map((e) {
+                  if (e.order == null) {
+                    return "NA";
+                  }
+                  return e.order!.orderStatus ?? "NA";
+                }).toList(),
+              ),
+            ),
           ],
         ),
       );

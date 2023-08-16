@@ -21,7 +21,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
   DateTime fromDate = DateTime(
     DateTime.now().year,
     DateTime.now().month,
-    DateTime.now().day,
+    1,
     0,
     0,
     0,
