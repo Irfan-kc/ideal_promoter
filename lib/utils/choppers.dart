@@ -42,7 +42,8 @@ List<SingleChildWidget> choppers = [
   Provider(
     create: (context) => PageViewService.create(),
     dispose: (_, PageViewService service) => service.client.dispose(),
- Provider(
+  ),
+  Provider(
     create: (context) => ProfileService.create(),
     dispose: (_, ProfileService service) => service.client.dispose(),
   ),
