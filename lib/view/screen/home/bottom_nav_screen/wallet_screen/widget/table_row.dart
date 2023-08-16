@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 
 class CustTableRow extends StatelessWidget {
@@ -9,6 +8,7 @@ class CustTableRow extends StatelessWidget {
   final String orderStatus;
   final bool? textStyle;
   final bool isEarnings;
+  final Color? color;
   final int flex1;
   final int flex2;
   final int flex3;
@@ -26,6 +26,7 @@ class CustTableRow extends StatelessWidget {
     this.flex2 = 3,
     this.flex3 = 3,
     this.flex4 = 2,
+    this.color,
   });
 
   @override
@@ -50,7 +51,7 @@ class CustTableRow extends StatelessWidget {
         CustTableCell(
           text: orderStatus,
           flex: flex4,
-          color: AppColors.green,
+          color: color,
           textStyle: textStyle,
         ),
       ],

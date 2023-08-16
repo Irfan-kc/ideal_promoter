@@ -54,7 +54,7 @@ class CustTableData extends StatelessWidget {
                 const CustTableCell(
                   text: 'Order Status',
                   flex: 2,
-                  color: AppColors.green,
+                  // color: AppColors.green,
                   textStyle: false,
                 ),
               ],
@@ -76,6 +76,7 @@ class CustTableData extends StatelessWidget {
                           height: 34,
                           child: Center(
                             child: CustTableRow(
+                                color: getStatusTypeColor(orderStatus[index]),
                                 orderId: orderId[index],
                                 orderAmount: orderAmount[index],
                                 earningsAmount: earningsAmount[index],
@@ -89,5 +90,21 @@ class CustTableData extends StatelessWidget {
               ),
       ],
     );
+  }
+
+  static Color? getStatusTypeColor(String statusId) {
+    Color? statusColor;
+    if (statusId == "Delivered") {
+      statusColor = AppColors.green;
+    } else if (statusId == "Processing") {
+      statusColor = const Color(0xff40CCEB);
+    } else if (statusId == "pending") {
+      statusColor = AppColors.warning;
+    } else if (statusId == "Cancelled") {
+      statusColor = Colors.red[800];
+    } else {
+      statusColor = AppColors.black;
+    }
+    return statusColor;
   }
 }

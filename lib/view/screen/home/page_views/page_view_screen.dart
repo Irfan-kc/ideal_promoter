@@ -59,8 +59,11 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Padding(
-                        padding: EdgeInsets.only(left:20),
-                        child: Text('Page Views',style: AppTextStyle.textFieldText,),
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Page Views',
+                          style: AppTextStyle.textFieldText,
+                        ),
                       ),
                       const KHeight(20),
                       Container(
@@ -89,7 +92,6 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                               CustTableCell(
                                 text: 'Offer Price',
                                 flex: 2,
-                                color: AppColors.green,
                                 textStyle: false,
                               ),
                             ],
@@ -116,8 +118,9 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                                             height: 34,
                                             child: Center(
                                               child: CustTableRow(
-                                                flex2: 4,
-                                                flex3: 2,
+                                                  color: AppColors.green,
+                                                  flex2: 4,
+                                                  flex3: 2,
                                                   orderId:
                                                       pageViewProvider.pageViewData[index].refId ??
                                                           "#000",
