@@ -5,7 +5,6 @@ import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import '../../../../../../constant/text_style.dart';
 
 class ProfileTextField extends StatefulWidget {
-  final String value;
   final String? labelText;
   final void Function(String value)? onChanged;
   final FocusNode? focusNode;
@@ -13,16 +12,26 @@ class ProfileTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final void Function(String value)? onFieldSubmitted;
   final bool? readOnly;
-  const ProfileTextField(
-      {super.key,
-      required this.value,
-      this.labelText,
-      this.onChanged,
-      this.focusNode,
-      this.padding,
-      this.keyboardType,
-      this.onFieldSubmitted,
-      this.readOnly});
+  final TextEditingController? controller;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final int? maxLength;
+  final String? Function(String?)? validator;
+  const ProfileTextField({
+    super.key,
+    this.labelText,
+    this.onChanged,
+    this.focusNode,
+    this.padding,
+    this.keyboardType,
+    this.onFieldSubmitted,
+    this.readOnly,
+    this.controller,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.validator,
+    this.maxLength,
+  });
 
   @override
   State<ProfileTextField> createState() => _ProfileTextFieldState();
@@ -30,27 +39,14 @@ class ProfileTextField extends StatefulWidget {
 
 class _ProfileTextFieldState extends State<ProfileTextField> {
   late final FocusNode focusNode;
-  final TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    controller.text = widget.value;
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (controller.text != widget.value) {
-        controller.text = widget.value.toString();
-      }
-    });
     return Padding(
       padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -65,14 +61,19 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
           ),
           const KHeight(5),
           TextFormField(
+            validator: widget.validator,
+            maxLength: widget.maxLength,
             readOnly: widget.readOnly ?? false,
-            controller: controller,
+            controller: widget.controller,
             focusNode: widget.focusNode,
             keyboardType: widget.keyboardType,
             onChanged: widget.onChanged,
             onFieldSubmitted: widget.onFieldSubmitted,
             style: AppTextStyle.textFieldText,
             decoration: InputDecoration(
+              counter: const SizedBox(),
+              suffixIcon: widget.suffixIcon,
+              prefixIcon: widget.prefixIcon,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide:

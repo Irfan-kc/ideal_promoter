@@ -3,6 +3,7 @@ import 'package:ideal_promoter/provider/BusinessVolume/business_volume_provider.
 import 'package:ideal_promoter/provider/Category/category_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
+import 'package:ideal_promoter/provider/Profile/profile_provider.dart';
 import 'package:ideal_promoter/provider/base_provider.dart';
 import 'package:ideal_promoter/provider/SignupPage/signup_page_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,5 +35,8 @@ List<SingleChildWidget> providers = [
   ),
   ChangeNotifierProvider.value(
     value: BusinessVolumeProvider(),
+  ),
+  ChangeNotifierProvider.value(
+    value: ProfileProvider(),
   ),
 ];
