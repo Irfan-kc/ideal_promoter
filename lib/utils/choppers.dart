@@ -4,6 +4,7 @@ import 'package:ideal_promoter/services/category_service.dart';
 import 'package:ideal_promoter/services/dashboard_service.dart';
 import 'package:ideal_promoter/services/earnings_service.dart';
 import 'package:ideal_promoter/services/graph_service.dart';
+import 'package:ideal_promoter/services/page_views_service.dart';
 import 'package:ideal_promoter/services/product_service.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -36,5 +37,9 @@ List<SingleChildWidget> choppers = [
   Provider(
     create: (context) => EarningsService.create(),
     dispose: (_, EarningsService service) => service.client.dispose(),
+  ),
+  Provider(
+    create: (context) => PageViewService.create(),
+    dispose: (_, PageViewService service) => service.client.dispose(),
   ),
 ];

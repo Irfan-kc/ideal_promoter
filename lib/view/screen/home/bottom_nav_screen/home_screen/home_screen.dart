@@ -5,7 +5,7 @@ import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
-import 'package:ideal_promoter/view/screen/home/page_views/page_views.dart';
+import 'package:ideal_promoter/view/screen/home/page_views/page_view_screen.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/grid_view_data.dart.dart';
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const PageViews()));
+                                          builder: (_) => const PageViewsScreen()));
                                 },
                                 child: Text(
                                   '${Provider.of<DashboardProvider>(context, listen: false).dashboardData?.totalPageViewsCount} Page views',
