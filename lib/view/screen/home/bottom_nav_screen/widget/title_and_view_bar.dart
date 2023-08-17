@@ -16,10 +16,10 @@ class TitleAndViewBar extends StatelessWidget {
               title,
               style: AppTextStyle.titleText1,
             ),
-            const Text(
-              'View all',
-              style: AppTextStyle.smallText,
-            )
+            // const Text(
+            //   'View all',
+            //   style: AppTextStyle.smallText,
+            // )
           ],
         ));
   }
