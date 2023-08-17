@@ -85,6 +85,7 @@ class CustTableCell extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 letterSpacing: -0.14,
               ),
+              overflow: TextOverflow.ellipsis,
       ),
     );
   }
