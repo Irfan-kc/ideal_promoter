@@ -43,9 +43,9 @@ class Product {
         varients: (json['varients'] as List<dynamic>?)
             ?.map((e) => PageViewVarient.fromJson(e as Map<String, dynamic>))
             .toList(),
-        price: json['price'] as double?,
-        offerPrice: json['offerPrice'] as double?,
-        stock: json['stock'] as double?,
+        price: double.parse(json['price'].toString()),
+        offerPrice: double.parse(json['offerPrice'].toString()),
+        stock: double.parse(json['stock'].toString()),
       );
 
   Map<String, dynamic> toJson() => {
