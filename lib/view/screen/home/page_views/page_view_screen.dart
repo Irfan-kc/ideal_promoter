@@ -101,7 +101,10 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                       pageViewProvider.isLoading
                           ? loader()
                           : pageViewProvider.pageViewData.isEmpty
-                              ? const Center(child: Text("No data retrieved"))
+                              ? const Padding(
+                                padding: EdgeInsets.all(28.0),
+                                child: Center(child: Text("No data retrieved")),
+                              )
                               : Expanded(
                                   child: ListView.builder(
                                     controller: controller,

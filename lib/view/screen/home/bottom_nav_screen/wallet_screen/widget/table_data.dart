@@ -62,7 +62,11 @@ class CustTableData extends StatelessWidget {
           ),
         ),
         isLoading
-            ? loader()
+            ? Center(
+                child: Padding(
+                padding: const EdgeInsets.all(28.0),
+                child: loader(),
+              ))
             : Expanded(
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),

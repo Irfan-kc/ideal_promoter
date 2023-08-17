@@ -96,25 +96,32 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                   toDate: toDate.toString(),
                 ),
                 const KHeight(16),
-                Expanded(
-                  child: CustTableData(
-                    isEarnings: false,
-                    isLoading: businessVolumeProvider.isLoading,
-                    itemCount: businessVolumeProvider.businessVolumeData.length,
-                    orderId: businessVolumeProvider.businessVolumeData
-                        .map((e) => e.refId ?? "#000")
-                        .toList(),
-                    orderAmount: businessVolumeProvider.businessVolumeData
-                        .map((e) => e.earning!.orderAmount.toString())
-                        .toList(),
-                    earningsAmount: businessVolumeProvider.businessVolumeData
-                        .map((e) => e.earning!.promoterAmount.toString())
-                        .toList(),
-                    orderStatus: businessVolumeProvider.businessVolumeData
-                        .map((e) => e.status ?? "NA")
-                        .toList(),
-                  ),
-                ),
+                businessVolumeProvider.businessVolumeData.isEmpty
+                    ? const Padding(
+                        padding: EdgeInsets.all(28.0),
+                        child: Center(child: Text("No data retrieved")),
+                      )
+                    : Expanded(
+                        child: CustTableData(
+                          isEarnings: false,
+                          isLoading: businessVolumeProvider.isLoading,
+                          itemCount:
+                              businessVolumeProvider.businessVolumeData.length,
+                          orderId: businessVolumeProvider.businessVolumeData
+                              .map((e) => e.refId ?? "#000")
+                              .toList(),
+                          orderAmount: businessVolumeProvider.businessVolumeData
+                              .map((e) => e.earning!.orderAmount.toString())
+                              .toList(),
+                          earningsAmount: businessVolumeProvider
+                              .businessVolumeData
+                              .map((e) => e.earning!.promoterAmount.toString())
+                              .toList(),
+                          orderStatus: businessVolumeProvider.businessVolumeData
+                              .map((e) => e.status ?? "NA")
+                              .toList(),
+                        ),
+                      ),
               ],
             ),
           ),
