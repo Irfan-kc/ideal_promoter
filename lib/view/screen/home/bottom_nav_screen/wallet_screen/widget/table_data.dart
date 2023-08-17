@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
-import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 
 class CustTableData extends StatelessWidget {
-  final bool isLoading;
+  // final bool isLoading;
   final bool isEarnings;
   final int itemCount;
   final List<String> orderId;
@@ -14,7 +13,7 @@ class CustTableData extends StatelessWidget {
 
   const CustTableData({
     super.key,
-    required this.isLoading,
+    // required this.isLoading,
     this.isEarnings = false,
     required this.itemCount,
     required this.orderId,
@@ -61,13 +60,7 @@ class CustTableData extends StatelessWidget {
             ),
           ),
         ),
-        isLoading
-            ? Center(
-                child: Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: loader(),
-              ))
-            : Expanded(
+        Expanded(
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   padding:
