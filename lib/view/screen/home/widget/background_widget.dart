@@ -9,13 +9,14 @@ class BackGroundWidget extends StatelessWidget {
   final bool isExpanded;
   final String? heading;
   final bool backButton;
-  const BackGroundWidget(
-      {super.key,
-      this.column1,
-      required this.column2,
-      this.isExpanded = false,
-      this.heading,
-      this.backButton = true});
+  const BackGroundWidget({
+    super.key,
+    this.column1,
+    required this.column2,
+    this.isExpanded = false,
+    this.heading,
+    this.backButton = true,
+  });
 
   @override
   Widget build(BuildContext context) {

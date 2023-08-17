@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/constant/app_images.dart';
 import 'package:ideal_promoter/provider/Category/category_provider.dart';
 import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
@@ -102,7 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => const PageViewsScreen()));
+                                          builder: (_) =>
+                                              const PageViewsScreen()));
                                 },
                                 child: Text(
                                   '${Provider.of<DashboardProvider>(context, listen: false).dashboardData?.totalPageViewsCount} Page views',
@@ -145,14 +147,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                 id: productProvider.featuredProducts
                                     .map((e) => e.id!)
                                     .toList(),
-                                imageUrl: productProvider.featuredProducts
-                                    .map((e) => e.images![0].url!)
-                                    .toList(),
+                                imageUrl:
+                                    productProvider.featuredProducts.map((e) {
+                                  if (e.images == null || e.images!.isEmpty) {
+                                    return AppImages.noImage;
+                                  } else {
+                                    return e.images![0].url ??
+                                        AppImages.noImage;
+                                  }
+                                }).toList(),
                                 productName: productProvider.featuredProducts
                                     .map((e) => e.primaryLang!.name!)
                                     .toList(),
                                 productPrice: productProvider.featuredProducts
-                                    .map((e) => e.varients![0].price.toString())
+                                    .map((e) =>
+                                        "${e.offerPrice ?? e.price ?? "0"}")
                                     .toList(),
                               ),
                   ],

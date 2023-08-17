@@ -31,7 +31,7 @@ class _$ProductService extends ProductService {
 
   @override
   Future<Response<dynamic>> getFeaturedProducts({int? page}) {
-    final Uri $url = Uri.parse('product/promoter/featured');
+    final Uri $url = Uri.parse('product/promoter/custom/featured');
     final Map<String, dynamic> $params = <String, dynamic>{'page': page};
     final Request $request = Request(
       'GET',

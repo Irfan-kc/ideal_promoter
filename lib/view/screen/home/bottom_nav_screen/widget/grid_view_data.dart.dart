@@ -8,7 +8,7 @@ import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 class GridViewData extends StatelessWidget {
   final bool isExpanded;
   final String title;
-  final ScrollController controller;
+  final ScrollController? controller;
   // final Function(int page) isScrollExtents;
   // final Function() initFunction;
   final bool isLoading;
@@ -23,7 +23,7 @@ class GridViewData extends StatelessWidget {
     Key? key,
     this.isExpanded = false,
     required this.title,
-    required this.controller,
+    this.controller,
     // required this.isScrollExtents,
     // required this.initFunction,
     required this.isLoading,
@@ -54,7 +54,7 @@ class GridViewData extends StatelessWidget {
         isExpanded
             ? Expanded(
                 child: ProductBuilder(
-                  controller: controller,
+                  controller: controller!,
                   isExpanded: isExpanded,
                   isLoading: isLoading,
                   itemCount: itemCount,
@@ -65,7 +65,7 @@ class GridViewData extends StatelessWidget {
                 ),
               )
             : ProductBuilder(
-                controller: controller,
+                controller: controller!,
                 isExpanded: isExpanded,
                 isLoading: isLoading,
                 itemCount: itemCount,
