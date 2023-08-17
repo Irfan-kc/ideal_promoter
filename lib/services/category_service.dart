@@ -7,7 +7,13 @@ part 'category_service.chopper.dart';
 @ChopperApi()
 abstract class CategoryService extends ChopperService {
   @Get(path: 'category/user/custom/all')
-  Future<Response<dynamic>> getCategories();
+  Future<Response<dynamic>> allCategories();
+
+  @Get(path: 'category/user/custom/sub')
+  Future<Response<dynamic>> subCategories();
+
+  @Get(path: 'category/user/custom/main')
+  Future<Response<dynamic>> mainCategories();
 
   static CategoryService create() {
     final client = ChopperClient(

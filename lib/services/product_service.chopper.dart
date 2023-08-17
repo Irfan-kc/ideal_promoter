@@ -52,4 +52,24 @@ class _$ProductService extends ProductService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> getProductByCategory({
+    required String categoryId,
+    required int page,
+    required int limit,
+  }) {
+    final Uri $url = Uri.parse('product/user/category/${categoryId}');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'page': page,
+      'limit': limit,
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }

@@ -61,7 +61,7 @@ class _CarouselViewState extends State<CarouselView> {
         ),
         widget.images.length > 1
             ? SafeArea(
-              child: Positioned(
+                child: Positioned(
                   bottom: 20,
                   child: Container(
                     height: 18,
@@ -86,7 +86,7 @@ class _CarouselViewState extends State<CarouselView> {
                     ),
                   ),
                 ),
-            )
+              )
             : const SizedBox(),
       ],
     );

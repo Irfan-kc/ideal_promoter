@@ -20,6 +20,13 @@ abstract class ProductService extends ChopperService {
   Future<Response<dynamic>> getProduct(
       {@Path('productId') required String productId});
 
+  @Get(path: 'product/user/category/{category_id}')
+  Future<Response<dynamic>> getProductByCategory({
+    @Path('category_id') required String categoryId,
+    @Query('page') required int page,
+    @Query('limit') required int limit,
+  });
+
   static ProductService create() {
     final client = ChopperClient(
       interceptors: [

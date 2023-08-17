@@ -19,6 +19,7 @@ class CategoryModel {
   int? v;
   int? phone;
   String? storeName;
+  bool isSelected;
 
   CategoryModel({
     this.primaryLang,
@@ -36,6 +37,7 @@ class CategoryModel {
     this.v,
     this.phone,
     this.storeName,
+    this.isSelected = false,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(

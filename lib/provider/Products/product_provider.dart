@@ -15,13 +15,43 @@ class ProductProvider extends BaseProvider {
 
   Future getAllProducts(BuildContext context, {int? page}) async {
     try {
-      isLoading = true;
-      notifyListeners();
       if (page == null || page == 1) {
         allProducts.clear();
+        isLoading = true;
+        notifyListeners();
       }
       var response = await Provider.of<ProductService>(context, listen: false)
           .getAllProducts(page: page);
+      if (response.isSuccessful) {
+        var result = ProductModel.fromJson(response.body);
+        allProducts.addAll(result.products ?? []);
+        notifyListeners();
+      }
+    } catch (e) {
+      rethrow;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future getAllProductsByCategory(
+    BuildContext context,
+    String catId,
+    int page,
+  ) async {
+    try {
+      if (page == 1) {
+        isLoading = true;
+        allProducts.clear();
+        notifyListeners();
+      }
+      var response = await Provider.of<ProductService>(context, listen: false)
+          .getProductByCategory(
+        categoryId: catId,
+        page: 1,
+        limit: 20,
+      );
       if (response.isSuccessful) {
         var result = ProductModel.fromJson(response.body);
         allProducts.addAll(result.products ?? []);
