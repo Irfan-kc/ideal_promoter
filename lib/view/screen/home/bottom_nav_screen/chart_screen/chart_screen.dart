@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/constant/app_images.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/chart_screen/widget/app_bar.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
@@ -16,8 +17,8 @@ class ChartScreen extends StatefulWidget {
 
 class _ChartScreenState extends State<ChartScreen> {
   final ScrollController controller = ScrollController();
-
   int page = 1;
+
   @override
   void initState() {
     super.initState();
@@ -61,14 +62,18 @@ class _ChartScreenState extends State<ChartScreen> {
                         id: productProvider.allProducts
                             .map((e) => e.id!)
                             .toList(),
-                        imageUrl: productProvider.allProducts
-                            .map((e) => e.images![0].url!)
-                            .toList(),
+                        imageUrl: productProvider.allProducts.map((e) {
+                          if (e.images == null || e.images!.isEmpty) {
+                            return AppImages.noImage;
+                          } else {
+                            return e.images![0].url ?? AppImages.noImage;
+                          }
+                        }).toList(),
                         productName: productProvider.allProducts
                             .map((e) => e.primaryLang!.name!)
                             .toList(),
                         productPrice: productProvider.allProducts
-                            .map((e) => e.varients![0].price.toString())
+                            .map((e) => "${e.offerPrice ?? e.price ?? "0"}")
                             .toList(),
                       ),
           ),

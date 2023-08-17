@@ -23,18 +23,18 @@ class _GraphViewState extends State<GraphView> {
 
   List<FlSpot> get allSpots => [
         // FlSpot(-1, 3),
-        FlSpot(0, widget.model.jan != null ? widget.model.jan! : 0),
-        FlSpot(1, widget.model.feb != null ? widget.model.feb! : 0),
-        FlSpot(2, widget.model.march != null ? widget.model.march! : 0),
-        FlSpot(3, widget.model.april != null ? widget.model.april! : 0),
-        FlSpot(4, widget.model.may != null ? widget.model.may! : 0),
-        FlSpot(5, widget.model.jun != null ? widget.model.jun! : 0),
-        FlSpot(6, widget.model.july != null ? widget.model.july! : 0),
-        FlSpot(7, widget.model.aug != null ? widget.model.aug! : 0),
-        FlSpot(8, widget.model.sep != null ? widget.model.sep! : 0),
-        FlSpot(9, widget.model.oct != null ? widget.model.oct! : 0),
-        FlSpot(10, widget.model.nov != null ? widget.model.nov! : 0),
-        FlSpot(11, widget.model.dec != null ? widget.model.dec! : 0),
+        FlSpot(0, widget.model.jan  ?? 0),
+        FlSpot(1, widget.model.feb  ?? 0),
+        FlSpot(2, widget.model.march  ?? 0),
+        FlSpot(3, widget.model.april  ?? 0),
+        FlSpot(4, widget.model.may  ?? 0),
+        FlSpot(5, widget.model.jun  ?? 0),
+        FlSpot(6, widget.model.july  ?? 0),
+        FlSpot(7, widget.model.aug  ?? 0),
+        FlSpot(8, widget.model.sep  ?? 0),
+        FlSpot(9, widget.model.oct  ?? 0),
+        FlSpot(10, widget.model.nov  ?? 0),
+        FlSpot(11, widget.model.dec  ?? 0),
         // FlSpot(12, 4),
       ];
 
@@ -165,7 +165,7 @@ class _GraphViewState extends State<GraphView> {
                 minX: 0,
                 maxX: 11,
                 minY: 0,
-                maxY: 1000,
+                maxY: findLargest(allSpots.map((e) => e.y).toList()),
                 titlesData: FlTitlesData(
                   show: true,
                   rightTitles: const AxisTitles(
@@ -287,12 +287,12 @@ class _GraphViewState extends State<GraphView> {
     return Text(text, style: style, textAlign: TextAlign.left);
   }
 
-  int findLargest(List<dynamic>? arr) {
+  double findLargest(List<dynamic>? arr) {
     if (arr != null) {
-      int largest = int.parse(arr[0]);
+      double largest = arr[0];
       for (int i = 1; i < arr.length; i++) {
-        if (int.parse(arr[i]) > largest) {
-          largest = int.parse(arr[i]);
+        if (arr[i] > largest) {
+          largest = arr[i];
         }
       }
       return largest;
