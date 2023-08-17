@@ -7,6 +7,7 @@ import 'package:ideal_promoter/services/graph_service.dart';
 import 'package:ideal_promoter/services/page_views_service.dart';
 import 'package:ideal_promoter/services/product_service.dart';
 import 'package:ideal_promoter/services/profile_service.dart';
+import 'package:ideal_promoter/services/whats_app_service.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -46,5 +47,9 @@ List<SingleChildWidget> choppers = [
   Provider(
     create: (context) => ProfileService.create(),
     dispose: (_, ProfileService service) => service.client.dispose(),
+  ),
+  Provider(
+    create: (context) => WhatsAppService.create(),
+    dispose: (_, WhatsAppService service) => service.client.dispose(),
   ),
 ];

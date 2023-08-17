@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
+import 'package:ideal_promoter/provider/Profile/profile_provider.dart';
+import 'package:ideal_promoter/provider/WahtsApp/whats_app_provider.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/widget/carousel_view.dart';
 import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
@@ -34,9 +37,14 @@ class _ProductViewState extends State<ProductView> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProductProvider>(builder: (context, productProvider, _) {
+    return Consumer3<ProductProvider, ProfileProvider, WhatsAppProvider>(
+        builder:
+            (context, productProvider, profileProvider, whatsAppProvider, _) {
+      double discount = productProvider.singleProduct!.price! -
+          productProvider.singleProduct!.offerPrice!.toDouble();
+      double discountPercentage =
+          (discount / productProvider.singleProduct!.price!) * 100;
       return Scaffold(
-       
         body: productProvider.isSingleProductLoading
             ? loader()
             : productProvider.singleProduct == null
@@ -113,9 +121,10 @@ class _ProductViewState extends State<ProductView> {
                                                       .lineThrough,
                                                   decorationThickness: 1.5)),
                                           const WidgetSpan(child: KWidth(10)),
-                                          const TextSpan(
-                                            text: '50% off',
-                                            style: TextStyle(
+                                          TextSpan(
+                                            text:
+                                                "${discountPercentage.toStringAsFixed(0)}%",
+                                            style: const TextStyle(
                                               color: AppColors.green,
                                               fontSize: 18,
                                               fontWeight: FontWeight.w500,
@@ -155,7 +164,23 @@ class _ProductViewState extends State<ProductView> {
                                       color: Colors.white,
                                       size: 14,
                                     ),
-                                    onTap: () {},
+                                    onTap: () {
+                                      var removeSpace = productProvider
+                                          .singleProduct!.primaryLang!.name!
+                                          .replaceAll(" ", "-");
+                                      var text =
+                                          "https://idealeshope.com/products/$removeSpace?ref_id=${profileProvider.profileData!.refId}";
+                                      Clipboard.setData(
+                                        ClipboardData(
+                                          text: text,
+                                        ),
+                                      ).then((_) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    "Copied to clipboard")));
+                                      });
+                                    },
                                     text: 'Copy Urls',
                                   ),
                                   const KWidth(10),
@@ -166,7 +191,10 @@ class _ProductViewState extends State<ProductView> {
                                       height: 14,
                                       width: 14,
                                     ),
-                                    onTap: () {},
+                                    onTap: () {
+                                      whatsAppProvider.getItOnWhatsApp(
+                                          context, productProvider.singleProduct!.id ?? "");
+                                    },
                                     text: 'Get it on Whatsapp',
                                     color: AppColors.green,
                                   )

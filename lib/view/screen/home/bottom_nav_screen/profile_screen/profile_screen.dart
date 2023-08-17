@@ -11,6 +11,7 @@ import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/logout_alert.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/profile_screen/widget/profile_text_field.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
+import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
@@ -66,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Consumer<ProfileProvider>(
       builder: (context, profileProvider, _) {
         return profileProvider.isLoading
-            ? const Center(child: CircularProgressIndicator())
+            ?  Center(child: loader())
             : profileProvider.profileData == null
                 ? const Center(
                     child: Text("Failed to load data!"),

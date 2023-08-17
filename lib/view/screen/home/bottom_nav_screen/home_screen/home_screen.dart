@@ -4,6 +4,7 @@ import 'package:ideal_promoter/provider/Category/category_provider.dart';
 import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
+import 'package:ideal_promoter/provider/Profile/profile_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/dashboard_card.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/home_screen/widget/name_card.dart';
 import 'package:ideal_promoter/view/screen/home/page_views/page_view_screen.dart';
@@ -32,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
+      Provider.of<ProfileProvider>(context, listen: false)
+          .getProfileData(context);
       Provider.of<DashboardProvider>(context, listen: false)
           .getDashboardData(context);
       Provider.of<GraphProvider>(context, listen: false)
@@ -59,8 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer3<DashboardProvider, GraphProvider, ProductProvider>(
       builder: (context, provider, graphProvider, productProvider, _) {
         return provider.isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
+            ?  Center(
+                child: loader(),
               )
             : BackGroundWidget(
                 column1: [

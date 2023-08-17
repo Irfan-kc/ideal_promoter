@@ -6,6 +6,7 @@ import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/provider/PageView/page_view_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/provider/Profile/profile_provider.dart';
+import 'package:ideal_promoter/provider/WahtsApp/whats_app_provider.dart';
 import 'package:ideal_promoter/provider/base_provider.dart';
 import 'package:ideal_promoter/provider/SignupPage/signup_page_provider.dart';
 import 'package:provider/provider.dart';
@@ -46,5 +47,8 @@ List<SingleChildWidget> providers = [
  ),
    ChangeNotifierProvider.value(
     value: ProfileProvider(),
+  ),
+  ChangeNotifierProvider.value(
+    value: WhatsAppProvider(),
   ),
 ];

@@ -60,30 +60,28 @@ class _CarouselViewState extends State<CarouselView> {
           ),
         ),
         widget.images.length > 1
-            ? SafeArea(
-                child: Positioned(
-                  bottom: 20,
-                  child: Container(
-                    height: 18,
-                    width: widget.images.length == 2
-                        ? widget.images.length * 24
-                        : widget.images.length * 20,
-                    decoration: BoxDecoration(
-                        color: AppColors.black.withOpacity(0.4),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: widget.images.asMap().entries.map((e) {
-                        return Container(
-                          width: currentIndex == e.key ? 17 : 7,
-                          height: 7,
-                          margin: const EdgeInsets.symmetric(horizontal: 3),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
-                        );
-                      }).toList(),
-                    ),
+            ? Positioned(
+                bottom: 20,
+                child: Container(
+                  height: 18,
+                  width: widget.images.length == 2
+                      ? widget.images.length * 24
+                      : widget.images.length * 20,
+                  decoration: BoxDecoration(
+                      color: AppColors.black.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: widget.images.asMap().entries.map((e) {
+                      return Container(
+                        width: currentIndex == e.key ? 17 : 7,
+                        height: 7,
+                        margin: const EdgeInsets.symmetric(horizontal: 3),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                      );
+                    }).toList(),
                   ),
                 ),
               )
