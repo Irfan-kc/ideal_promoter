@@ -36,6 +36,7 @@ class _ProductViewState extends State<ProductView> {
   Widget build(BuildContext context) {
     return Consumer<ProductProvider>(builder: (context, productProvider, _) {
       return Scaffold(
+       
         body: productProvider.isSingleProductLoading
             ? loader()
             : productProvider.singleProduct == null
