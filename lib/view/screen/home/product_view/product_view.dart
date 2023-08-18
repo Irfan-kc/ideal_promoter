@@ -35,15 +35,17 @@ class _ProductViewState extends State<ProductView> {
     });
   }
 
+  double calculateDiscount(double price, double offerPrice) {
+    double discount = price - offerPrice;
+    double discountPercentage = (discount / price) * 100;
+    return discountPercentage;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer3<ProductProvider, ProfileProvider, WhatsAppProvider>(
         builder:
             (context, productProvider, profileProvider, whatsAppProvider, _) {
-      double discount = productProvider.singleProduct!.price! -
-          productProvider.singleProduct!.offerPrice!.toDouble();
-      double discountPercentage =
-          (discount / productProvider.singleProduct!.price!) * 100;
       return Scaffold(
         body: productProvider.isSingleProductLoading
             ? loader()
@@ -122,8 +124,15 @@ class _ProductViewState extends State<ProductView> {
                                                   decorationThickness: 1.5)),
                                           const WidgetSpan(child: KWidth(10)),
                                           TextSpan(
-                                            text:
-                                                "${discountPercentage.toStringAsFixed(0)}%",
+                                            text: productProvider.singleProduct!
+                                                            .offerPrice !=
+                                                        null ||
+                                                    productProvider
+                                                            .singleProduct!
+                                                            .offerPrice !=
+                                                        0
+                                                ? "${calculateDiscount(productProvider.singleProduct!.price!, productProvider.singleProduct!.offerPrice!).toStringAsFixed(0)}%"
+                                                : "",
                                             style: const TextStyle(
                                               color: AppColors.green,
                                               fontSize: 18,
@@ -193,7 +202,9 @@ class _ProductViewState extends State<ProductView> {
                                     ),
                                     onTap: () {
                                       whatsAppProvider.getItOnWhatsApp(
-                                          context, productProvider.singleProduct!.id ?? "");
+                                          context,
+                                          productProvider.singleProduct!.id ??
+                                              "");
                                     },
                                     text: 'Get it on Whatsapp',
                                     color: AppColors.green,
