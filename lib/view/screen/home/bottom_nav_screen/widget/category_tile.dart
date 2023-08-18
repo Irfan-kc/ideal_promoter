@@ -34,7 +34,7 @@ class _CategoryTileState extends State<CategoryTile> {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: SizedBox(
-                height: 60,
+                height: 100,
                 width: MediaQuery.of(context).size.width,
                 child: categoryProvider.isLoading
                     ? Padding(
@@ -65,33 +65,56 @@ class _CategoryTileState extends State<CategoryTile> {
                                       listen: false)
                                   .onBarChanged(2, context, true);
                             },
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              margin: const EdgeInsets.only(right: 10.0),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: categoryProvider.allCategoryList[index]
-                                          .logoImages!.isEmpty
-                                      ? const NetworkImage(AppImages.noImage)
-                                      : NetworkImage(
-                                          convertImg(
-                                              categoryProvider
-                                                  .allCategoryList[index]
-                                                  .logoImages![0]
-                                                  .url,
-                                              'h_80'),
-                                        ),
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  width: 2,
-                                  color: categoryProvider
-                                          .allCategoryList[index].isSelected
-                                      ? Colors.blue
-                                      : const Color(0xFF22B250),
-                                ),
+                            child: SizedBox(
+                              width: 70,
+                              height: 100,
+                              child: Column(
+                                // crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    margin: const EdgeInsets.only(right: 0),
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: categoryProvider
+                                                .allCategoryList[index]
+                                                .logoImages!
+                                                .isEmpty
+                                            ? const NetworkImage(
+                                                AppImages.noImage)
+                                            : NetworkImage(
+                                                convertImg(
+                                                    categoryProvider
+                                                        .allCategoryList[index]
+                                                        .logoImages![0]
+                                                        .url,
+                                                    'h_80'),
+                                              ),
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        width: 2,
+                                        color: categoryProvider
+                                                .allCategoryList[index]
+                                                .isSelected
+                                            ? Colors.blue
+                                            : const Color(0xFF22B250),
+                                      ),
+                                    ),
+                                  ),
+                                  const KHeight(2),
+                                  Text(
+                                    categoryProvider.allCategoryList[index]
+                                            .primaryLang!.name ??
+                                        "NA",
+                                        textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           );
