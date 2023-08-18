@@ -51,7 +51,8 @@ class CircularPercentWidget extends StatelessWidget {
             ),
           ),
         ),
-        progressColor: AppColors.textSecondary,
+        progressColor:
+            profilePercentage == 1 ? AppColors.green : AppColors.textSecondary,
       ),
     );
   }

@@ -29,13 +29,13 @@ class ProfileProvider extends BaseProvider {
     }
   }
 
-  Future updateProfile(BuildContext context, ProfileData profileData) async {
+  Future updateProfile(BuildContext context, ProfileData editProfileData) async {
     try {
       isUpdating = true;
       notifyListeners();
       var response = await Provider.of<ProfileService>(context, listen: false)
           .updateProfile(
-        body: profileData.toJson(),
+        body: editProfileData.toJson(),
       );
       if (response.isSuccessful) {
         profileData = ProfileData.fromJson(response.body);

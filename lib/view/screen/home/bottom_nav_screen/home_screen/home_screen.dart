@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               const PageViewsScreen()));
                                 },
                                 child: Text(
-                                  '${int.parse(provider.dashboardData!.totalPageViewsCount.toString())} Page views',
+                                  '${provider.dashboardData!.totalPageViewsCount!.toInt()} Page views',
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               KWidth(20),
                               Text(
-                                'You dont have any page views',
+                                'You don\'t have any page views',
                                 style: TextStyle(
                                   color: Color(0xFFFF7448),
                                   fontSize: 14,

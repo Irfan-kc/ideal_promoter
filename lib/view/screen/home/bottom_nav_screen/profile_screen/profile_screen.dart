@@ -1,7 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/models/profile_data_model/profile_data_model.dart';
@@ -67,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Consumer<ProfileProvider>(
       builder: (context, profileProvider, _) {
         return profileProvider.isLoading
-            ?  Center(child: loader())
+            ? Center(child: loader())
             : profileProvider.profileData == null
                 ? const Center(
                     child: Text("Failed to load data!"),
@@ -97,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Text(
-                                      'joined on',
+                                      'Joined on',
                                       style: AppTextStyle.smallWhiteText,
                                     ),
                                     profileProvider.profileData!.createdAt ==
@@ -153,102 +152,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ],
                             ),
-                            Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) => const LogoutAlert());
-                                    },
-                                    icon: const Icon(
-                                      Icons.logout,
-                                      color: Colors.white,
-                                    )),
-                                InkWell(
-                                  onTap: () async {
-                                    if (isEdit) {
-                                      await Provider.of<ProfileProvider>(
-                                              context,
-                                              listen: false)
-                                          .updateProfile(
-                                        context,
-                                        ProfileData(
-                                          address:
-                                              addressController.text.isEmpty
-                                                  ? null
-                                                  : addressController.text,
-                                          name: nameController.text.isEmpty
-                                              ? null
-                                              : nameController.text,
-                                          email: emailController.text.isEmpty
-                                              ? null
-                                              : emailController.text,
-                                          phone: phoneController.text.isEmpty
-                                              ? null
-                                              : phoneController.text,
-                                          countryCode:
-                                              countryCode.split('+')[1],
-                                          refId: profileProvider
-                                                  .profileData!.refId ??
-                                              '',
-                                          socialLinks: SocialLinks(
-                                            facebookAccount:
-                                                facebookAccountController
-                                                        .text.isEmpty
-                                                    ? null
-                                                    : facebookAccountController
-                                                        .text,
-                                            facebookPage: facebookPageController
-                                                    .text.isEmpty
-                                                ? null
-                                                : facebookPageController.text,
-                                            instagram:
-                                                instagramController.text.isEmpty
-                                                    ? null
-                                                    : instagramController.text,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    setState(() {
-                                      isEdit = !isEdit;
-                                    });
-                                  },
-                                  child: isEdit
-                                      ? Container(
-                                          height: 25,
-                                          width: 70,
-                                          decoration: BoxDecoration(
-                                              color: AppColors.green,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child: Center(
-                                            child: profileProvider.isUpdating
-                                                ? const Center(
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      color: Colors.white,
-                                                    ),
-                                                  )
-                                                : const Text(
-                                                    'Save',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ),
-                                          ),
-                                        )
-                                      : SvgPicture.asset(
-                                          'assets/icons/edit_icon.svg',
-                                          height: 20,
-                                          width: 30,
-                                        ),
-                                ),
-                              ],
+                            TextButton.icon(
+                              style: TextButton.styleFrom(
+                                backgroundColor: const Color.fromARGB(
+                                    255, 225, 83, 81), // Background Color
+                              ),
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => const LogoutAlert(),
+                                );
+                              },
+                              icon: const Icon(
+                                Icons.logout,
+                                color: Colors.white,
+                              ),
+                              label: const Text(
+                                'Logout',
+                                style:
+                                    TextStyle(color: AppColors.secondaryColor),
+                              ),
                             ),
                           ],
                         ),
@@ -259,7 +182,114 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       key: formKey,
                       child: Column(
                         children: [
-                          const KHeight(24),
+                          const KHeight(20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  "Promoter Details",
+                                  style: AppTextStyle.alertHead,
+                                ),
+                                isEdit
+                                    ? TextButton.icon(
+                                        style: TextButton.styleFrom(
+                                          backgroundColor: AppColors
+                                              .green, // Background Color
+                                        ),
+                                        onPressed: () async {
+                                          await Provider.of<ProfileProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .updateProfile(
+                                            context,
+                                            ProfileData(
+                                              address:
+                                                  addressController.text.isEmpty
+                                                      ? null
+                                                      : addressController.text,
+                                              name: nameController.text.isEmpty
+                                                  ? null
+                                                  : nameController.text,
+                                              email:
+                                                  emailController.text.isEmpty
+                                                      ? null
+                                                      : emailController.text,
+                                              phone:
+                                                  phoneController.text.isEmpty
+                                                      ? null
+                                                      : phoneController.text,
+                                              countryCode:
+                                                  countryCode.split('+')[1],
+                                              refId: profileProvider
+                                                      .profileData!.refId ??
+                                                  '',
+                                              socialLinks: SocialLinks(
+                                                facebookAccount:
+                                                    facebookAccountController
+                                                            .text.isEmpty
+                                                        ? null
+                                                        : facebookAccountController
+                                                            .text,
+                                                facebookPage:
+                                                    facebookPageController
+                                                            .text.isEmpty
+                                                        ? null
+                                                        : facebookPageController
+                                                            .text,
+                                                instagram: instagramController
+                                                        .text.isEmpty
+                                                    ? null
+                                                    : instagramController.text,
+                                              ),
+                                            ),
+                                          );
+                                          setState(() {
+                                            isEdit = false;
+                                          });
+                                        },
+                                        icon: profileProvider.isUpdating
+                                            ? const SizedBox(
+                                                height: 20,
+                                                width: 20,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            : const Icon(
+                                                Icons.save_outlined,
+                                                color: Colors.white,
+                                              ),
+                                        label: Text(
+                                          profileProvider.isUpdating
+                                              ? "Saving..."
+                                              : 'Save Changes',
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                      )
+                                    : TextButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            isEdit = true;
+                                          });
+                                        },
+                                        icon: Icon(
+                                          Icons.edit_document,
+                                          color: Colors.grey[700],
+                                        ),
+                                        label: Text(
+                                          'Edit Details',
+                                          style: TextStyle(
+                                              color: Colors.grey[700]),
+                                        ),
+                                      ),
+                              ],
+                            ),
+                          ),
+                          const KHeight(12),
                           ProfileTextField(
                             controller: nameController,
                             labelText: 'Name',
