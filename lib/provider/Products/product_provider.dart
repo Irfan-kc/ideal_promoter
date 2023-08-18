@@ -15,15 +15,16 @@ class ProductProvider extends BaseProvider {
   bool isProductPagination = true;
   String? selectedCatId;
 
-  Future doPagination(BuildContext context, {int? page}) async {
+  Future doPagination(BuildContext context, {int? page, String? search}) async {
     if (isProductPagination) {
-      await getAllProducts(context, page: page);
+      await getAllProducts(context, page: page, search: search);
     } else {
       await getAllProductsByCategory(context, selectedCatId!, page!);
     }
   }
 
-  Future getAllProducts(BuildContext context, {int? page}) async {
+  Future getAllProducts(BuildContext context,
+      {int? page, String? search}) async {
     try {
       isProductPagination = true;
       if (page == null || page == 1) {
@@ -32,7 +33,10 @@ class ProductProvider extends BaseProvider {
         notifyListeners();
       }
       var response = await Provider.of<ProductService>(context, listen: false)
-          .getAllProducts(page: page);
+          .getAllProducts(
+        page: page,
+        search: search,
+      );
       if (response.isSuccessful) {
         var result = ProductModel.fromJson(response.body);
         allProducts.addAll(result.products ?? []);
