@@ -17,6 +17,12 @@ class CategoryTile extends StatefulWidget {
 }
 
 class _CategoryTileState extends State<CategoryTile> {
+  String convertImg(String? url, String style) {
+    if (url == null) return AppImages.noImage;
+    var splited = url.split("upload/");
+    return '${splited[0]}upload/$style/${splited[1]}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<CategoryProvider>(
@@ -70,11 +76,12 @@ class _CategoryTileState extends State<CategoryTile> {
                                           .logoImages!.isEmpty
                                       ? const NetworkImage(AppImages.noImage)
                                       : NetworkImage(
-                                          categoryProvider
+                                          convertImg(
+                                              categoryProvider
                                                   .allCategoryList[index]
                                                   .logoImages![0]
-                                                  .url ??
-                                              AppImages.noImage,
+                                                  .url,
+                                              'h_60'),
                                         ),
                                 ),
                                 borderRadius: BorderRadius.circular(10),

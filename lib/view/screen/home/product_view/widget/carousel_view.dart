@@ -17,6 +17,12 @@ class CarouselView extends StatefulWidget {
 class _CarouselViewState extends State<CarouselView> {
   var currentIndex = 0;
 
+  String convertImg(String? url, String style) {
+    if (url == null) return AppImages.noImage;
+    var splited = url.split("upload/");
+    return '${splited[0]}upload/$style/${splited[1]}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -38,7 +44,7 @@ class _CarouselViewState extends State<CarouselView> {
           items: widget.images.map((item) {
             return widget.images.isNotEmpty
                 ? Image.network(
-                    item.url ?? AppImages.noImage,
+                    convertImg(item.url, 'h_400'),
                     fit: BoxFit.cover,
                     width: double.infinity,
                   )

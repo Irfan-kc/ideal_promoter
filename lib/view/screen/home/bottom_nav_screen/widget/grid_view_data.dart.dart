@@ -101,6 +101,13 @@ class ProductBuilder extends StatelessWidget {
   final bool isLoading;
   final List<String> id;
   final ScrollController controller;
+
+  String convertImg(String? url, String style) {
+    if (url == null) return AppImages.noImage;
+    var splited = url.split("upload/");
+    return '${splited[0]}upload/$style/${splited[1]}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -136,7 +143,7 @@ class ProductBuilder extends StatelessWidget {
                       image: imageUrl.isEmpty
                           ? const NetworkImage(AppImages.noImage)
                           : NetworkImage(
-                              imageUrl[index],
+                              convertImg(imageUrl[index], "h_161"),
                             ),
                       width: 170,
                       height: 161,

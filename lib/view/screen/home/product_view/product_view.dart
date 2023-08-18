@@ -41,6 +41,11 @@ class _ProductViewState extends State<ProductView> {
     return discountPercentage;
   }
 
+  String convertImg(String url, String style) {
+  var splited = url.split("upload/");
+  return '${splited[0]}upload/q_auto:eco,$style/${splited[1]}';
+}
+
   @override
   Widget build(BuildContext context) {
     return Consumer3<ProductProvider, ProfileProvider, WhatsAppProvider>(
@@ -57,7 +62,7 @@ class _ProductViewState extends State<ProductView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CarouselView(
-                          images: productProvider.singleProduct!.images ?? [],
+                          images: (productProvider.singleProduct!.images ?? []),
                         ),
                         // const KHeight(24),
                         Padding(
@@ -131,7 +136,7 @@ class _ProductViewState extends State<ProductView> {
                                                             .singleProduct!
                                                             .offerPrice !=
                                                         0
-                                                ? "${calculateDiscount(productProvider.singleProduct!.price!, productProvider.singleProduct!.offerPrice!).toStringAsFixed(0)}%"
+                                                ? "${calculateDiscount(productProvider.singleProduct!.price!, productProvider.singleProduct!.offerPrice!).toStringAsFixed(0)}% Off"
                                                 : "",
                                             style: const TextStyle(
                                               color: AppColors.green,
