@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
+import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../provider/Home/home_screen_provider/bottom_nav_bar_provider.dart';
@@ -18,26 +18,30 @@ class BottomNavBarWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
             vertical: 30,
           ),
-          height: 90,
+          height: 110,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               BottomNavBarItem(
+                label: 'Home',
                 icon: CupertinoIcons.home,
                 currentIndex: bottomNavProvider.currentIndex,
                 defaultIndex: 0,
               ),
               BottomNavBarItem(
-                icon: Icons.wallet_outlined,
+                label: 'Earnings',
+                icon: CupertinoIcons.chart_bar_circle,
                 currentIndex: bottomNavProvider.currentIndex,
                 defaultIndex: 1,
               ),
               BottomNavBarItem(
-                icon: CupertinoIcons.chart_bar_circle,
+                label: 'Products',
+                icon: CupertinoIcons.cube_box,
                 currentIndex: bottomNavProvider.currentIndex,
                 defaultIndex: 2,
               ),
               BottomNavBarItem(
+                label: 'Profile',
                 icon: CupertinoIcons.profile_circled,
                 currentIndex: bottomNavProvider.currentIndex,
                 defaultIndex: 3,
@@ -56,11 +60,13 @@ class BottomNavBarItem extends StatelessWidget {
     required this.currentIndex,
     required this.defaultIndex,
     required this.icon,
+    required this.label,
   });
 
   final int currentIndex;
   final int defaultIndex;
   final IconData icon;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +86,16 @@ class BottomNavBarItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 23,
+              size: 28,
               color: isSelected
                   ? AppColors.primaryColor
                   : const Color(0XFFD7DCE4), // Set selected item color
             ),
+            Text(
+              label,
+              style: AppTextStyle.dataColumnText
+                  .apply(color: isSelected ? AppColors.primaryColor : null),
+            )
           ],
         ),
       );
