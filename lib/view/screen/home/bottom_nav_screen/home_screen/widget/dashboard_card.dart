@@ -31,11 +31,11 @@ class DashBoardCard extends StatelessWidget {
               },
               heading: 'Total Earnings',
               todayAmount: provider.dashboardData?.todayEarningsAmount != null
-                  ? '\u20B9${provider.dashboardData?.todayEarningsAmount}'
-                  : '\u20B90',
+                  ? '₹${provider.dashboardData?.todayEarningsAmount}'
+                  : '₹0',
               totalAmount: provider.dashboardData?.totalEarningsAmount != null
-                  ? '\u20B9${provider.dashboardData?.totalEarningsAmount}'
-                  : '\u20B90',
+                  ? '₹${provider.dashboardData?.totalEarningsAmount}'
+                  : '₹0',
               totalColor: const Color(0xFF9FFFCB),
             ),
           ),

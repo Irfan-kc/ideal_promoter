@@ -41,10 +41,6 @@ class _ProductViewState extends State<ProductView> {
     return discountPercentage;
   }
 
-  String convertImg(String url, String style) {
-  var splited = url.split("upload/");
-  return '${splited[0]}upload/q_auto:eco,$style/${splited[1]}';
-}
 
   @override
   Widget build(BuildContext context) {
@@ -108,18 +104,10 @@ class _ProductViewState extends State<ProductView> {
                                           TextSpan(
                                               text: productProvider
                                                           .singleProduct!
-                                                          .offerPrice !=
-                                                      null
-                                                  ? '\$${productProvider.singleProduct!.offerPrice}'
-                                                  : '\$0'),
-                                          const WidgetSpan(child: KWidth(10)),
-                                          TextSpan(
-                                              text: productProvider
-                                                          .singleProduct!
                                                           .price !=
                                                       null
-                                                  ? '\$${productProvider.singleProduct!.price}'
-                                                  : '\$0',
+                                                  ? '₹${productProvider.singleProduct!.price}'
+                                                  : '₹0',
                                               style: const TextStyle(
                                                   color: Color(0xFF9C9C9C),
                                                   fontSize: 18,
@@ -127,6 +115,14 @@ class _ProductViewState extends State<ProductView> {
                                                   decoration: TextDecoration
                                                       .lineThrough,
                                                   decorationThickness: 1.5)),
+                                          const WidgetSpan(child: KWidth(10)),
+                                          TextSpan(
+                                              text: productProvider
+                                                          .singleProduct!
+                                                          .offerPrice !=
+                                                      null
+                                                  ? '₹${productProvider.singleProduct!.offerPrice}'
+                                                  : '₹0'),
                                           const WidgetSpan(child: KWidth(10)),
                                           TextSpan(
                                             text: productProvider.singleProduct!
@@ -195,7 +191,7 @@ class _ProductViewState extends State<ProductView> {
                                                     "Copied to clipboard")));
                                       });
                                     },
-                                    text: 'Copy Urls',
+                                    text: 'Copy Url',
                                   ),
                                   const KWidth(10),
                                   CustIconButton(

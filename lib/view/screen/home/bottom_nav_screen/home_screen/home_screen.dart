@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               const PageViewsScreen()));
                                 },
                                 child: Text(
-                                  '${Provider.of<DashboardProvider>(context, listen: false).dashboardData?.totalPageViewsCount} Page views',
+                                  '${int.parse(provider.dashboardData!.totalPageViewsCount.toString())} Page views',
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -165,8 +165,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     .map((e) => e.primaryLang!.name!)
                                     .toList(),
                                 productPrice: productProvider.featuredProducts
-                                    .map((e) =>
-                                        "${e.offerPrice ?? e.price ?? "0"}")
+                                    .map((e) => e.price ?? 0)
+                                    .toList(),
+                                productOfferPrice: productProvider
+                                    .featuredProducts
+                                    .map((e) => e.offerPrice ?? 0)
                                     .toList(),
                               ),
                   ],

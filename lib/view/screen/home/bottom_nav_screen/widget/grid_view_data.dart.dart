@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/app_images.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/view/screen/home/product_view/product_view.dart';
 import 'package:ideal_promoter/view/widget/Loading/shimmer_loader.dart';
@@ -17,7 +18,8 @@ class GridViewData extends StatelessWidget {
 
   final List<String> imageUrl;
   final List<String> productName;
-  final List<String> productPrice;
+  final List<double> productPrice;
+  final List<double> productOfferPrice;
 
   const GridViewData({
     Key? key,
@@ -32,6 +34,7 @@ class GridViewData extends StatelessWidget {
     required this.imageUrl,
     required this.productName,
     required this.productPrice,
+    required this.productOfferPrice,
   }) : super(key: key);
 
   @override
@@ -62,6 +65,7 @@ class GridViewData extends StatelessWidget {
                   imageUrl: imageUrl,
                   productName: productName,
                   price: productPrice,
+                  offerPrice: productOfferPrice,
                 ),
               )
             : ProductBuilder(
@@ -73,6 +77,7 @@ class GridViewData extends StatelessWidget {
                 imageUrl: imageUrl,
                 productName: productName,
                 price: productPrice,
+                offerPrice: productOfferPrice,
               )
       ],
     );
@@ -90,13 +95,15 @@ class ProductBuilder extends StatelessWidget {
     required this.price,
     required this.itemCount,
     required this.id,
+    required this.offerPrice,
   });
 
   final bool isExpanded;
   // final List<dynamic> products;
   final List<String> imageUrl;
   final List<String> productName;
-  final List<String> price;
+  final List<double> price;
+  final List<double> offerPrice;
   final int itemCount;
   final bool isLoading;
   final List<String> id;
@@ -106,6 +113,12 @@ class ProductBuilder extends StatelessWidget {
     if (url == null) return AppImages.noImage;
     var splited = url.split("upload/");
     return '${splited[0]}upload/$style/${splited[1]}';
+  }
+
+  double calculateDiscount(double price, double offerPrice) {
+    double discount = price - offerPrice;
+    double discountPercentage = (discount / price) * 100;
+    return discountPercentage;
   }
 
   @override
@@ -143,7 +156,7 @@ class ProductBuilder extends StatelessWidget {
                       image: imageUrl.isEmpty
                           ? const NetworkImage(AppImages.noImage)
                           : NetworkImage(
-                              convertImg(imageUrl[index], "h_161"),
+                              convertImg(imageUrl[index], "h_200"),
                             ),
                       width: 170,
                       height: 161,
@@ -170,13 +183,42 @@ class ProductBuilder extends StatelessWidget {
                       height: 10,
                       radius: 3,
                     )
-                  : Text(
-                      '\u0024 ${price[index]}',
-                      // : '\u00240.00',
-                      style: AppTextStyle.body3Text,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                  : RichText(
+                      text: TextSpan(
+                        style: AppTextStyle.buttonText.apply(
+                          color: AppColors.black,
+                        ),
+                        children: [
+                          TextSpan(
+                              text: '₹${price[index]}',
+                              style: const TextStyle(
+                                  color: Color(0xFF9C9C9C),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.lineThrough,
+                                  decorationThickness: 1.5)),
+                          const WidgetSpan(child: KWidth(10)),
+                          TextSpan(
+                              text: '₹${offerPrice[index]}',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              )),
+                          const WidgetSpan(child: KWidth(10)),
+                          TextSpan(
+                            text: offerPrice[index] != 0
+                                ? "${calculateDiscount(price[index], offerPrice[index]).toStringAsFixed(0)}% Off"
+                                : "",
+                            style: const TextStyle(
+                              color: AppColors.green,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
+             
             ],
           ),
         );

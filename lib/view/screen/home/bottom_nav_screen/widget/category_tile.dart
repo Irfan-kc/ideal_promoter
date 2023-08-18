@@ -81,7 +81,7 @@ class _CategoryTileState extends State<CategoryTile> {
                                                   .allCategoryList[index]
                                                   .logoImages![0]
                                                   .url,
-                                              'h_60'),
+                                              'h_80'),
                                         ),
                                 ),
                                 borderRadius: BorderRadius.circular(10),

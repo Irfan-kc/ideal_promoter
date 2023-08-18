@@ -44,7 +44,7 @@ class _CarouselViewState extends State<CarouselView> {
           items: widget.images.map((item) {
             return widget.images.isNotEmpty
                 ? Image.network(
-                    convertImg(item.url, 'h_400'),
+                    convertImg(item.url, 'h_500'),
                     fit: BoxFit.cover,
                     width: double.infinity,
                   )
