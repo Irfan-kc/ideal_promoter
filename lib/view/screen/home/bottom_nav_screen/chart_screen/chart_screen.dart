@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ideal_promoter/constant/app_images.dart';
 import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/provider/Category/category_provider.dart';
+import 'package:ideal_promoter/provider/Home/home_screen_provider/bottom_nav_bar_provider.dart';
 import 'package:ideal_promoter/provider/Products/product_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/chart_screen/widget/app_bar.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/widget/category_tile.dart';
@@ -11,7 +12,9 @@ import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
 class ChartScreen extends StatefulWidget {
-  const ChartScreen({super.key});
+  const ChartScreen({
+    super.key,
+  });
 
   @override
   State<ChartScreen> createState() => _ChartScreenState();
@@ -25,8 +28,12 @@ class _ChartScreenState extends State<ChartScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
-      Provider.of<ProductProvider>(context, listen: false)
-          .getAllProducts(context, page: page);
+      var isFromHome =
+          Provider.of<BottomNavProvider>(context, listen: false).isFromHome;
+      if (!isFromHome) {
+        Provider.of<ProductProvider>(context, listen: false)
+            .getAllProducts(context, page: page);
+      }
       Provider.of<CategoryProvider>(context, listen: false).getAllSubCategories(
         context,
       );
@@ -39,8 +46,10 @@ class _ChartScreenState extends State<ChartScreen> {
       setState(() {
         page++;
       });
-      Provider.of<ProductProvider>(context, listen: false)
-          .getAllProducts(context, page: page);
+      Provider.of<ProductProvider>(context, listen: false).doPagination(
+        context,
+        page: page,
+      );
     }
   }
 
@@ -52,7 +61,13 @@ class _ChartScreenState extends State<ChartScreen> {
         children: [
           const CustAppBar(),
           const KHeight(14),
-          const CategoryTile(),
+          CategoryTile(
+            onSelected: () {
+              setState(() {
+                page = 1;
+              });
+            },
+          ),
           const KHeight(12),
           Visibility(
             visible: categoryProvider.subCatListByMainCat.isNotEmpty,
@@ -64,8 +79,11 @@ class _ChartScreenState extends State<ChartScreen> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
+                    setState(() {
+                      page = 1;
+                    });
                     Provider.of<CategoryProvider>(context, listen: false)
-                        .changeIsSelectSub(context,index);
+                        .changeIsSelectSub(context, index);
                   },
                   child: Container(
                     padding:

@@ -8,15 +8,17 @@ class BottomNavProvider extends ChangeNotifier {
   Widget currentPage = const HomeScreen();
   int currentIndex = 0;
   PreferredSize? appBar;
+  bool isFromHome = true;
 
-  List<Widget> pageBucket = const [
-    HomeScreen(),
-    WalletScreen(),
-    ChartScreen(),
-    ProfileScreen()
+  List<Widget> pageBucket = [
+    const HomeScreen(),
+    const WalletScreen(),
+    const ChartScreen(),
+    const ProfileScreen()
   ];
 
-  onBarChanged(int index, BuildContext context) {
+  onBarChanged(int index, BuildContext context, bool isNavFromHome) {
+    isFromHome = isNavFromHome;
     currentIndex = index;
     currentPage = pageBucket[index];
     notifyListeners();

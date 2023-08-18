@@ -12,9 +12,20 @@ class ProductProvider extends BaseProvider {
   List<Product> allProducts = [];
   List<Product> featuredProducts = [];
   SingleProductModel? singleProduct;
+  bool isProductPagination = true;
+  String? selectedCatId;
+
+  Future doPagination(BuildContext context, {int? page}) async {
+    if (isProductPagination) {
+      await getAllProducts(context, page: page);
+    } else {
+      await getAllProductsByCategory(context, selectedCatId!, page!);
+    }
+  }
 
   Future getAllProducts(BuildContext context, {int? page}) async {
     try {
+      isProductPagination = true;
       if (page == null || page == 1) {
         allProducts.clear();
         isLoading = true;
@@ -40,6 +51,8 @@ class ProductProvider extends BaseProvider {
     String catId,
     int page,
   ) async {
+    selectedCatId = catId;
+    isProductPagination = false;
     try {
       if (page == 1) {
         isLoading = true;
@@ -49,7 +62,7 @@ class ProductProvider extends BaseProvider {
       var response = await Provider.of<ProductService>(context, listen: false)
           .getProductByCategory(
         categoryId: catId,
-        page: 1,
+        page: page,
         limit: 20,
       );
       if (response.isSuccessful) {

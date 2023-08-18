@@ -27,7 +27,7 @@ class DashBoardCard extends StatelessWidget {
               provider: provider,
               onTap: () {
                 Provider.of<BottomNavProvider>(context, listen: false)
-                    .onBarChanged(1, context);
+                    .onBarChanged(1, context, false);
               },
               heading: 'Total Earnings',
               todayAmount: provider.dashboardData?.todayEarningsAmount != null

@@ -8,7 +8,9 @@ import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
 class CategoryTile extends StatefulWidget {
-  const CategoryTile({super.key});
+  const CategoryTile({super.key, required this.onSelected});
+
+  final VoidCallback onSelected;
 
   @override
   State<CategoryTile> createState() => _CategoryTileState();
@@ -44,6 +46,7 @@ class _CategoryTileState extends State<CategoryTile> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
+                              widget.onSelected();
                               Provider.of<CategoryProvider>(context,
                                       listen: false)
                                   .changeIsSelect(
@@ -54,7 +57,7 @@ class _CategoryTileState extends State<CategoryTile> {
                                           '');
                               Provider.of<BottomNavProvider>(context,
                                       listen: false)
-                                  .onBarChanged(2, context);
+                                  .onBarChanged(2, context, true);
                             },
                             child: Container(
                               width: 60,

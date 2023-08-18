@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer3<DashboardProvider, GraphProvider, ProductProvider>(
       builder: (context, provider, graphProvider, productProvider, _) {
         return provider.isLoading
-            ?  Center(
+            ? Center(
                 child: loader(),
               )
             : BackGroundWidget(
@@ -135,7 +135,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                     const KHeight(9),
-                    const CategoryTile(),
+                    CategoryTile(
+                      onSelected: () {},
+                    ),
                     const KHeight(12),
                     productProvider.isLoading
                         ? loader()

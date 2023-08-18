@@ -74,7 +74,7 @@ class BottomNavBarItem extends StatelessWidget {
       return GestureDetector(
         onTap: () {
           Provider.of<BottomNavProvider>(context, listen: false)
-              .onBarChanged(defaultIndex, context);
+              .onBarChanged(defaultIndex, context, false);
         },
         child: Column(
           children: [
