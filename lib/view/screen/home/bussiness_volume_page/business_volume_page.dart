@@ -157,9 +157,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                                           .orderAmount
                                           .toString(),
                                       businessVolumeProvider
-                                          .businessVolumeData[index]
-                                          .earning!
-                                          .promoterAmount
+                                          .businessVolumeData[index].amount
                                           .toString(),
                                       businessVolumeProvider
                                               .businessVolumeData[index]

@@ -18,13 +18,18 @@ class PageViewProvider extends BaseProvider {
     int? limit,
   }) async {
     try {
+      isLoading = true;
+
       if (page == null || page == 1) {
         pageViewData.clear();
         isLoading = true;
         notifyListeners();
       }
       var response = await Provider.of<PageViewService>(context, listen: false)
-          .pageViewData(page: page, limit: limit);
+          .pageViewData(
+        page: page,
+        limit: limit,
+      );
       if (response.isSuccessful) {
         var result = PageViewModel.fromJson(response.body);
         totalPageviews = result.total.toString();
