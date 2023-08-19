@@ -90,42 +90,42 @@ class _WalletScreenState extends State<WalletScreen> {
               fromDate: fromDate.toString(),
               toDate: toDate.toString(),
             ),
-            earningsProvider.isLoading
-                ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(28.0),
-                      child: loader(),
-                    ),
-                  )
-                : earningsProvider.earningsData.isEmpty
-                    ? const Padding(
-                        padding: EdgeInsets.all(28.0),
-                        child: Center(child: Text("No data retrieved")),
-                      )
-                    : Expanded(
-                        child: CustTableData(
-                          isEarnings: true,
-                          itemCount: earningsProvider.earningsData.length,
-                          orderId: earningsProvider.earningsData.map((e) {
-                            if (e.order == null) {
-                              return "#000";
-                            }
-                            return e.order!.orderId ?? "#000";
-                          }).toList(),
-                          orderAmount: earningsProvider.earningsData
-                              .map((e) => e.orderAmount.toString())
-                              .toList(),
-                          earningsAmount: earningsProvider.earningsData
-                              .map((e) => e.promoterAmount.toString())
-                              .toList(),
-                          orderStatus: earningsProvider.earningsData.map((e) {
-                            if (e.order == null) {
-                              return "NA";
-                            }
-                            return e.order!.orderStatus ?? "NA";
-                          }).toList(),
-                        ),
-                      ),
+            // earningsProvider.isLoading
+            //     ? Center(
+            //         child: Padding(
+            //           padding: const EdgeInsets.all(28.0),
+            //           child: loader(),
+            //         ),
+            //       )
+            //     : earningsProvider.earningsData.isEmpty
+            //         ? const Padding(
+            //             padding: EdgeInsets.all(28.0),
+            //             child: Center(child: Text("No data retrieved")),
+            //           )
+            //         : Expanded(
+            //             child: CustTableData(
+            //               isEarnings: true,
+            //               itemCount: earningsProvider.earningsData.length,
+            //               orderId: earningsProvider.earningsData.map((e) {
+            //                 if (e.order == null) {
+            //                   return "#000";
+            //                 }
+            //                 return e.order!.orderId ?? "#000";
+            //               }).toList(),
+            //               orderAmount: earningsProvider.earningsData
+            //                   .map((e) => e.orderAmount.toString())
+            //                   .toList(),
+            //               earningsAmount: earningsProvider.earningsData
+            //                   .map((e) => e.promoterAmount.toString())
+            //                   .toList(),
+            //               orderStatus: earningsProvider.earningsData.map((e) {
+            //                 if (e.order == null) {
+            //                   return "NA";
+            //                 }
+            //                 return e.order!.orderStatus ?? "NA";
+            //               }).toList(),
+            //             ),
+            //           ),
           ],
         ),
       );

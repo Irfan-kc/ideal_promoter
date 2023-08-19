@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 import 'package:ideal_promoter/provider/PageView/page_view_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class PageViewsScreen extends StatefulWidget {
@@ -19,6 +19,7 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
   final ScrollController controller = ScrollController();
 
   int page = 1;
+  int limit = 30;
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
       Duration.zero,
       () async {
         await Provider.of<PageViewProvider>(context, listen: false)
-            .getAllPageViews(context);
+            .getAllPageViews(context, page: page,limit: limit);
         controller.addListener(_scrollListener);
       },
     );
@@ -39,7 +40,7 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
         page++;
       });
       Provider.of<PageViewProvider>(context, listen: false)
-          .getAllPageViews(context, page: page);
+          .getAllPageViews(context, page: page, limit: limit);
     }
   }
 
@@ -58,11 +59,20 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 20),
-                        child: Text(
-                          'Page Views',
-                          style: AppTextStyle.textFieldText,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Page Views',
+                              style: AppTextStyle.textFieldText,
+                            ),
+                            Text(
+                              'Total: ${pageViewProvider.totalPageviews}',
+                              style: AppTextStyle.body3Text,
+                            ),
+                          ],
                         ),
                       ),
                       const KHeight(20),
@@ -71,30 +81,13 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                         height: 36,
                         color: const Color(0xffF5FBFF),
                         child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 18.0),
-                          child: Row(
-                            children: [
-                              CustTableCell(
-                                text: 'Ref Id',
-                                flex: 2,
-                                textStyle: false,
-                              ),
-                              CustTableCell(
-                                text: 'Name',
-                                flex: 4,
-                                textStyle: false,
-                              ),
-                              CustTableCell(
-                                text: 'Price',
-                                flex: 2,
-                                textStyle: false,
-                              ),
-                              CustTableCell(
-                                text: 'Offer Price',
-                                flex: 2,
-                                textStyle: false,
-                              ),
-                            ],
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          child: CustTableRow(
+                            length: 2,
+                            label: ['Date', 'Name'],
+                            flex: [1, 2],
+                            color: [Colors.black, Colors.black],
+                            textStyle: true,
                           ),
                         ),
                       ),
@@ -102,59 +95,43 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                           ? loader()
                           : pageViewProvider.pageViewData.isEmpty
                               ? const Padding(
-                                padding: EdgeInsets.all(28.0),
-                                child: Center(child: Text("No data retrieved")),
-                              )
+                                  padding: EdgeInsets.all(28.0),
+                                  child: Center(child: Text("No Data")),
+                                )
                               : Expanded(
                                   child: ListView.builder(
                                     controller: controller,
                                     physics: const BouncingScrollPhysics(),
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 18, vertical: 0),
+                                        horizontal: 8, vertical: 0),
                                     itemCount:
                                         pageViewProvider.pageViewData.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
-                                      return Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 34,
-                                            child: Center(
-                                              child: CustTableRow(
-                                                  color: AppColors.green,
-                                                  flex2: 4,
-                                                  flex3: 2,
-                                                  orderId:
-                                                      pageViewProvider.pageViewData[index].refId ??
-                                                          "#000",
-                                                  orderAmount: pageViewProvider
-                                                          .pageViewData[index]
-                                                          .product!
-                                                          .primaryLang!
-                                                          .name ??
-                                                      "NA",
-                                                  earningsAmount: pageViewProvider.pageViewData[index].product!.price != null
-                                                      ? pageViewProvider
-                                                          .pageViewData[index]
-                                                          .product!
-                                                          .price
-                                                          .toString()
-                                                      : "0",
-                                                  orderStatus: pageViewProvider
-                                                              .pageViewData[
-                                                                  index]
-                                                              .product!
-                                                              .offerPrice !=
-                                                          null
-                                                      ? pageViewProvider
-                                                          .pageViewData[index]
-                                                          .product!
-                                                          .offerPrice
-                                                          .toString()
-                                                      : "0"),
-                                            ),
-                                          ),
-                                        ],
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 6),
+                                        child: CustTableRow(
+                                          length: 2,
+                                          label: [
+                                            DateFormat("yyyy-MM-dd hh:mm a")
+                                                .format(pageViewProvider
+                                                    .pageViewData[index]
+                                                    .createdAt!),
+                                            pageViewProvider
+                                                    .pageViewData[index]
+                                                    .product!
+                                                    .primaryLang!
+                                                    .name ??
+                                                ''
+                                          ],
+                                          flex: const [1, 2],
+                                          color: const [
+                                            Colors.black,
+                                            Colors.black
+                                          ],
+                                          textStyle: false,
+                                        ),
                                       );
                                     },
                                   ),

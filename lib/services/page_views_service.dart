@@ -9,6 +9,7 @@ abstract class PageViewService extends ChopperService {
   @Get(path: 'page-view/promoter/all')
   Future<Response<dynamic>> pageViewData({
     @Query('page') int? page,
+    @Query('limit') int? limit,
   });
 
   static PageViewService create() {

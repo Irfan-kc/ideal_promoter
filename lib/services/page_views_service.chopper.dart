@@ -17,9 +17,15 @@ class _$PageViewService extends PageViewService {
   final definitionType = PageViewService;
 
   @override
-  Future<Response<dynamic>> pageViewData({int? page}) {
+  Future<Response<dynamic>> pageViewData({
+    int? page,
+    int? limit,
+  }) {
     final Uri $url = Uri.parse('page-view/promoter/all');
-    final Map<String, dynamic> $params = <String, dynamic>{'page': page};
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'page': page,
+      'limit': limit,
+    };
     final Request $request = Request(
       'GET',
       $url,

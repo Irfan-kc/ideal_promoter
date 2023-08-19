@@ -8,23 +8,26 @@ import 'package:provider/provider.dart';
 class PageViewProvider extends BaseProvider {
   bool isLoading = false;
   List<PageViews> pageViewData = [];
+  String totalPageviews = '';
 
   Future getAllPageViews(
     BuildContext context, {
     String? fromDate,
     String? toDate,
     int? page,
+    int? limit,
   }) async {
     try {
-      isLoading = true;
-      notifyListeners();
       if (page == null || page == 1) {
         pageViewData.clear();
+        isLoading = true;
+        notifyListeners();
       }
       var response = await Provider.of<PageViewService>(context, listen: false)
-          .pageViewData(page: page);
+          .pageViewData(page: page, limit: limit);
       if (response.isSuccessful) {
         var result = PageViewModel.fromJson(response.body);
+        totalPageviews = result.total.toString();
         pageViewData.addAll(result.pageViews ?? []);
         notifyListeners();
       }
