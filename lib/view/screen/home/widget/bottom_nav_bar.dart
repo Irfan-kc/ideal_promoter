@@ -14,39 +14,40 @@ class BottomNavBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<BottomNavProvider>(
       builder: (context, bottomNavProvider, _) {
-        return Container(
-          padding: const EdgeInsets.symmetric(
-            vertical: 30,
-          ),
-          height: 110,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              BottomNavBarItem(
-                label: 'Home',
-                icon: CupertinoIcons.home,
-                currentIndex: bottomNavProvider.currentIndex,
-                defaultIndex: 0,
-              ),
-              BottomNavBarItem(
-                label: 'Earnings',
-                icon: CupertinoIcons.chart_bar_circle,
-                currentIndex: bottomNavProvider.currentIndex,
-                defaultIndex: 1,
-              ),
-              BottomNavBarItem(
-                label: 'Products',
-                icon: CupertinoIcons.cube_box,
-                currentIndex: bottomNavProvider.currentIndex,
-                defaultIndex: 2,
-              ),
-              BottomNavBarItem(
-                label: 'Profile',
-                icon: CupertinoIcons.profile_circled,
-                currentIndex: bottomNavProvider.currentIndex,
-                defaultIndex: 3,
-              ),
-            ],
+        return SizedBox(
+          height: 64,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                BottomNavBarItem(
+                  label: 'Home',
+                  icon: CupertinoIcons.home,
+                  currentIndex: bottomNavProvider.currentIndex,
+                  defaultIndex: 0,
+                ),
+                BottomNavBarItem(
+                  label: 'Earnings',
+                  icon: CupertinoIcons.chart_bar_circle,
+                  currentIndex: bottomNavProvider.currentIndex,
+                  defaultIndex: 1,
+                ),
+                BottomNavBarItem(
+                  label: 'Products',
+                  icon: CupertinoIcons.cube_box,
+                  currentIndex: bottomNavProvider.currentIndex,
+                  defaultIndex: 2,
+                ),
+                BottomNavBarItem(
+                  label: 'Profile',
+                  icon: CupertinoIcons.profile_circled,
+                  currentIndex: bottomNavProvider.currentIndex,
+                  defaultIndex: 3,
+                ),
+              ],
+            ),
           ),
         );
       },
