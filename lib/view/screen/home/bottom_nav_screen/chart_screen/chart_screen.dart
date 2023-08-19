@@ -64,7 +64,10 @@ class _ChartScreenState extends State<ChartScreen> {
           child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 12,
+            ),
             child: CustomTextField(
               onChanged: (qry) {
                 debouncer.run(() {
@@ -81,7 +84,6 @@ class _ChartScreenState extends State<ChartScreen> {
               hintText: 'Search product',
             ),
           ),
-          const KHeight(14),
           CategoryTile(
             onSelected: () {
               page = 1;
