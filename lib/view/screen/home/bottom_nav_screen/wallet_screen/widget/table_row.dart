@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 
 class CustTableRow extends StatelessWidget {
-
   final bool textStyle;
   final List<Color>? color;
   final int length;
@@ -30,6 +30,22 @@ class CustTableRow extends StatelessWidget {
         color: color![index],
       ),
     ));
+  }
+
+  static Color? getStatusTypeColor(String statusId) {
+    Color? statusColor;
+    if (statusId == "Delivered") {
+      statusColor = AppColors.green;
+    } else if (statusId == "Processing") {
+      statusColor = const Color(0xff40CCEB);
+    } else if (statusId == "pending") {
+      statusColor = AppColors.warning;
+    } else if (statusId == "Cancelled") {
+      statusColor = Colors.red[800];
+    } else {
+      statusColor = AppColors.black;
+    }
+    return statusColor;
   }
 }
 

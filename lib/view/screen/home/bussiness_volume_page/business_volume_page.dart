@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/BusinessVolume/business_volume_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
+import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
 import 'package:ideal_promoter/view/widget/DateCard/date_card_widget.dart';
 import 'package:ideal_promoter/view/widget/Loading/circular_loader.dart';
 import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 import 'package:provider/provider.dart';
 
-import '../bottom_nav_screen/wallet_screen/widget/table_data.dart';
 import '../bottom_nav_screen/widget/graph.dart';
 
 class BusinessVolumePage extends StatefulWidget {
@@ -96,41 +96,92 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                   toDate: toDate.toString(),
                 ),
                 const KHeight(16),
-                // businessVolumeProvider.isLoading
-                //     ? Center(
-                //         child: Padding(
-                //           padding: const EdgeInsets.all(28.0),
-                //           child: loader(),
-                //         ),
-                //       )
-                //     : businessVolumeProvider.businessVolumeData.isEmpty
-                //         ? const Padding(
-                //             padding: EdgeInsets.all(28.0),
-                //             child: Center(child: Text("No data retrieved")),
-                //           )
-                //         : Expanded(
-                //             child: CustTableData(
-                //               isEarnings: false,
-                //               itemCount: businessVolumeProvider
-                //                   .businessVolumeData.length,
-                //               orderId: businessVolumeProvider.businessVolumeData
-                //                   .map((e) => e.refId ?? "#000")
-                //                   .toList(),
-                //               orderAmount: businessVolumeProvider
-                //                   .businessVolumeData
-                //                   .map((e) => e.earning!.orderAmount.toString())
-                //                   .toList(),
-                //               earningsAmount: businessVolumeProvider
-                //                   .businessVolumeData
-                //                   .map((e) =>
-                //                       e.earning!.promoterAmount.toString())
-                //                   .toList(),
-                //               orderStatus: businessVolumeProvider
-                //                   .businessVolumeData
-                //                   .map((e) => e.status ?? "NA")
-                //                   .toList(),
-                //             ),
-                //           ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 36,
+                  color: const Color(0xffF5FBFF),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: CustTableRow(
+                      length: 4,
+                      label: [
+                        'Ref Id',
+                        'Order Amount',
+                        'BV Amount',
+                        'Order Status'
+                      ],
+                      flex: [2, 3, 3, 2],
+                      color: [
+                        Colors.black,
+                        Colors.black,
+                        Colors.black,
+                        Colors.black
+                      ],
+                      textStyle: true,
+                    ),
+                  ),
+                ),
+                businessVolumeProvider.isLoading
+                    ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(28.0),
+                          child: loader(),
+                        ),
+                      )
+                    : businessVolumeProvider.businessVolumeData.isEmpty
+                        ? const Padding(
+                            padding: EdgeInsets.all(28.0),
+                            child: Center(child: Text("No data retrieved")),
+                          )
+                        : Expanded(
+                            child: ListView.builder(
+                              physics: const BouncingScrollPhysics(),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 0),
+                              itemCount: businessVolumeProvider
+                                  .businessVolumeData.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 6),
+                                  child: CustTableRow(
+                                    length: 4,
+                                    label: [
+                                      businessVolumeProvider
+                                              .businessVolumeData[index]
+                                              .refId ??
+                                          '',
+                                      businessVolumeProvider
+                                          .businessVolumeData[index]
+                                          .earning!
+                                          .orderAmount
+                                          .toString(),
+                                      businessVolumeProvider
+                                          .businessVolumeData[index]
+                                          .earning!
+                                          .promoterAmount
+                                          .toString(),
+                                      businessVolumeProvider
+                                              .businessVolumeData[index]
+                                              .status ??
+                                          ''
+                                    ],
+                                    flex: const [2, 3, 3, 2],
+                                    color: [
+                                      Colors.black,
+                                      Colors.black,
+                                      Colors.black,
+                                      CustTableRow.getStatusTypeColor(
+                                          businessVolumeProvider
+                                              .businessVolumeData[index]
+                                              .status!)!,
+                                    ],
+                                    textStyle: false,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
               ],
             ),
           ),
