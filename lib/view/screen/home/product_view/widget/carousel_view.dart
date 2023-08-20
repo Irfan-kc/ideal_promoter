@@ -30,7 +30,7 @@ class _CarouselViewState extends State<CarouselView> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: 460.0,
+            height: 360.0,
             autoPlay: false,
             viewportFraction: 1,
             aspectRatio: 16 / 9,
@@ -44,7 +44,7 @@ class _CarouselViewState extends State<CarouselView> {
           items: widget.images.map((item) {
             return widget.images.isNotEmpty
                 ? Image.network(
-                    convertImg(item.url, 'h_500'),
+                    convertImg(item.url, 'h_360'),
                     fit: BoxFit.cover,
                     width: double.infinity,
                   )
