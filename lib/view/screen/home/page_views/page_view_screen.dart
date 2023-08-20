@@ -28,7 +28,7 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
       Duration.zero,
       () async {
         await Provider.of<PageViewProvider>(context, listen: false)
-            .getAllPageViews(context, page: page,limit: limit);
+            .getAllPageViews(context, page: page, limit: limit);
         controller.addListener(_scrollListener);
       },
     );
@@ -92,7 +92,10 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                         ),
                       ),
                       pageViewProvider.isLoading
-                          ? loader()
+                          ? Padding(
+                              padding: const EdgeInsets.all(40),
+                              child: loader(),
+                            )
                           : pageViewProvider.pageViewData.isEmpty
                               ? const Padding(
                                   padding: EdgeInsets.all(28.0),
@@ -114,7 +117,7 @@ class _PageViewsScreenState extends State<PageViewsScreen> {
                                         child: CustTableRow(
                                           length: 2,
                                           label: [
-                                            DateFormat("yyyy-MM-dd hh:mm a")
+                                            DateFormat("dd-MM-yyyy hh:mm a")
                                                 .format(pageViewProvider
                                                     .pageViewData[index]
                                                     .createdAt!),
