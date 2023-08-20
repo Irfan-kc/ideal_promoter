@@ -39,7 +39,11 @@ class _WalletScreenState extends State<WalletScreen> {
       Duration.zero,
       () async {
         await Provider.of<EarningsProvider>(context, listen: false)
-            .getAllEarnings(context);
+            .getAllEarnings(
+          context,
+          fromDate: fromDate.toString().split(" ")[0],
+          toDate: toDate.toString().split(" ")[0],
+        );
       },
     );
   }
@@ -139,7 +143,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 : earningsProvider.earningsData.isEmpty
                     ? const Padding(
                         padding: EdgeInsets.all(28.0),
-                        child: Center(child: Text("No data retrieved")),
+                        child: Center(child: Text("No Data")),
                       )
                     : Expanded(
                         child: ListView.builder(

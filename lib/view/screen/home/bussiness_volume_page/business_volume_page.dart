@@ -38,7 +38,11 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
       Duration.zero,
       () async {
         Provider.of<BusinessVolumeProvider>(context, listen: false)
-            .getAllBusinessVolume(context);
+            .getAllBusinessVolume(
+          context,
+          fromDate: fromDate.toString().split(" ")[0],
+          toDate: toDate.toString().split(" ")[0],
+        );
         Provider.of<GraphProvider>(context, listen: false)
             .getBusinessVolumeGraphData(context);
       },
@@ -136,7 +140,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                     : businessVolumeProvider.businessVolumeData.isEmpty
                         ? const Padding(
                             padding: EdgeInsets.all(28.0),
-                            child: Center(child: Text("No data retrieved")),
+                            child: Center(child: Text("No Data")),
                           )
                         : Expanded(
                             child: ListView.builder(
