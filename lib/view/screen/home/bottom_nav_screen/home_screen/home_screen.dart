@@ -71,36 +71,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   const NameCard(),
                   const KHeight(13),
                   DashBoardCard(
-                    provider:
-                        Provider.of<DashboardProvider>(context, listen: false),
+                    provider: provider,
                   ),
                   const KHeight(12),
                 ],
                 column2: Column(
                   children: [
                     const KHeight(20),
-                    // const GraphView(),
                     graphProvider.earningsGraphData == null
-                        ? const Text("Data retrieval failed")
+                        ? const Text("No Data")
                         : GraphView(
                             title: 'Monthly Earnings',
                             model: graphProvider.earningsGraphData!,
-                            selectedYValue: provider.dashboardData!.totalEarningsAmount ?? 0.0,
+                            selectedYValue: provider.dashboardData != null
+                                ? provider.dashboardData!.totalEarningsAmount ??
+                                    0.0
+                                : 0.0,
                           ),
                     const KHeight(16),
-                    Provider.of<DashboardProvider>(context, listen: false)
-                                .dashboardData
-                                ?.totalPageViewsCount !=
-                            0
+                    provider.dashboardData != null
                         ? Row(
                             children: [
                               const KWidth(20),
                               const Text(
                                 'You got ',
                                 style: TextStyle(
-                                    color: Color(0xFFFF7448),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400),
+                                  color: Color(0xFFFF7448),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                               InkWell(
                                 onTap: () {
