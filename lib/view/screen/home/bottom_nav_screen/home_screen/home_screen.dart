@@ -85,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         : GraphView(
                             title: 'Monthly Earnings',
                             model: graphProvider.earningsGraphData!,
+                            selectedYValue: provider.dashboardData!.totalEarningsAmount ?? 0.0,
                           ),
                     const KHeight(16),
                     Provider.of<DashboardProvider>(context, listen: false)

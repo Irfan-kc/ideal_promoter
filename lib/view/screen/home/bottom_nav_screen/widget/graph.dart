@@ -8,10 +8,12 @@ import 'package:ideal_promoter/view/widget/others/height_and_width.dart';
 class GraphView extends StatefulWidget {
   final String title;
   final GraphModel model;
+  final double selectedYValue;
   const GraphView({
     super.key,
     required this.title,
     required this.model,
+    required this.selectedYValue,
   });
 
   @override
@@ -21,6 +23,7 @@ class GraphView extends StatefulWidget {
 class _GraphViewState extends State<GraphView> {
   List<int> showingTooltipOnSpots = [];
 
+  double selectedYValue = 0.0;
   List<FlSpot> get allSpots => [
         // FlSpot(-1, 3),
         FlSpot(0, widget.model.jan ?? 0),
@@ -38,7 +41,11 @@ class _GraphViewState extends State<GraphView> {
         // FlSpot(12, 4),
       ];
 
-  double selectedYValue = 0.0;
+  @override
+  void initState() {
+    super.initState();
+    selectedYValue = widget.selectedYValue;
+  }
 
   @override
   Widget build(BuildContext context) {

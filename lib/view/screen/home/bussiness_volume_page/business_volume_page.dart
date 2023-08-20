@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ideal_promoter/provider/BusinessVolume/business_volume_provider.dart';
+import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
 import 'package:ideal_promoter/view/screen/home/widget/background_widget.dart';
@@ -46,8 +47,9 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<GraphProvider, BusinessVolumeProvider>(
-      builder: (context, graphProvider, businessVolumeProvider, _) {
+    return Consumer3<GraphProvider, BusinessVolumeProvider, DashboardProvider>(
+      builder: (context, graphProvider, businessVolumeProvider,
+          dashboardProvider, _) {
         return Scaffold(
           body: BackGroundWidget(
             isExpanded: true,
@@ -63,6 +65,9 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                         : GraphView(
                             title: 'Monhtly Business volume',
                             model: graphProvider.bvGraphData!,
+                            selectedYValue: dashboardProvider
+                                    .dashboardData!.totalBusinessVolumeAmount ??
+                                0.0,
                           ),
                 const KHeight(16),
                 DateCard(

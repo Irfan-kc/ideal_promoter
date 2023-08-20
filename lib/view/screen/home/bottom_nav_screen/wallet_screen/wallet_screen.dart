@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 import 'package:ideal_promoter/provider/Earnings/earnings_provider.dart';
 import 'package:ideal_promoter/provider/Graph/graph_provider.dart';
 import 'package:ideal_promoter/view/screen/home/bottom_nav_screen/wallet_screen/widget/table_row.dart';
@@ -45,8 +46,9 @@ class _WalletScreenState extends State<WalletScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<GraphProvider, EarningsProvider>(
-        builder: (context, graphProvider, earningsProvider, _) {
+    return Consumer3<GraphProvider, EarningsProvider, DashboardProvider>(
+        builder:
+            (context, graphProvider, earningsProvider, dashboardProvider, _) {
       return BackGroundWidget(
         isExpanded: true,
         backButton: false,
@@ -61,6 +63,9 @@ class _WalletScreenState extends State<WalletScreen> {
                     : GraphView(
                         title: 'Monthly Earnings',
                         model: graphProvider.earningsGraphData!,
+                        selectedYValue: dashboardProvider
+                                .dashboardData!.totalEarningsAmount ??
+                            0.0,
                       ),
             const KHeight(16),
             DateCard(
