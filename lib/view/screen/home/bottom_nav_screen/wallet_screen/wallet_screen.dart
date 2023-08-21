@@ -63,7 +63,7 @@ class _WalletScreenState extends State<WalletScreen> {
             graphProvider.isLoading
                 ? loader()
                 : graphProvider.earningsGraphData == null
-                    ? const Text("Data retrieval failed")
+                    ? const Text("No Data")
                     : GraphView(
                         title: 'Monthly Earnings',
                         model: graphProvider.earningsGraphData!,

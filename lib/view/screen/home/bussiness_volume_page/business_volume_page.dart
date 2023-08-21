@@ -59,13 +59,12 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
             isExpanded: true,
             heading: 'Business Volume',
             column2: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const KHeight(20),
                 graphProvider.isLoading
                     ? loader()
                     : graphProvider.bvGraphData == null
-                        ? const Text("Data retrieval failed")
+                        ? const Text("No Data")
                         : GraphView(
                             title: 'Monhtly Business volume',
                             model: graphProvider.bvGraphData!,
@@ -140,7 +139,9 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                     : businessVolumeProvider.businessVolumeData.isEmpty
                         ? const Padding(
                             padding: EdgeInsets.all(28.0),
-                            child: Center(child: Text("No Business Volume in this period")),
+                            child: Center(
+                                child:
+                                    Text("No Business Volume in this period")),
                           )
                         : Expanded(
                             child: ListView.builder(
