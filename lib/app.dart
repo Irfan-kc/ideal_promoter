@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Ideal promoter',
+        title: 'Ideal Promoter',
         theme: ThemeData(
           fontFamily: 'Poppins',
           textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
