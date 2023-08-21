@@ -143,7 +143,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 : earningsProvider.earningsData.isEmpty
                     ? const Padding(
                         padding: EdgeInsets.all(28.0),
-                        child: Center(child: Text("No Data")),
+                        child: Center(child: Text("No Earnings in this period")),
                       )
                     : Expanded(
                         child: ListView.builder(

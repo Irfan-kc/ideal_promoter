@@ -140,7 +140,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                     : businessVolumeProvider.businessVolumeData.isEmpty
                         ? const Padding(
                             padding: EdgeInsets.all(28.0),
-                            child: Center(child: Text("No Data")),
+                            child: Center(child: Text("No Business Volume in this period")),
                           )
                         : Expanded(
                             child: ListView.builder(
