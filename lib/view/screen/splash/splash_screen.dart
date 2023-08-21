@@ -30,18 +30,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(72),
         child: Center(
-          child: Text(
-            'ideal e shope',
-            style: TextStyle(
-              color: Color(0xFF4274D4),
-              fontSize: 30,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.6,
-            ),
+          child: Image.asset(
+            'assets/images/logo.png',
           ),
         ),
       ),
