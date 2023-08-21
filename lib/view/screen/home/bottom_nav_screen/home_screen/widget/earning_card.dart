@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideal_promoter/provider/dashboard_provider/dashboard_provider.dart';
+import 'package:ideal_promoter/provider/Dashboard/dashboard_provider.dart';
 
 class EarningsCard extends StatelessWidget {
   final String heading;
@@ -48,7 +48,7 @@ class EarningsCard extends StatelessWidget {
                         color: totalColor),
                   )
                 : const Text(
-                    'Failed to load data from the server',
+                    'Failed to load data',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.red),
                   ),
@@ -68,7 +68,7 @@ class EarningsCard extends StatelessWidget {
                         color: Colors.white),
                   )
                 : const Text(
-                    'Failed to load data from the server',
+                    'Failed to load data',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.red),
                   ),

@@ -3,75 +3,83 @@ import 'package:ideal_promoter/constant/const_color.dart';
 import 'package:ideal_promoter/constant/text_style.dart';
 
 class CustTableRow extends StatelessWidget {
-  final String? orderId;
-  final String? orderAmount;
-  final String? earningsAmount;
-  final String? orderStatus;
-  final bool? textStyle;
-  const CustTableRow(
-      {super.key,
-      this.orderId,
-      this.orderAmount,
-      this.earningsAmount,
-      this.orderStatus,
-      this.textStyle = true});
+  final bool textStyle;
+  final List<Color>? color;
+  final int length;
+  final List<String> label;
+  final List<int> flex;
+
+  const CustTableRow({
+    super.key,
+    this.textStyle = false,
+    this.color,
+    required this.length,
+    required this.label,
+    required this.flex,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        CustTableCell(
-          text: orderId ?? 'Order Id',
-          flex: 2,
-          textStyle: textStyle,
-        ),
-        CustTableCell(
-          text: orderAmount ?? 'Order Amount',
-          flex: 3,
-          textStyle: textStyle,
-        ),
-        CustTableCell(
-          text: earningsAmount ?? 'Earnings Amount',
-          flex: 3,
-          textStyle: textStyle,
-        ),
-        CustTableCell(
-          text: orderStatus ?? 'Order Status',
-          flex: 2,
-          color: AppColors.green,
-          textStyle: textStyle,
-        ),
-      ],
-    );
+        children: List.generate(
+      length,
+      (index) => CustTableCell(
+        text: label[index],
+        flex: flex[index],
+        textStyle: textStyle,
+        color: color![index],
+      ),
+    ));
+  }
+
+  static Color? getStatusTypeColor(String statusId) {
+    Color? statusColor;
+    if (statusId == "Delivered") {
+      statusColor = AppColors.green;
+    } else if (statusId == "Processing") {
+      statusColor = const Color(0xff40CCEB);
+    } else if (statusId == "pending") {
+      statusColor = AppColors.warning;
+    } else if (statusId == "Cancelled") {
+      statusColor = Colors.red[800];
+    } else {
+      statusColor = AppColors.black;
+    }
+    return statusColor;
   }
 }
 
 class CustTableCell extends StatelessWidget {
   final String text;
   final int flex;
-  // final TextStyle? textStyle;
-  final bool? textStyle;
+  final bool textStyle;
   final Color? color;
   const CustTableCell(
       {super.key,
       required this.text,
       required this.flex,
-      this.textStyle,
+      this.textStyle = false,
       this.color});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        flex: flex,
+      flex: flex,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 4),
         child: Text(
           text,
-          style: textStyle == false
+          style: textStyle
               ? AppTextStyle.dataColumnText
               : TextStyle(
                   fontSize: 11,
                   color: color ?? Colors.black,
                   fontWeight: FontWeight.w400,
-                  letterSpacing: -0.14),
-        ));
+                  letterSpacing: -0.14,
+                ),
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    );
   }
 }

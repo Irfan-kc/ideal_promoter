@@ -16,3 +16,11 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 flutter pub run build_runner build
 
+build dev
+
+flutter build apk --target lib/main_dev.dart
+
+build production
+
+flutter build apk --target lib/main_production.dart
+

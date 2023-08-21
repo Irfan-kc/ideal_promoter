@@ -6,7 +6,7 @@ part 'auth_service.chopper.dart';
 
 @ChopperApi()
 abstract class AuthService extends ChopperService {
-  @Post(path: 'login/mail')
+  @Post(path: 'promoter/login')
   Future<Response<dynamic>> login({@Body() required Map<String, dynamic> body});
 
   @Post(path: 'promoter/form/new')

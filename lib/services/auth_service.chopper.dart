@@ -18,7 +18,7 @@ class _$AuthService extends AuthService {
 
   @override
   Future<Response<dynamic>> login({required Map<String, dynamic> body}) {
-    final Uri $url = Uri.parse('login/mail');
+    final Uri $url = Uri.parse('promoter/login');
     final $body = body;
     final Request $request = Request(
       'POST',
