@@ -1,4 +1,4 @@
-package com.example.ideal_promoter
+package com.osperb.ideal_promoter
 
 import io.flutter.embedding.android.FlutterActivity
 
