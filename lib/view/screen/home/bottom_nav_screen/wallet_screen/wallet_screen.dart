@@ -157,7 +157,7 @@ class _WalletScreenState extends State<WalletScreen> {
                               child: CustTableRow(
                                 length: 4,
                                 label: [
-                                  DateFormat("yyyy-MM-dd").format(
+                                  DateFormat("dd-MM-yyyy").format(
                                       earningsProvider
                                           .earningsData[index].createdAt!),
                                   earningsProvider.earningsData[index].order !=
