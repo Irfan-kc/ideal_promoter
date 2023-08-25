@@ -99,7 +99,6 @@ class SignupInputForm extends StatelessWidget {
                   const KHeight(20),
                   CustomTextField(
                     hintText: 'WhatsApp Number',
-                    maxLength: 10,
                     focusNode: numberFocus,
                     keyboardType: TextInputType.number,
                     inputFormatters: [
@@ -110,9 +109,6 @@ class SignupInputForm extends StatelessWidget {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Enter the Number";
-                      }
-                      if (value.length < 10) {
-                        return 'Wrong Number';
                       }
                       return null;
                     },
@@ -169,11 +165,9 @@ class SignupInputForm extends StatelessWidget {
                       if (val.length < 8) {
                         provider.passwordError = true;
                         provider.onRefresh();
-                        print(provider.passwordError);
                       } else {
                         provider.passwordError = false;
                         provider.onRefresh();
-                        print(provider.passwordError);
                       }
                     },
                     validator: (value) {

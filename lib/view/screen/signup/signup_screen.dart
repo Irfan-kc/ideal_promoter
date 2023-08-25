@@ -53,12 +53,13 @@ class SignUpPage extends StatelessWidget {
                       if (formKey.currentState!.validate()) {
                         await Provider.of<AuthProvider>(context, listen: false)
                             .signup(
-                                context,
-                                nameController.text,
-                                numberController.text,
-                                emailController.text,
-                                passwordController.text,
-                                confirmController.text);
+                          context,
+                          nameController.text,
+                          numberController.text,
+                          emailController.text,
+                          passwordController.text,
+                          confirmController.text,
+                        );
                       }
                     },
                     label: 'Sign up',
