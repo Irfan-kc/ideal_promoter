@@ -314,7 +314,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           const KHeight(8),
                           ProfileTextField(
-                            maxLength: 10,
                             suffixIcon: CountryCodePicker(
                               enabled: isEdit,
                               onChanged: (c) {
