@@ -32,9 +32,16 @@ class _WalletScreenState extends State<WalletScreen> {
 
   DateTime toDate = DateTime.now();
 
+  DateTime getLastDateOfCurrentMonth() {
+    final now = DateTime.now();
+    final lastDayOfMonth = DateTime(now.year, now.month + 1, 0);
+    return lastDayOfMonth;
+  }
+
   @override
   void initState() {
     super.initState();
+    toDate = getLastDateOfCurrentMonth();
     Future.delayed(
       Duration.zero,
       () async {
@@ -63,7 +70,7 @@ class _WalletScreenState extends State<WalletScreen> {
             graphProvider.isLoading
                 ? loader()
                 : graphProvider.earningsGraphData == null
-                    ? const Text("No Data")
+                    ? const Center(child: Text("No Data"))
                     : GraphView(
                         title: 'Monthly Earnings',
                         model: graphProvider.earningsGraphData!,
@@ -143,7 +150,8 @@ class _WalletScreenState extends State<WalletScreen> {
                 : earningsProvider.earningsData.isEmpty
                     ? const Padding(
                         padding: EdgeInsets.all(28.0),
-                        child: Center(child: Text("No Earnings in this period")),
+                        child:
+                            Center(child: Text("No Earnings in this period")),
                       )
                     : Expanded(
                         child: ListView.builder(
@@ -166,12 +174,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                               .order!.orderId ??
                                           ''
                                       : '',
-                                  // earningsProvider
-                                  //     .earningsData[index].orderAmount
-                                  //     .toString(),
-                                  earningsProvider
-                                      .earningsData[index].promoterAmount
-                                      .toString(),
+                                  "₹${earningsProvider.earningsData[index].promoterAmount}",
                                   earningsProvider.earningsData[index].order !=
                                           null
                                       ? earningsProvider.earningsData[index]

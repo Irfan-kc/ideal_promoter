@@ -31,7 +31,7 @@ class DateCard extends StatelessWidget {
       context: context,
       initialDate: date,
       firstDate: DateTime(2000),
-      lastDate: DateTime.now(),
+      lastDate: DateTime(3000),
       initialEntryMode: DatePickerEntryMode.calendarOnly,
       builder: (context, child) {
         return Theme(

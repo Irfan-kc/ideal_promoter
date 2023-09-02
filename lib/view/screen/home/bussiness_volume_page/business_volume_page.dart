@@ -31,9 +31,16 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
 
   DateTime toDate = DateTime.now();
 
+  DateTime getLastDateOfCurrentMonth() {
+    final now = DateTime.now();
+    final lastDayOfMonth = DateTime(now.year, now.month + 1, 0);
+    return lastDayOfMonth;
+  }
+
   @override
   void initState() {
     super.initState();
+    toDate = getLastDateOfCurrentMonth();
     Future.delayed(
       Duration.zero,
       () async {
@@ -64,7 +71,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                 graphProvider.isLoading
                     ? loader()
                     : graphProvider.bvGraphData == null
-                        ? const Text("No Data")
+                        ? const Center(child: Text("No Data"))
                         : GraphView(
                             title: 'Monhtly Business volume',
                             model: graphProvider.bvGraphData!,
@@ -161,14 +168,8 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                                               .businessVolumeData[index]
                                               .refId ??
                                           '',
-                                      businessVolumeProvider
-                                          .businessVolumeData[index]
-                                          .earning!
-                                          .orderAmount
-                                          .toString(),
-                                      businessVolumeProvider
-                                          .businessVolumeData[index].amount
-                                          .toString(),
+                                      "₹${businessVolumeProvider.businessVolumeData[index].earning!.orderAmount}",
+                                      "₹${businessVolumeProvider.businessVolumeData[index].amount}",
                                       businessVolumeProvider
                                               .businessVolumeData[index]
                                               .status ??

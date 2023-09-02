@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     const KHeight(20),
                     graphProvider.earningsGraphData == null
-                        ? const Text("No Data")
+                        ? const Center(child: Text("No Data"))
                         : GraphView(
                             title: 'Monthly Earnings',
                             model: graphProvider.earningsGraphData!,
