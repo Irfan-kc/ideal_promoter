@@ -32,16 +32,26 @@ class CustTableRow extends StatelessWidget {
     ));
   }
 
-  static Color? getStatusTypeColor(String statusId) {
+  static Color? getStatusTypeColor(String status) {
     Color? statusColor;
-    if (statusId == "Delivered") {
+    if (status == "Delivered") {
       statusColor = AppColors.green;
-    } else if (statusId == "Processing") {
+    } else if (status == "Processing") {
       statusColor = const Color(0xff40CCEB);
-    } else if (statusId == "pending") {
+    } else if (status == "Pending") {
       statusColor = AppColors.warning;
-    } else if (statusId == "Cancelled") {
-      statusColor = Colors.red[800];
+    } else if (status == "Cancelled") {
+      statusColor = Colors.red;
+    } else if (status == "Partially Fulfilled") {
+      statusColor = Colors.yellow;
+    } else if (status == "Fulfilled") {
+      statusColor = Colors.green;
+    } else if (status == "Returned") {
+      statusColor = Colors.orange[800];
+    } else if (status == "Shipped") {
+      statusColor = Colors.blue;
+    } else if (status == "In Transit") {
+      statusColor = const Color(0xFFFF7448);
     } else {
       statusColor = AppColors.black;
     }

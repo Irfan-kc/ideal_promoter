@@ -119,7 +119,6 @@ class _WalletScreenState extends State<WalletScreen> {
                   label: [
                     'Date',
                     'Ref Id',
-                    // 'Order Amount',
                     'Amount',
                     'Order Status'
                   ],
@@ -132,7 +131,6 @@ class _WalletScreenState extends State<WalletScreen> {
                   color: [
                     Colors.black,
                     Colors.black,
-                    // Colors.black,
                     Colors.black,
                     Colors.black
                   ],
@@ -192,8 +190,6 @@ class _WalletScreenState extends State<WalletScreen> {
                                   Colors.black,
                                   Colors.black,
                                   Colors.black,
-                                  // Colors.black,
-                                  // Colors.black,
 
                                   earningsProvider.earningsData[index].order !=
                                           null
