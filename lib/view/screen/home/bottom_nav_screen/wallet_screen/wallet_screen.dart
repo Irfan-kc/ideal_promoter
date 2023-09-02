@@ -70,7 +70,7 @@ class _WalletScreenState extends State<WalletScreen> {
             graphProvider.isLoading
                 ? loader()
                 : graphProvider.earningsGraphData == null
-                    ? const Center(child: Text("No Data"))
+                    ? const Center(child: Text("No Graph Data"))
                     : GraphView(
                         title: 'Monthly Earnings',
                         model: graphProvider.earningsGraphData!,

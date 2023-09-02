@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     const KHeight(20),
                     graphProvider.earningsGraphData == null
-                        ? const Center(child: Text("No Data"))
+                        ? const Center(child: Text("No Graph Data"))
                         : GraphView(
                             title: 'Monthly Earnings',
                             model: graphProvider.earningsGraphData!,
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     CategoryTile(
                       onSelected: () {},
                     ),
-                    const KHeight(12),
+                    // const KHeight(12),
                     productProvider.isLoading
                         ? loader()
                         : productProvider.featuredProducts.isEmpty

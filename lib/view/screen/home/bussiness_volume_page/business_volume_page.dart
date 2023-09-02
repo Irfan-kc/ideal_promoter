@@ -71,7 +71,7 @@ class _BusinessVolumePageState extends State<BusinessVolumePage> {
                 graphProvider.isLoading
                     ? loader()
                     : graphProvider.bvGraphData == null
-                        ? const Center(child: Text("No Data"))
+                        ? const Center(child: Text("No Graph Data"))
                         : GraphView(
                             title: 'Monhtly Business volume',
                             model: graphProvider.bvGraphData!,

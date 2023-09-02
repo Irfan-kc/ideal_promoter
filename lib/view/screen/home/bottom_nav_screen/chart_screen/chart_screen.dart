@@ -89,7 +89,7 @@ class _ChartScreenState extends State<ChartScreen> {
               page = 1;
             },
           ),
-          const KHeight(12),
+          const KHeight(4),
           Visibility(
             visible: categoryProvider.subCatListByMainCat.isNotEmpty,
             child: SizedBox(
@@ -138,7 +138,7 @@ class _ChartScreenState extends State<ChartScreen> {
               ),
             ),
           ),
-          const KHeight(12),
+          const KHeight(4),
           Expanded(
             child: productProvider.isLoading
                 ? loader()

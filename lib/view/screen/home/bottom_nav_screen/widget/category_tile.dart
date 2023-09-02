@@ -34,7 +34,7 @@ class _CategoryTileState extends State<CategoryTile> {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: SizedBox(
-                height: 100,
+                height: categoryProvider.isLoading ? 80 : 100,
                 width: MediaQuery.of(context).size.width,
                 child: categoryProvider.isLoading
                     ? Padding(
@@ -109,7 +109,7 @@ class _CategoryTileState extends State<CategoryTile> {
                                     categoryProvider.allCategoryList[index]
                                             .primaryLang!.name ??
                                         "NA",
-                                        textAlign: TextAlign.center,
+                                    textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontSize: 10,
                                     ),
