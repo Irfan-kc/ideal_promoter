@@ -20,15 +20,18 @@ class SignupInputForm extends StatelessWidget {
   final FocusNode passwordFocus = FocusNode();
   final FocusNode confirmFocus = FocusNode();
   final GlobalKey<FormState> formKey;
+  final Function(String countryCode) onCountryCodeSelect;
 
-  SignupInputForm(
-      {super.key,
-      required this.nameController,
-      required this.emailController,
-      required this.numberController,
-      required this.passwordController,
-      required this.confirmController,
-      required this.formKey});
+  SignupInputForm({
+    super.key,
+    required this.nameController,
+    required this.emailController,
+    required this.numberController,
+    required this.passwordController,
+    required this.confirmController,
+    required this.formKey,
+    required this.onCountryCodeSelect,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +151,9 @@ class SignupInputForm extends StatelessWidget {
                             .country = c.dialCode.toString();
                         Provider.of<SignUpPageProvider>(context, listen: false)
                             .onRefresh();
+                        onCountryCodeSelect(
+                          c.dialCode ?? "",
+                        );
                       },
                       initialSelection: 'IN',
                       favorite: const ['+91'],

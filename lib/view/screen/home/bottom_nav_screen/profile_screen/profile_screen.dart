@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         emailController = TextEditingController(text: data.email ?? '');
         phoneController = TextEditingController(text: data.phone ?? '');
         addressController = TextEditingController(text: data.address ?? '');
-        countryCode = '+${data.countryCode}';
+        countryCode = '${data.countryCode}';
         if (data.socialLinks != null) {
           facebookPageController =
               TextEditingController(text: data.socialLinks!.facebookPage ?? '');
@@ -80,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const KHeight(4),
                       Text(
-                        profileProvider.profileData!.name ?? '',
+                        profileProvider.profileData!.name ?? 'Promoter',
                         style: AppTextStyle.buttonText,
                       ),
                       const KHeight(28),
@@ -133,12 +135,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                             .profileData!
                                                             .refId ??
                                                         ''))
-                                                .then((_) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(const SnackBar(
-                                                      content: Text(
-                                                          "Copied to clipboard")));
-                                            });
+                                                .then(
+                                              (_) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                      "Copied to clipboard",
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
                                           },
                                           child: const Icon(
                                             Icons.copy_all,

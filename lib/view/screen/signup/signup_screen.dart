@@ -19,6 +19,7 @@ class SignUpPage extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     TextEditingController confirmController = TextEditingController();
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    String countryCode = "+91";
 
     return Scaffold(
         body: ChangeNotifierProvider(
@@ -45,6 +46,9 @@ class SignUpPage extends StatelessWidget {
                     numberController: numberController,
                     passwordController: passwordController,
                     confirmController: confirmController,
+                    onCountryCodeSelect: (dialCode) {
+                      countryCode = dialCode;
+                    },
                   ),
                   const KHeight(40),
                   MediumButton(
@@ -59,6 +63,7 @@ class SignUpPage extends StatelessWidget {
                           emailController.text,
                           passwordController.text,
                           confirmController.text,
+                          countryCode,
                         );
                       }
                     },

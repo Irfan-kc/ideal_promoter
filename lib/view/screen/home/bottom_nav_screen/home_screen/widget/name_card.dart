@@ -39,12 +39,13 @@ class NameCard extends StatelessWidget {
                   : RichText(
                       text: TextSpan(
                         text:
-                            'Hi, ${profileProvider.profileData!.name ?? "User Name"}\n',
+                            'Hi, ${profileProvider.profileData!.name ?? "Promoter"}\n',
                         style: const TextStyle(
-                            overflow: TextOverflow.ellipsis,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                         children: const [
                           TextSpan(
                             text: 'welcome to ideal e shope',

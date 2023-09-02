@@ -57,7 +57,7 @@ class AuthProvider extends BaseProvider {
   }
 
   Future signup(BuildContext context, String name, String number, String mail,
-      String password, String confirm) async {
+      String password, String confirm,String countryCode) async {
     try {
       isLoading = true;
       notifyListeners();
@@ -66,7 +66,9 @@ class AuthProvider extends BaseProvider {
         "phone": number,
         "email": mail,
         "password": password,
-        "confirmPassword": confirm
+        "confirmPassword": confirm,
+        "countryCode": countryCode
+
       };
       if (password == confirm) {
         var response = await Provider.of<AuthService>(context, listen: false)
