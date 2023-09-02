@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     productProvider.isLoading
                         ? loader()
                         : productProvider.featuredProducts.isEmpty
-                            ? const Text("No products to show")
+                            ? const Center(child: Text("No products to show"))
                             : GridViewData(
                                 title: 'Suggested for you',
                                 controller: controller,
