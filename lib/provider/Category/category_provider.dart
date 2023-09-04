@@ -17,16 +17,18 @@ class CategoryProvider extends BaseProvider {
 
   changeIsSelectSub(BuildContext context, int index) {
     for (var i = 0; i < subCatListByMainCat.length; i++) {
-      if (index == i) {
+      if (index == -1) {
+        subCatListByMainCat[i].isSelected = false;
+      } else if (index == i) {
         subCatListByMainCat[i].isSelected = true;
-        notifyListeners();
       } else {
         subCatListByMainCat[i].isSelected = false;
-        notifyListeners();
       }
     }
-    Provider.of<ProductProvider>(context, listen: false)
-        .getAllProductsByCategory(context, subCatListByMainCat[index].id!, 1);
+    if (index != -1) {
+      Provider.of<ProductProvider>(context, listen: false)
+          .getAllProductsByCategory(context, subCatListByMainCat[index].id!, 1);
+    }
   }
 
   changeIsSelect(BuildContext context, int index, String catId) {
@@ -42,6 +44,12 @@ class CategoryProvider extends BaseProvider {
     getSubcategoryByMainCategory(catId);
     Provider.of<ProductProvider>(context, listen: false)
         .getAllProductsByCategory(context, allCategoryList[index].id!, 1);
+    changeIsSelectSub(context, -1);
+  }
+
+  clearSubCategoryList() {
+    subCatListByMainCat.clear();
+    notifyListeners();
   }
 
   getSubcategoryByMainCategory(String catId) async {
