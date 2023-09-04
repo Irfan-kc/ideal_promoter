@@ -118,7 +118,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   length: 4,
                   label: [
                     'Date',
-                    'Ref Id',
+                    'Order Id',
                     'Amount',
                     'Order Status'
                   ],
