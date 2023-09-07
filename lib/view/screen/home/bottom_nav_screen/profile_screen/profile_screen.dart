@@ -229,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       ? null
                                                       : phoneController.text,
                                               countryCode:
-                                                  countryCode.split('+')[1],
+                                                  countryCode,
                                               refId: profileProvider
                                                       .profileData!.refId ??
                                                   '',

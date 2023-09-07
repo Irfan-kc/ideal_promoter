@@ -34,7 +34,7 @@ class AuthProvider extends BaseProvider {
           .login(body: body);
       if (response.isSuccessful) {
         if (await setToken(response.body["token"])) {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (_) => const Home(),
@@ -57,7 +57,7 @@ class AuthProvider extends BaseProvider {
   }
 
   Future signup(BuildContext context, String name, String number, String mail,
-      String password, String confirm,String countryCode) async {
+      String password, String confirm, String countryCode) async {
     try {
       isLoading = true;
       notifyListeners();
@@ -68,7 +68,6 @@ class AuthProvider extends BaseProvider {
         "password": password,
         "confirmPassword": confirm,
         "countryCode": countryCode
-
       };
       if (password == confirm) {
         var response = await Provider.of<AuthService>(context, listen: false)
@@ -78,12 +77,7 @@ class AuthProvider extends BaseProvider {
               message:
                   'Successfully registered as promoter, Please wait for the approval',
               context: context);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const LoginPage(),
-            ),
-          );
+          Navigator.of(context).pop();
         } else {
           await errorSnackBar(
               message: response.error.toString().split('"')[3],
