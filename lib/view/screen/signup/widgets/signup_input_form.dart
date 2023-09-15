@@ -36,8 +36,9 @@ class SignupInputForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => SignUpPageProvider(),
-        child: Consumer<SignUpPageProvider>(builder: (context, provider, _) {
+      create: (context) => SignUpPageProvider(),
+      child: Consumer<SignUpPageProvider>(
+        builder: (context, provider, _) {
           return Form(
             key: formKey,
             child: Padding(
@@ -213,7 +214,7 @@ class SignupInputForm extends StatelessWidget {
                       : const SizedBox(),
                   const KHeight(20),
                   CustomTextField(
-                    hintText: 'confirm Password',
+                    hintText: 'Confirm Password',
                     focusNode: confirmFocus,
                     controller: confirmController,
                     isPassword: true,
@@ -231,6 +232,8 @@ class SignupInputForm extends StatelessWidget {
               ),
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }
